@@ -24,7 +24,7 @@
         --copper: #b87333;
         --copper-bright: #d99a55;
         --paper: #f2ede1;
-        --header-bg: rgba(15, 25, 31, 0.98);
+        --header-bg: rgb(15, 25, 31);
         --on-gold: #101a21;
         --text: #eef2f0;
         --text-dim: #b3c0c6;
@@ -109,7 +109,7 @@
       h1 {
         font-family: var(--display); font-weight: 560;
         font-variation-settings: "opsz" var(--d-opsz, 144), "wght" var(--d-wght, 560);
-        font-size: clamp(44px, 6.4vw, 76px); line-height: 1.04;
+        font-size: clamp(52px, 7.4vw, 96px); line-height: 1.02;
         margin: 0 0 26px; letter-spacing: 0;
       }
       h1 em { font-style: italic; color: var(--gold-bright); }
@@ -129,10 +129,18 @@
       .hero-note { font-size: 14.5px; color: var(--text-faint); margin: 0; }
       .hero-note strong { color: var(--text-dim); font-weight: 600; }
       .hero-art {
-        border: 1px solid var(--line); border-radius: var(--radius);
+        border: 1px solid var(--line-gold); border-radius: var(--radius);
         overflow: hidden; background: var(--ink-deep);
+        box-shadow: 22px 22px 0 -8px rgba(201, 162, 75, 0.20), 0 30px 60px -30px rgba(0, 0, 0, 0.65);
+        transform: rotate(-1.1deg);
       }
       .hero-art img { width: 100%; height: auto; }
+
+      .hero-in > div, .hero-in > figure { animation: heroUp 0.95s cubic-bezier(0.22, 0.61, 0.21, 1) both; }
+      .hero-in > figure { animation-delay: 0.16s; }
+      @keyframes heroUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+      .hero-in > figure.hero-art { animation-name: heroUpTilt; }
+      @keyframes heroUpTilt { from { opacity: 0; transform: translateY(26px) rotate(-1.1deg); } to { opacity: 1; transform: rotate(-1.1deg); } }
 
       /* ---------- Trust strip ---------- */
       .trust { border-bottom: 1px solid var(--line); background: var(--ink-deep); }
@@ -224,7 +232,7 @@
       }
       .spec b { color: var(--text); font-weight: 700; }
       .card-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-      .price { font-family: var(--serif); font-size: 27px; font-weight: 700; }
+      .price { font-family: var(--display); font-size: 31px; font-weight: 650; font-variation-settings: "opsz" 100, "wght" 650; letter-spacing: 0.01em; }
       .price small { font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--text-faint); display: block; letter-spacing: 0.04em; }
       .price .free-word { color: var(--gold-bright); }
       .btn-sm { padding: 10px 18px; font-size: 15px; white-space: nowrap; }
@@ -309,11 +317,14 @@
         width: 100%; height: 100%;
         filter: drop-shadow(0 0 34px rgba(230,200,119,0.65));
       }
-      .hero.fx-in .hero-star svg { animation: starspin 140s linear infinite; }
+      .hero.fx-in .hero-star svg { animation: starspin 40s linear infinite; }
+      .hero.fx-in .hero-star { animation: startwinkle 5.5s ease-in-out infinite; }
+      @keyframes startwinkle { 0%, 100% { opacity: 0.52; } 50% { opacity: 0.8; } }
       @keyframes starspin { to { transform: rotate(360deg); } }
       @keyframes breathe { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.07); } }
 
-      .btn { position: relative; overflow: hidden; transition: background 0.15s ease, border-color 0.15s ease, transform 0.08s ease; }
+      .btn { position: relative; overflow: hidden; transition: background 0.15s ease, border-color 0.15s ease, transform 0.18s ease, box-shadow 0.18s ease; }
+      .btn:hover { transform: translateY(-2px); }
       .btn:active { transform: translateY(1px); }
       .btn-gold::after {
         content: ""; position: absolute; top: 0; left: -80%; width: 55%; height: 100%;
@@ -322,7 +333,11 @@
       }
       .btn-gold:hover::after { left: 135%; }
 
-      .card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+      .card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.55); }
+      .card.show-inside .cm-inside { opacity: 1; }
+      .card.show-inside .cm-cover { opacity: 0; }
+      .card.show-inside .cm-tag { opacity: 1; }
+      @media (hover: none) { .card-media .cm-tag { opacity: 1; } }
       .card:hover {
         transform: translateY(-5px); border-color: var(--line-gold);
         box-shadow: 0 14px 34px -14px rgba(201,162,75,0.35), 0 10px 24px -12px rgba(0,0,0,0.55);
@@ -331,8 +346,8 @@
       a:focus-visible, button:focus-visible, summary:focus-visible, .q-opts label:focus-within {
         outline: 2px solid var(--gold-bright); outline-offset: 3px; border-radius: 6px;
       }
-      .rv .reveal { opacity: 0; transform: translateY(16px); }
-      .rv .reveal.in { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s ease; }
+      .rv .reveal { opacity: 0; transform: translateY(30px); }
+      .rv .reveal.in { opacity: 1; transform: none; transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.21, 1), transform 0.9s cubic-bezier(0.22, 0.61, 0.21, 1); }
       .rv .reveal.done { transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; transition-delay: 0s !important; }
 
       /* ---------- Card media: the real cover, and a real page inside ---------- */
@@ -363,12 +378,14 @@
       .card-guarantee b { color: var(--text-dim); font-weight: 600; }
 
       /* ---------- Collection mosaic ---------- */
-      .collection-mosaic {
-        margin: 0 0 26px; border: 1px solid var(--line-gold);
-        border-radius: var(--radius); overflow: hidden; line-height: 0;
+      .covers-grid {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+        margin: 0 0 26px; padding: 10px;
+        border: 1px solid var(--line-gold); border-radius: var(--radius);
         background: var(--ink-deep);
       }
-      .collection-mosaic img { width: 100%; height: auto; display: block; }
+      .covers-grid img { width: 100%; height: auto; display: block; border-radius: 6px; }
+      @media (max-width: 620px) { .covers-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 8px; } }
 
       /* ---------- Pause: one open guide between dense sections ---------- */
       .pause-band { background: var(--ink); border-bottom: 1px solid var(--line); }
@@ -423,7 +440,7 @@
         --copper-bright: #7c4d0c;
         --on-gold: #fbf4e2;
         --text: #1e2a32; --text-dim: #45545f; --text-faint: #4f5f68;
-        --header-bg: rgba(242, 234, 216, 0.98);
+        --header-bg: rgb(242, 234, 216);
       }
 
       /* ---------- Theme toggle ---------- */
@@ -443,7 +460,7 @@
         --ink: #05090c; --ink-deep: #020405; --ink-panel: #080f13; --ink-panel-2: #0a1216;
         --line: #1b2933; --text: #e7edea; --text-dim: #aab9be; --text-faint: #758891;
         --gold: #c9a24b; --gold-bright: #e6c877; --on-gold: #101a21;
-        --header-bg: rgba(2, 4, 5, 0.98);
+        --header-bg: rgb(2, 4, 5);
       }
       body.blackout img { filter: brightness(0.6) contrast(1.03); }
       body.blackout .hero-star { opacity: 0.95; }
@@ -550,7 +567,7 @@
       @media (max-width: 620px) { .foot-legal { grid-template-columns: 1fr; gap: 26px; } }
 
 
-      section[id], fieldset.q, #quizResults { scroll-margin-top: 76px; }
+      section[id], .q-card, #quizResults { scroll-margin-top: 76px; }
 
       /* ---------- Arizona origin ---------- */
       .brand-copper { margin-left: -17px; margin-top: 21px; flex: none; }
@@ -591,17 +608,21 @@
       .quiz-progress { font-size: 13.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin: 14px 0 6px; }
       .quiz-bar { height: 6px; border-radius: 3px; background: var(--ink-deep); overflow: hidden; margin-bottom: 22px; }
       .quiz-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--copper), var(--gold)); transition: width 0.45s ease; }
-      fieldset.q {
-        border: 1px solid var(--line); border-radius: 8px; background: rgba(0,0,0,0.12);
-        padding: 16px 18px 14px; margin: 0 0 12px;
+      .q-card {
+        border: 1px solid var(--line); border-radius: 12px; background: rgba(0,0,0,0.12);
+        padding: 20px 18px 16px; margin: 0 0 12px;
+        transition: border-color 0.3s ease, background 0.3s ease;
       }
-      body.light fieldset.q { background: rgba(255,255,255,0.35); }
-      fieldset.q legend {
+      body.light .q-card { background: rgba(255,255,255,0.35); }
+      .q-card.answered { border-color: var(--line-gold); }
+      .q-card.pulse { animation: qpulse 0.45s ease; }
+      @keyframes qpulse { 0% { transform: scale(1); } 35% { transform: scale(1.013); } 100% { transform: scale(1); } }
+      .q-head {
         font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--text);
-        padding: 0 8px; max-width: 100%;
+        line-height: 1.5; margin: 0 0 12px;
       }
-      fieldset.q legend .qnum { color: var(--copper-bright); font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-right: 8px; }
-      .q-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+      .q-head .qnum { color: var(--copper-bright); font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-right: 8px; }
+      .q-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
       .q-opts label {
         border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px;
         font-size: 14.5px; font-weight: 600; color: var(--text-dim); cursor: pointer;
@@ -641,7 +662,7 @@
       .quiz-note { font-size: 15px; color: var(--text-dim); margin: 18px 0 0; }
       @media (max-width: 620px) {
         .quiz-shell { padding: 24px 18px; }
-        fieldset.q legend { font-size: 16px; }
+        .q-head { font-size: 16px; }
         .brand-copper { margin-left: -14px; width: 12px; height: 12px; }
       }
       @media print {
@@ -722,7 +743,7 @@
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
-        #ready fieldset.q, #quizResults { scroll-margin-top: 84px; }
+        #ready .q-card, #quizResults { scroll-margin-top: 84px; }
         .hero-star svg, .hero-glow, .hero.fx-in .hero-star svg, .hero.fx-in .hero-glow { animation: none; }
         .btn-gold::after { display: none; }
         .card, .btn, .header-in, .bo-switch::after { transition: none; }
@@ -732,6 +753,9 @@
         .home-card::after { transition: none; }
         .card-media .cm-cover, .card-media .cm-inside, .card-media .cm-tag { transition: none; }
         .hero-star { transform: none !important; }
+        .hero-in > div, .hero-in > figure { animation: none; }
+        .q-card.pulse { animation: none; }
+        .btn:hover { transform: none; }
       }
     </style>
   </head>
@@ -943,9 +967,24 @@
         <div class="wrap">
           <div class="featured reveal">
             <div>
-              <figure class="collection-mosaic" style="margin:0">
-                <img src="img/mosaico-coleccion.webp" width="1442" height="232" loading="lazy" decoding="async" alt="The covers of the 16 packs in the Complete Collection, side by side" />
-              </figure>
+<div class="covers-grid" role="img" aria-label="The covers of the 16 packs in the Complete Collection, side by side">
+                <img src="img/portada-esencial.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-emergencias.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-desastres.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-calor.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-mascotas.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-libro-manual.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-libro-invierno.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-audiolibro-invierno.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-audio-emergencias.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-familiar.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-cuidador.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-hogar.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-facturas.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-reparaciones.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-cuidado-mayores.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+                <img src="img/portada-conservacion.webp" width="720" height="405" loading="lazy" decoding="async" alt="" />
+              </div>
               <span class="tag">All 16 packs in one download · Los 16 packs en una descarga</span>
               <h2>The Complete Collection</h2>
               <p>
@@ -1682,7 +1721,7 @@
                 <stop offset="0" stop-color="#e6c877"/><stop offset="1" stop-color="#b87333"/>
               </linearGradient>
             </defs>
-            <circle class="az-sun" cx="716" cy="76" r="32" fill="url(#azSunFoot)" opacity="0.9"/>
+            <circle class="az-sun" cx="716" cy="34" r="32" fill="url(#azSunFoot)" opacity="0.9"/>
             <g stroke="#b87333" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0.8">
               <path d="M470,34 q7,-7 14,0"/><path d="M492,26 q6,-6 12,0"/>
               <path d="M950,30 q7,-7 14,0"/>
@@ -1889,7 +1928,12 @@
               }
             });
           }, { threshold: 0.12 });
-          revealEls.forEach(function (el) { io.observe(el); });
+          revealEls.forEach(function (el) {
+            var sibs = Array.prototype.filter.call(el.parentNode.children, function (n) { return n.classList && n.classList.contains("reveal"); });
+            var idx = sibs.indexOf(el);
+            el.style.transitionDelay = ((idx > 0 ? idx % 4 : 0) * 90) + "ms";
+            io.observe(el);
+          });
 
           var runCounter = function (el) {
             var target = parseInt(el.getAttribute("data-count"), 10);
@@ -2059,9 +2103,12 @@
           document.getElementById("langEs").setAttribute("aria-pressed", quizLang === "es" ? "true" : "false");
           quizBox.innerHTML = "";
           QUIZ_ITEMS.forEach(function (item, i) {
-            var fs = document.createElement("fieldset");
-            fs.className = "q";
-            var lg = document.createElement("legend");
+            var fs = document.createElement("div");
+            fs.className = "q-card" + (quizAnswers[i] ? " answered" : "");
+            fs.setAttribute("role", "group");
+            fs.setAttribute("aria-label", item[quizLang].q);
+            var lg = document.createElement("p");
+            lg.className = "q-head";
             var num = document.createElement("span");
             num.className = "qnum";
             num.textContent = (i + 1) + " / 12";
@@ -2079,6 +2126,12 @@
               if (quizAnswers[i] === pair[0]) inp.checked = true;
               inp.addEventListener("change", function () {
                 quizAnswers[i] = pair[0];
+                fs.classList.add("answered");
+                if (!reduced) {
+                  fs.classList.remove("pulse");
+                  void fs.offsetWidth;
+                  fs.classList.add("pulse");
+                }
                 quizProgress();
               });
               lab.appendChild(inp);
@@ -2180,6 +2233,15 @@
           });
           document.getElementById("quizPrint").addEventListener("click", function () { window.print(); });
         }
+
+        /* On touch screens there is no hover: tapping a cover shows
+           the real page inside, tapping again brings the cover back. */
+        document.querySelectorAll(".card-media").forEach(function (m) {
+          m.addEventListener("click", function () {
+            var card = m.closest(".card");
+            if (card) card.classList.toggle("show-inside");
+          });
+        });
 
         /* Year */
         var y = document.getElementById("year");
