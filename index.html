@@ -313,6 +313,9 @@
         box-shadow: 0 14px 34px -14px rgba(201,162,75,0.35), 0 10px 24px -12px rgba(0,0,0,0.55);
       }
 
+      a:focus-visible, button:focus-visible, summary:focus-visible, .q-opts label:focus-within {
+        outline: 2px solid var(--gold-bright); outline-offset: 3px; border-radius: 6px;
+      }
       .rv .reveal { opacity: 0; transform: translateY(16px); }
       .rv .reveal.in { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s ease; }
       .rv .reveal.done { transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; transition-delay: 0s !important; }
@@ -561,6 +564,8 @@
       @media (max-width: 620px) { .foot-legal { grid-template-columns: 1fr; gap: 26px; } }
 
 
+      section[id], fieldset.q, #quizResults { scroll-margin-top: 92px; }
+
       /* ---------- Arizona origin ---------- */
       .brand-copper { margin-left: -17px; margin-top: 21px; flex: none; }
       .origin-line {
@@ -643,6 +648,10 @@
       .gap-item .src { font-size: 13.5px; color: var(--text-faint); margin: 0 0 10px; }
       .gap-item .src b { color: var(--text-dim); }
       .gap-item .btn { max-width: 100%; white-space: normal; text-align: left; }
+      .card-btns { display: inline-flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      .card-foot .price { min-width: 0; }
+      .card-foot .price small { white-space: normal; }
+      .card.free .btn { white-space: normal; text-align: center; }
       .quiz-note { font-size: 15px; color: var(--text-dim); margin: 18px 0 0; }
       @media (max-width: 620px) {
         .quiz-shell { padding: 24px 18px; }
@@ -722,6 +731,7 @@
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
+        #ready fieldset.q, #quizResults { scroll-margin-top: 92px; }
         .hero-star svg, .hero-glow, .hero.fx-in .hero-star svg, .hero.fx-in .hero-glow { animation: none; }
         .btn-gold::after { display: none; }
         .card, .btn, .header-in, .bo-switch::after { transition: none; }
@@ -1065,10 +1075,26 @@
               <h3>Essential Pack</h3>
               <p class="es-name">Paquete Esencial</p>
               <p class="desc">Start free and stay ready. These are the core guides we think every home should have on hand, made to the same standard as every paid pack.</p>
-              <div class="spec"><span><b>Free</b> · pay what you want</span><span>License: <b>CC BY 4.0</b></span></div>
+              <div class="spec"><span><b>Free</b> · pay what you want, $10 suggested</span><span>License: <b>CC BY 4.0</b></span></div>
               <div class="card-foot">
-                <span class="price"><span class="free-word">FREE</span><small>Pay what you want</small></span>
-                <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/esencial">Get it free</a>
+                <span class="price"><span class="free-word">FREE</span><small>Pay what you want · $10 suggested</small></span>
+                <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/esencial">Get it</a>
+              </div>
+            </article>
+
+            <article class="card reveal">
+              <div class="card-band" style="--band: linear-gradient(160deg, #4A7A8C, #27424C)" aria-hidden="true">
+                <svg class="band-star" viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#e6c877"/></svg>
+                <svg class="band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 1 5.6 5L12 19.6a4 4 0 0 1-5.6 0l-2.3-2.3a4 4 0 0 1 0-5.6l8.1-8.1a4 4 0 0 1 2.3 2.9z"/><path d="M13.5 7.5l3 3"/></svg>
+              </div>
+              <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span></span></div>
+              <h3>Essential Home Repairs</h3>
+              <p class="es-name">Reparaciones esenciales del hogar</p>
+              <p class="desc">The repair that follows the emergency: fix the simple things yourself, diagnose the rest, and know where your toolbox ends and a professional begins.</p>
+              <div class="spec"><span><b>44</b> guides</span><span>Works offline</span></div>
+              <div class="card-foot">
+                <span class="price">$19</span>
+                <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/reparaciones">Get it on Gumroad</a>
               </div>
             </article>
 
@@ -1238,6 +1264,7 @@
             <p>Binders you print and fill in by hand, each one with its guides. You print once, fill in the sheets, and the binder sits in a drawer. It needs no battery, no signal and no login.</p>
             <p class="es">Carpetas imprimibles y rellenables, cada una con sus guías. Se imprimen una vez y quedan en un cajón.</p>
             <p style="margin-top:16px"><a class="btn btn-ghost btn-sm" href="#etsy">See the nine binders on Etsy</a></p>
+            <p style="margin-top:10px; font-size:14.5px; color:var(--text-faint)">The three planners at the end of the Etsy section also sell here on Gumroad: the second button on each of their cards.</p>
           </div>
           <div class="grid">
             <article class="card reveal">
@@ -1463,7 +1490,7 @@
               <div class="spec"><span><b>43</b> fillable sheets</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613238352">See it on Etsy</a>
+                <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613238352">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/planificador-hogar">On Gumroad</a></span>
               </div>
             </article>
             <article class="card reveal">
@@ -1479,7 +1506,7 @@
               <div class="spec"><span><b>59</b> fillable sheets</span><span>With reading companion</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$25</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613241276">See it on Etsy</a>
+                <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613241276">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-por-si-acaso">On Gumroad</a></span>
               </div>
             </article>
             <article class="card reveal">
@@ -1495,7 +1522,7 @@
               <div class="spec"><span><b>30</b> fillable sheets</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$14.99</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613243238">See it on Etsy</a>
+                <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613243238">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/presupuesto-sueldo">On Gumroad</a></span>
               </div>
             </article>
           </div>
