@@ -317,9 +317,9 @@
         width: 100%; height: 100%;
         filter: drop-shadow(0 0 34px rgba(230,200,119,0.65));
       }
-      .hero.fx-in .hero-star svg { animation: starspin 40s linear infinite; }
+      .hero.fx-in .hero-star svg { animation: starspin 26s linear infinite; }
       .hero.fx-in .hero-star { animation: startwinkle 5.5s ease-in-out infinite; }
-      @keyframes startwinkle { 0%, 100% { opacity: 0.52; } 50% { opacity: 0.8; } }
+      @keyframes startwinkle { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.97; } }
       @keyframes starspin { to { transform: rotate(360deg); } }
       @keyframes breathe { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.07); } }
 
@@ -757,6 +757,23 @@
         .q-card.pulse { animation: none; }
         .btn:hover { transform: none; }
       }
+
+      /* ---------- Motion, second pass: the product stays alive ---------- */
+      body.light .hero-star svg { filter: drop-shadow(0 0 34px rgba(201, 162, 75, 0.5)) saturate(1.55) brightness(0.8); }
+      .hero.fx-in .hero-art img { animation: heroFloat 7s ease-in-out infinite; will-change: transform; }
+      @keyframes heroFloat { 0%, 100% { transform: scale(1.03) translateY(0); } 50% { transform: scale(1.03) translateY(-7px); } }
+      .q-opts label { transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.25s ease; }
+      .q-card.demo { border-color: var(--line-gold); }
+      .q-opts label.demo-pick { border-color: var(--gold); color: var(--text); background: rgba(201, 162, 75, 0.16); transform: scale(1.05); }
+      @media (hover: none) { .card:active { transform: translateY(1px); } }
+      @media (max-width: 620px) {
+        .hero-in { padding-top: 38px; }
+        .hero-in > figure.hero-art { order: -1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero.fx-in .hero-art img { animation: none; }
+        .q-opts label.demo-pick { transform: none; }
+      }
     </style>
   </head>
   <body>
@@ -867,28 +884,28 @@
       <!-- ============ TRUST STRIP ============ -->
       <div class="trust">
         <div class="wrap trust-in">
-          <div class="trust-item">
+          <div class="trust-item reveal">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2 L14.2 9.8 L22 12 L14.2 14.2 L12 22 L9.8 14.2 L2 12 L9.8 9.8 Z" fill="#c9a24b"/></svg>
             <div>
               <h3>We check every line</h3>
               <p>We check every guide against the Red Cross and official sources.</p>
             </div>
           </div>
-          <div class="trust-item">
+          <div class="trust-item reveal">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12 a9 9 0 1 1 18 0 a9 9 0 1 1 -18 0" stroke="#c9a24b" stroke-width="2"/><path d="M8 15.5 L16 8.5" stroke="#c9a24b" stroke-width="2" stroke-linecap="round"/></svg>
             <div>
               <h3>Works with no connection</h3>
               <p>You download it once. After that you never need a connection again.</p>
             </div>
           </div>
-          <div class="trust-item">
+          <div class="trust-item reveal">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="#c9a24b" stroke-width="2"/><path d="M4 21 c1.2 -3.6 4.2 -5.4 8 -5.4 s6.8 1.8 8 5.4" stroke="#c9a24b" stroke-width="2" stroke-linecap="round"/><path d="M5 4 L19 20" stroke="#c9a24b" stroke-width="2" stroke-linecap="round"/></svg>
             <div>
               <h3>No accounts and no subscriptions</h3>
               <p>You buy once. There's nothing to sign up for and nothing renews.</p>
             </div>
           </div>
-          <div class="trust-item">
+          <div class="trust-item reveal">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3 h8 l4 4 v14 a1 1 0 0 1 -1 1 H6 a1 1 0 0 1 -1 -1 V4 a1 1 0 0 1 1 -1 Z" stroke="#c9a24b" stroke-width="2" stroke-linejoin="round"/><path d="M14 3 v4 h4" stroke="#c9a24b" stroke-width="2" stroke-linejoin="round"/></svg>
             <div>
               <h3>Your files are yours</h3>
@@ -2286,6 +2303,89 @@
             if (card) card.classList.toggle("show-inside");
           });
         });
+
+        /* The ready check shows itself once: the first time the section
+           is on screen and nobody has touched it or answered yet, a gold
+           ring walks the three answers of the first question, the card
+           answers with its pulse and the bar fills one step and settles
+           back. Nothing is selected and nothing is recorded; any touch
+           or key inside the section, or the section leaving the screen,
+           ends it at once and leaves no trace. */
+        var quizSection = document.getElementById("ready");
+        if (quizSection && quizBox && !reduced && "IntersectionObserver" in window) {
+          var demoDone = false, demoTimers = [];
+          var demoLater = function (fn, ms) { demoTimers.push(setTimeout(fn, ms)); };
+          var demoStop = function () {
+            demoTimers.forEach(clearTimeout); demoTimers = [];
+            var card = quizBox.querySelector(".q-card.demo");
+            if (card) {
+              card.classList.remove("demo", "pulse");
+              card.querySelectorAll(".demo-pick").forEach(function (l) { l.classList.remove("demo-pick"); });
+            }
+            if (Object.keys(quizAnswers).length === 0) {
+              var fill = document.getElementById("quizBarFill");
+              if (fill) fill.style.width = "0%";
+            }
+          };
+          var demoRun = function () {
+            if (demoDone) return;
+            demoDone = true;
+            if (Object.keys(quizAnswers).length > 0) return;
+            var card = quizBox.querySelector(".q-card");
+            if (!card) return;
+            var labels = card.querySelectorAll(".q-opts label");
+            if (!labels.length) return;
+            card.classList.add("demo");
+            labels.forEach(function (lab, k) {
+              demoLater(function () {
+                labels.forEach(function (l) { l.classList.remove("demo-pick"); });
+                lab.classList.add("demo-pick");
+              }, 500 + k * 600);
+            });
+            demoLater(function () {
+              card.classList.remove("pulse"); void card.offsetWidth; card.classList.add("pulse");
+              var fill = document.getElementById("quizBarFill");
+              if (fill && Object.keys(quizAnswers).length === 0) fill.style.width = (100 / 12) + "%";
+            }, 500 + labels.length * 600);
+            demoLater(demoStop, 500 + labels.length * 600 + 1600);
+          };
+          var dio = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.isIntersecting) { demoLater(demoRun, 700); }
+              else if (demoTimers.length) { demoStop(); }
+            });
+          }, { threshold: 0.35 });
+          dio.observe(quizBox.querySelector(".q-card") || quizSection);
+          ["pointerdown", "touchstart", "keydown"].forEach(function (evt) {
+            quizSection.addEventListener(evt, function () { demoDone = true; demoStop(); dio.disconnect(); }, { passive: true });
+          });
+        }
+
+        /* On touch screens a card shows its inside page once by itself
+           the first time it comes into view, then returns to its cover:
+           the "See inside" gesture, demonstrated without a touch. A tap
+           on the card cancels the return and keeps the visitor in
+           control of that card. */
+        if (!reduced && "IntersectionObserver" in window && window.matchMedia && window.matchMedia("(hover: none)").matches) {
+          var peekIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (!en.isIntersecting) return;
+              var card = en.target;
+              peekIO.unobserve(card);
+              card.classList.add("show-inside");
+              card._peekTimer = setTimeout(function () { card.classList.remove("show-inside"); }, 1600);
+            });
+          }, { threshold: 0.35 });
+          document.querySelectorAll(".card .card-media").forEach(function (m) {
+            var card = m.closest(".card");
+            if (!card) return;
+            card.addEventListener("pointerdown", function () {
+              peekIO.unobserve(card);
+              if (card._peekTimer) { clearTimeout(card._peekTimer); card._peekTimer = null; }
+            }, { passive: true });
+            peekIO.observe(card);
+          });
+        }
 
         /* Year */
         var y = document.getElementById("year");
