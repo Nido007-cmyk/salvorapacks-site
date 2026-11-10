@@ -21,6 +21,8 @@
         --gold: #c9a24b;
         --gold-bright: #e6c877;
         --gold-deep: #a37f2c;
+        --copper: #b87333;
+        --copper-bright: #d99a55;
         --paper: #f2ede1;
         --header-bg: rgba(15, 25, 31, 0.98);
         --on-gold: #101a21;
@@ -212,12 +214,6 @@
       .price .free-word { color: var(--gold-bright); }
       .btn-sm { padding: 10px 18px; font-size: 15px; white-space: nowrap; }
 
-      /* ---------- Etsy shop ---------- */
-      .etsy-shop { background: linear-gradient(180deg, var(--ink-panel-2), var(--ink-deep)); border-top: 1px solid var(--line-gold); border-bottom: 1px solid var(--line-gold); }
-      .etsy-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px 28px; margin-bottom: 38px; }
-      .etsy-head .sec-head { margin-bottom: 0; }
-      .etsy-head .btn { flex: none; }
-
       /* ---------- Binders ---------- */
       .binders { background: var(--ink-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
@@ -354,6 +350,8 @@
         --ink: #efe5cd; --ink-deep: #e6dabf; --ink-panel: #fdfaf1; --ink-panel-2: #f4ecd7;
         --line: #d9cba6; --line-gold: #a5832f;
         --gold: #7a581b; --gold-bright: #7a4a0f; --gold-deep: #5f430d;
+        --copper: #8f5a1d;
+        --copper-bright: #7c4d0c;
         --on-gold: #fbf4e2;
         --text: #1e2a32; --text-dim: #45545f; --text-faint: #4f5f68;
         --header-bg: rgba(242, 234, 216, 0.98);
@@ -562,6 +560,113 @@
       .foot-legal strong { color: var(--text-dim); }
       @media (max-width: 620px) { .foot-legal { grid-template-columns: 1fr; gap: 26px; } }
 
+
+      /* ---------- Arizona origin ---------- */
+      .brand-copper { margin-left: -17px; margin-top: 21px; flex: none; }
+      .origin-line {
+        border-left: 2px solid var(--copper); padding-left: 14px;
+        margin: 0 0 26px; max-width: 35em;
+      }
+      .origin-line p { margin: 0; font-size: 15.5px; color: var(--text-dim); }
+      .origin-line p.es { color: var(--text-faint); font-style: italic; font-size: 14.5px; margin-top: 3px; }
+      .origin-line b { color: var(--copper-bright); font-weight: 700; }
+      body.light .origin-line b { color: var(--copper); }
+      .hero-horizon {
+        position: absolute; left: 0; right: 0; bottom: -2px; height: 84px;
+        pointer-events: none; opacity: 0.5; z-index: 0;
+      }
+      .hero-horizon svg { width: 100%; height: 100%; display: block; }
+      .foot-horizon { color: #1e3442; margin: 2px 0 30px; }
+      body.light .foot-horizon { color: #c9b384; }
+      .foot-horizon svg { width: 100%; height: auto; display: block; }
+      @keyframes azglow { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+      .fx-in .az-sun { animation: azglow 8s ease-in-out infinite; }
+
+      /* ---------- Ready check ---------- */
+      .ready { background: var(--ink-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .quiz-shell {
+        border: 1px solid var(--line-gold); border-radius: var(--radius);
+        background: linear-gradient(165deg, var(--ink-panel-2), var(--ink-panel));
+        padding: 34px 36px;
+      }
+      .quiz-top { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+      .quiz-lang { display: inline-flex; border: 1px solid var(--line-gold); border-radius: 999px; overflow: hidden; }
+      .quiz-lang button {
+        background: transparent; color: var(--text-dim); border: 0; cursor: pointer;
+        font: inherit; font-weight: 700; font-size: 14px; padding: 7px 16px;
+      }
+      .quiz-lang button[aria-pressed="true"] { background: var(--gold); color: var(--on-gold); }
+      .quiz-privacy { font-size: 14px; color: var(--gold-bright); font-weight: 600; margin: 0; }
+      .quiz-progress { font-size: 13.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin: 14px 0 6px; }
+      .quiz-bar { height: 6px; border-radius: 3px; background: var(--ink-deep); overflow: hidden; margin-bottom: 22px; }
+      .quiz-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--copper), var(--gold)); transition: width 0.45s ease; }
+      fieldset.q {
+        border: 1px solid var(--line); border-radius: 8px; background: rgba(0,0,0,0.12);
+        padding: 16px 18px 14px; margin: 0 0 12px;
+      }
+      body.light fieldset.q { background: rgba(255,255,255,0.35); }
+      fieldset.q legend {
+        font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--text);
+        padding: 0 8px; max-width: 100%;
+      }
+      fieldset.q legend .qnum { color: var(--copper-bright); font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-right: 8px; }
+      .q-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+      .q-opts label {
+        border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px;
+        font-size: 14.5px; font-weight: 600; color: var(--text-dim); cursor: pointer;
+        transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+      }
+      .q-opts label:hover { border-color: var(--gold); color: var(--text); }
+      .q-opts input { position: absolute; opacity: 0; pointer-events: none; }
+      .q-opts label:has(input:checked) { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+      .q-opts label:has(input:focus-visible) { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+      .quiz-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; align-items: center; }
+      .quiz-results { margin-top: 30px; border-top: 1px dashed var(--line-gold); padding-top: 26px; }
+      .quiz-results h3 { font-family: var(--serif); font-size: 24px; font-weight: 600; margin: 0 0 6px; }
+      .quiz-score { color: var(--text-dim); margin: 0 0 18px; font-size: 16.5px; }
+      .quiz-score b { color: var(--gold-bright); }
+      .gap-item {
+        border: 1px solid var(--line); border-left: 3px solid var(--copper);
+        border-radius: 8px; background: var(--ink-panel); padding: 18px 20px; margin-bottom: 12px;
+      }
+      .gap-item.r3 { border-left-color: #c0452f; }
+      .gap-item.r1 { border-left-color: var(--line-gold); }
+      .gap-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 6px; }
+      .gap-badge {
+        font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+        border: 1px solid var(--copper); color: var(--copper-bright); border-radius: 999px; padding: 2px 10px;
+      }
+      .gap-risk { font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+      .gap-item h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; margin: 0; }
+      .gap-item p { margin: 0 0 8px; color: var(--text-dim); font-size: 15.5px; }
+      .gap-item p.fix { color: var(--text); }
+      .gap-item .src { font-size: 13.5px; color: var(--text-faint); margin: 0 0 10px; }
+      .gap-item .src b { color: var(--text-dim); }
+      .quiz-note { font-size: 15px; color: var(--text-dim); margin: 18px 0 0; }
+      @media (max-width: 620px) {
+        .quiz-shell { padding: 24px 18px; }
+        fieldset.q legend { font-size: 16px; }
+        .brand-copper { margin-left: -14px; width: 12px; height: 12px; }
+      }
+      @media print {
+        header.site, .hero, .trust, .figures, .ribbon, #collection, #inside, #compare,
+        #packs, #binders, #etsy, #nido, #faq, .notice, .quiz-form, .quiz-actions,
+        .foot-grid, .foot-legal { display: none !important; }
+        body, .ready, .quiz-shell, .gap-item { background: #fff !important; color: #111 !important; }
+        .gap-item p, .quiz-score, .gap-item .src { color: #333 !important; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .quiz-bar i { transition: none; }
+        .fx-in .az-sun { animation: none; }
+      }
+
+      /* ---------- Etsy shop ---------- */
+      .etsy-head-cta { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 18px; }
+      .etsy-badge {
+        font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+        color: var(--copper-bright); border: 1px solid var(--copper); border-radius: 999px; padding: 3px 10px;
+      }
+
       /* ---------- Responsive ---------- */
       @media (max-width: 960px) {
         .hero-in { grid-template-columns: 1fr; gap: 34px; padding-top: 44px; padding-bottom: 44px; }
@@ -640,6 +745,7 @@
             <path d="M50 22 L55.8 44.2 L78 50 L55.8 55.8 L50 78 L44.2 55.8 L22 50 L44.2 44.2 Z" transform="rotate(45 50 50)" fill="#e6c877"/>
             <circle cx="50" cy="50" r="4.5" fill="#15222b"/>
           </svg>
+          <svg class="brand-copper" width="15" height="15" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 L60.5 39.5 L96 50 L60.5 60.5 L50 96 L39.5 60.5 L4 50 L39.5 39.5 Z" fill="#b87333"/></svg>
           <span>
             <span class="brand-name">SALVORA <span>PACKS</span></span><br />
             <span class="brand-sub">salvorapacks.com</span>
@@ -647,9 +753,10 @@
         </a>
         <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
         <nav class="main" id="mainNav" aria-label="Main">
+          <a href="#ready">Ready check</a>
           <a href="#packs">Packs</a>
           <a href="#binders">Binders</a>
-          <a href="#etsy">Etsy Shop</a>
+          <a href="#etsy">Etsy</a>
           <a href="#nido">NIDO</a>
           <a href="#faq">FAQ</a>
           <a href="#support">Support</a>
@@ -669,6 +776,29 @@
         <div class="hero-star" aria-hidden="true">
           <svg viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#c9a24b"/><path d="M50 22 L55.8 44.2 L78 50 L55.8 55.8 L50 78 L44.2 55.8 L22 50 L44.2 44.2 Z" transform="rotate(45 50 50)" fill="#e6c877"/></svg>
         </div>
+
+        <div class="hero-horizon" aria-hidden="true">
+          <svg viewBox="0 0 1440 110" preserveAspectRatio="none" focusable="false">
+            <defs>
+              <linearGradient id="azSunHero" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#e6c877"/><stop offset="1" stop-color="#b87333"/>
+              </linearGradient>
+            </defs>
+            <circle class="az-sun" cx="716" cy="72" r="34" fill="url(#azSunHero)" opacity="0.85"/>
+            <g fill="#0a151c">
+              <path d="M0,110 L0,66 L118,66 L148,80 L302,80 L332,110 Z"/>
+              <path d="M1440,110 L1440,60 L1292,60 L1260,76 L1122,76 L1092,110 Z"/>
+              <path d="M330,110 C520,92 700,100 902,94 C1002,91 1052,100 1092,110 Z"/>
+              <rect x="0" y="106" width="1440" height="4"/>
+            </g>
+            <g stroke="#0a151c" stroke-width="11" stroke-linecap="round" fill="none">
+              <path d="M219,108 V42"/><path d="M219,68 H201 V52"/><path d="M219,60 H237 V46"/>
+            </g>
+            <g stroke="#0a151c" stroke-width="8" stroke-linecap="round" fill="none">
+              <path d="M1186,108 V64"/><path d="M1186,86 H1172 V74"/><path d="M1186,80 H1200 V68"/>
+            </g>
+          </svg>
+        </div>
         <div class="wrap hero-in">
           <div>
             <p class="hero-eyebrow">We check our sources · Works offline</p>
@@ -686,6 +816,10 @@
             <p class="hero-note">
               <strong>English · Español · Português.</strong> Gumroad handles the checkout and sends you the files.
             </p>
+<div class="origin-line">
+              <p><b>Made in Tucson, Arizona.</b> Our star carries a touch of Arizona copper, the metal of this desert state, and our heat and dust guides come from living under this sun.</p>
+              <p class="es">Hecho en Tucson, Arizona. Nuestra estrella lleva un toque del cobre de Arizona, el metal de este estado desierto, y nuestras guías de calor y polvo nacen de vivir bajo este sol.</p>
+            </div>
             <div class="bo-control">
               <button class="bo-switch" id="boSwitch" type="button" aria-pressed="false" aria-label="Toggle blackout mode"></button>
               <span class="bo-label">Blackout mode<small>Modo apagón. See this page the way your packs work</small></span>
@@ -755,6 +889,49 @@
         </div>
       </div>
 
+
+      <!-- ============ READY CHECK ============ -->
+      <section class="block ready" id="ready">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <p class="sec-kicker">Free tool · Herramienta gratis</p>
+            <h2 id="quizTitle">Is your home ready?</h2>
+            <p id="quizIntro">Twelve questions and a few honest minutes. At the end you get your gaps in plain order, worst first, each one with the official source behind it and the product that covers it, if you want it.</p>
+            <p class="quiz-privacy" id="quizPrivacy">Your answers stay in this browser. Nothing is sent, saved or tracked.</p>
+          </div>
+          <div class="quiz-shell reveal">
+            <div class="quiz-top">
+              <div class="quiz-lang" role="group" aria-label="Language / Idioma">
+                <button type="button" id="langEn" aria-pressed="true">English</button>
+                <button type="button" id="langEs" aria-pressed="false">Español</button>
+              </div>
+              <p class="quiz-progress" id="quizProgress" style="margin:0">0 / 12</p>
+            </div>
+            <div class="quiz-bar" aria-hidden="true"><i id="quizBarFill"></i></div>
+            <form class="quiz-form" id="quizForm">
+              <div id="quizQuestions"></div>
+              <div class="quiz-actions">
+                <button class="btn btn-gold" type="submit" id="quizSee">See my list</button>
+                <button class="btn btn-ghost" type="button" id="quizClear">Clear my answers</button>
+              </div>
+            </form>
+            <div class="quiz-results" id="quizResults" hidden>
+              <h3 id="quizResTitle">Your list, worst first</h3>
+              <p class="quiz-score" id="quizScore"></p>
+              <div id="quizGaps"></div>
+              <p class="quiz-note" id="quizNote"></p>
+              <div class="quiz-actions">
+                <button class="btn btn-ghost" type="button" id="quizPrint">Print or save my list</button>
+              </div>
+            </div>
+            <noscript>
+              <p><strong>The short list, no script needed:</strong> working smoke alarms on every level, a carbon monoxide detector by the bedrooms, two ways out of every room, a tagged water shutoff, an extinguisher you can reach, stored water, copied documents in a waterproof place, a written contact list, a stocked first aid kit, flashlights that work tonight, your insurance policy copied, and a plan for your pets.</p>
+              <p><strong>La lista corta, sin necesidad de script:</strong> alarmas de humo que funcionan en cada planta, un detector de monóxido de carbono junto a los dormitorios, dos salidas de cada cuarto, la válvula del agua marcada, un extintor alcanzable, agua guardada, documentos copiados en un lugar impermeable, una lista de contactos escrita, un botiquín completo, linternas que funcionen esta noche, tu póliza copiada y un plan para tus mascotas.</p>
+            </noscript>
+          </div>
+        </div>
+      </section>
+
       <!-- ============ THE COLLECTION ============ -->
       <section class="block" id="collection" style="padding-bottom: 8px">
         <div class="wrap">
@@ -763,9 +940,9 @@
               <span class="tag">All 13 packs in one download · Los 13 packs en una descarga</span>
               <h2>The Complete Collection</h2>
               <p>
-                All 13 of our knowledge packs in one download: <strong>13 packs and 645 guides</strong>. We checked each guide line by line against official sources, and we built every file to open with no connection at all. It covers home, family, pets, disasters, heat and winter. The printable binders and planners are sold separately, in our Etsy shop, in its own section below.
+                All 13 of our knowledge packs in one download: <strong>13 packs and 645 guides</strong>. We checked each guide line by line against official sources, and we built every file to open with no connection at all. It covers home, family, pets, disasters, heat and winter. The printable binders are sold separately, in their own section below.
               </p>
-              <p class="es">Los 13 packs de conocimiento en una sola descarga: 645 guías, en inglés, español y portugués. Las carpetas y los planificadores se venden aparte, en nuestra tienda de Etsy, en su propia sección.</p>
+              <p class="es">Los 13 packs de conocimiento en una sola descarga: 645 guías, en inglés, español y portugués. Las carpetas se venden aparte, en su propia sección.</p>
               <div class="featured-stats">
                 <div class="stat"><b>13</b><span>Packs</span></div>
                 <div class="stat"><b>645</b><span>Guides</span></div>
@@ -1057,8 +1234,9 @@
           <div class="sec-head reveal">
             <p class="sec-kicker">Printable binders · Carpetas imprimibles</p>
             <h2>Paper that works when screens don’t</h2>
-            <p>Binders you print and fill in by hand, each one with its guides. You print once, fill in the sheets, and the binder sits in a drawer. It needs no battery, no signal and no login. The buttons on these cards take you to Gumroad. The same binders also live in <a href="#etsy">our Etsy shop</a>, where the three planners that only sell there join them.</p>
+            <p>Binders you print and fill in by hand, each one with its guides. You print once, fill in the sheets, and the binder sits in a drawer. It needs no battery, no signal and no login.</p>
             <p class="es">Carpetas imprimibles y rellenables, cada una con sus guías. Se imprimen una vez y quedan en un cajón.</p>
+            <p style="margin-top:16px"><a class="btn btn-ghost btn-sm" href="#etsy">See the nine binders on Etsy</a></p>
           </div>
           <div class="grid">
             <article class="card reveal">
@@ -1160,160 +1338,163 @@
         </div>
       </section>
 
+
       <!-- ============ ETSY SHOP ============ -->
-      <section class="block etsy-shop" id="etsy">
+      <section class="block" id="etsy" style="padding-top: 8px">
         <div class="wrap">
-          <div class="etsy-head">
-            <div class="sec-head reveal">
-              <p class="sec-kicker">The Etsy shop · La tienda en Etsy</p>
-              <h2>Our binders and planners live on Etsy</h2>
-              <p>We sell our printable binders and planners in our Etsy shop, <a href="https://www.etsy.com/shop/salvorapacks">salvorapacks</a>. Nine listings, each one a fillable PDF you download on the spot: six binders with their verified guides, and three planners that sell only there. Etsy handles the payment and holds your files in your account, so you can download them again whenever you need them.</p>
-              <p class="es">Vendemos nuestras carpetas y planificadores imprimibles en nuestra tienda de Etsy, salvorapacks: nueve anuncios, cada uno un PDF rellenable de descarga inmediata. Etsy cobra y guarda tus archivos en tu cuenta, para que los descargues otra vez cuando los necesites.</p>
+          <div class="sec-head reveal">
+            <p class="sec-kicker">The Etsy shop · La tienda de Etsy</p>
+            <h2>Our binders and planners live on Etsy</h2>
+            <p>Our nine printable binders and planners also live in our Etsy shop: six binders with their verified guides, and three planners that sell only there. Same files, same prices, same checked lines. Some households simply prefer Etsy, and we are glad to meet you there. Each card shows the exact title of its listing on Etsy.</p>
+            <p class="es">Nuestras nueve carpetas y planificadores imprimibles también viven en nuestra tienda de Etsy: seis carpetas con sus guías verificadas y tres planificadores que solo se venden ahí. Los mismos archivos, los mismos precios y las mismas líneas revisadas. Cada tarjeta muestra el título exacto de su anuncio en Etsy.</p>
+            <div class="etsy-head-cta">
+              <a class="btn btn-gold" href="https://www.etsy.com/shop/salvorapacks">Visit the Etsy shop</a>
+              <span style="color: var(--text-faint); font-size: 14.5px">salvorapacks on Etsy · Etsy handles checkout and delivery there</span>
             </div>
-            <a class="btn btn-gold reveal" href="https://www.etsy.com/shop/salvorapacks">Visit the Etsy shop</a>
           </div>
           <div class="grid">
             <article class="card reveal">
               <div class="card-band" style="--band: linear-gradient(160deg, #7C4A2D, #402617)" aria-hidden="true">
                 <svg class="band-star" viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#e6c877"/></svg>
+                <svg class="band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 20c0.6-3.4 2.8-5.2 5.5-5.2s4.9 1.8 5.5 5.2"/><circle cx="17.2" cy="10" r="2.3"/><path d="M14 20c0.4-2.7 1.7-4 3.4-4s3 1.3 3.4 4"/></svg>
               </div>
               <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3>Family Emergency Binder</h3>
               <p class="es-name">Carpeta familiar de emergencias</p>
               <p class="desc">Your family&rsquo;s emergency information, printed and filled in by hand, sitting in the drawer ready for the day you need it.</p>
-              <div class="spec"><span><b>71</b> sheets per language, to fill in</span><span>With its guides</span></div>
               <p class="listing-title">On Etsy: &ldquo;Emergency Binder Fillable PDF with Verified Guide EN ES PT Instant Download&rdquo;</p>
+              <div class="spec"><span><b>71</b> sheets per language, to fill in</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612303247/emergency-binder-fillable-pdf-with">Buy on Etsy</a>
+                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612303247">See it on Etsy</a>
               </div>
             </article>
-
             <article class="card reveal">
               <div class="card-band" style="--band: linear-gradient(160deg, #6B8F71, #384A3B)" aria-hidden="true">
                 <svg class="band-star" viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#e6c877"/></svg>
+                <svg class="band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.3C7.2 16.6 3.8 13.4 3.8 9.7 3.8 7.1 5.7 5.2 8.1 5.2c1.6 0 3.1 0.9 3.9 2.3 0.8-1.4 2.3-2.3 3.9-2.3 2.4 0 4.3 1.9 4.3 4.5 0 3.7-3.4 6.9-8.2 10.6z"/></svg>
               </div>
               <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3>The Caregiver&rsquo;s Binder</h3>
               <p class="es-name">Carpeta del cuidador</p>
               <p class="desc">Care routines, contacts and notes in one binder. It&rsquo;s there for the person who gives the care, and for whoever has to step in one day.</p>
-              <div class="spec"><span><b>72</b> sheets per language, to fill in</span><span>With its guides</span></div>
               <p class="listing-title">On Etsy: &ldquo;Caregiver Binder Fillable PDF with Verified Guide En Es Pt Instant Download&rdquo;</p>
+              <div class="spec"><span><b>72</b> sheets per language, to fill in</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612959154/caregiver-binder-fillable-pdf-with">Buy on Etsy</a>
+                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612959154">See it on Etsy</a>
               </div>
             </article>
-
             <article class="card reveal">
               <div class="card-band" style="--band: linear-gradient(160deg, #46586A, #242E37)" aria-hidden="true">
                 <svg class="band-star" viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#e6c877"/></svg>
+                <svg class="band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.2 L12 4 L20 11.2"/><path d="M6.2 9.6 V20 H17.8 V9.6"/><path d="M9.3 15.2h5.4"/></svg>
               </div>
               <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3>The Home Binder</h3>
               <p class="es-name">Carpeta del hogar</p>
               <p class="desc">The binder for the house itself. Systems, schedules, warranties and records, all kept in one place.</p>
-              <div class="spec"><span><b>65</b> sheets per language, to fill in</span><span>With its guides</span></div>
               <p class="listing-title">On Etsy: &ldquo;Home Binder Fillable PDF with Verified Guide En Es Pt Instant Download&rdquo;</p>
+              <div class="spec"><span><b>65</b> sheets per language, to fill in</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612962932/home-binder-fillable-pdf-with-verified">Buy on Etsy</a>
+                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612962932">See it on Etsy</a>
               </div>
             </article>
-
             <article class="card reveal">
               <div class="card-band" style="--band: linear-gradient(160deg, #6E4A5E, #392631)" aria-hidden="true">
                 <svg class="band-star" viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#e6c877"/></svg>
+                <svg class="band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4L10 21l-2-1.4L6 21z"/><path d="M9.2 8h5.6M9.2 12h5.6"/></svg>
               </div>
               <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3>Medical Bills Binder</h3>
               <p class="es-name">Carpeta de facturas médicas</p>
               <p class="desc">Medical bills, statements and insurance papers, tracked sheet by sheet. They stop piling up in a drawer.</p>
-              <div class="spec"><span><b>67</b> sheets per language, to fill in</span><span>With its guides</span></div>
               <p class="listing-title">On Etsy: &ldquo;Medical Bill Organizer Fillable PDF with Verified Guide En Es Pt Instant Download&rdquo;</p>
+              <div class="spec"><span><b>67</b> sheets per language, to fill in</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612966850/medical-bill-organizer-fillable-pdf-with">Buy on Etsy</a>
+                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612966850">See it on Etsy</a>
               </div>
             </article>
-
             <article class="card reveal">
               <div class="card-band" style="--band: linear-gradient(160deg, #2F5D50, #18302A)" aria-hidden="true">
                 <svg class="band-star" viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#e6c877"/></svg>
+                <svg class="band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15.5" r="4.2"/><path d="M11.2 12.3 L20 3.5"/><path d="M16.8 6.7l2.4 2.4"/><path d="M14.2 9.3l2.2 2.2"/></svg>
               </div>
               <div class="card-top"><span class="card-kind">Printable kit</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3>Tenant Kit, Deposit &amp; Moving</h3>
               <p class="es-name">Kit del inquilino</p>
               <p class="desc">Paper proof that protects your deposit. Move in and move out inspections, inventories and records, all written down.</p>
-              <div class="spec"><span><b>52</b> sheets per language, to fill in</span><span>With its guides</span></div>
               <p class="listing-title">On Etsy: &ldquo;Renter Deposit Kit Fillable PDF Move In Move Out Binder with Verified Guide En Es Pt&rdquo;</p>
+              <div class="spec"><span><b>52</b> sheets per language, to fill in</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$14.99</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612958849/renter-deposit-kit-fillable-pdf-move-in">Buy on Etsy</a>
+                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612958849">See it on Etsy</a>
               </div>
             </article>
-
             <article class="card reveal">
               <div class="card-band" style="--band: linear-gradient(160deg, #6B2737, #38141D)" aria-hidden="true">
                 <svg class="band-star" viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#e6c877"/></svg>
+                <svg class="band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M8.6 3v18"/><path d="M11.5 8h4.5M11.5 12h4.5M11.5 16h3"/></svg>
               </div>
               <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3>Annual Papers &amp; Taxes Binder</h3>
               <p class="es-name">Carpeta anual de papeles e impuestos</p>
               <p class="desc">A full year of household papers and taxes, filed month by month. When April comes, you won&rsquo;t have to dig for anything.</p>
-              <div class="spec"><span><b>68</b> sheets per language, to fill in</span><span>EN · ES only</span></div>
               <p class="listing-title">On Etsy: &ldquo;Tax Organizer Fillable PDF Annual Paperwork Binder with Verified Guide En Es Instant Download&rdquo;</p>
+              <div class="spec"><span><b>68</b> sheets per language, to fill in</span><span>EN · ES only</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612979936/tax-organizer-fillable-pdf-annual">Buy on Etsy</a>
+                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612979936">See it on Etsy</a>
               </div>
             </article>
-
             <article class="card reveal">
-              <div class="card-band" style="--band: linear-gradient(160deg, #3E6D9E, #1E364E)" aria-hidden="true">
+              <div class="card-band" style="--band: linear-gradient(160deg, #3E6B8C, #22384A)" aria-hidden="true">
                 <svg class="band-star" viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#e6c877"/></svg>
+                <svg class="band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16"/><path d="M8.5 2.8V6M15.5 2.8V6"/><circle cx="8.6" cy="14.4" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="14.4" r="1" fill="currentColor" stroke="none"/><circle cx="15.4" cy="14.4" r="1" fill="currentColor" stroke="none"/></svg>
               </div>
               <div class="card-top"><span class="card-kind">Printable planner</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3>Undated Home Planner</h3>
               <p class="es-name">Planificador del hogar sin fecha</p>
               <p class="desc">The home planner with no printed year. Dated planners stop being useful every January. This one you fill in with the year, the month and the days, and it serves this year, next year and the one after.</p>
-              <div class="spec"><span><b>43</b> fillable sheets</span><span>EN · ES only</span></div>
               <p class="listing-title">On Etsy: &ldquo;Undated Home Planner Fillable PDF Perpetual Calendar En Es Instant Download&rdquo;</p>
+              <div class="spec"><span><b>43</b> fillable sheets</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613238352/undated-home-planner-fillable-pdf">Buy on Etsy</a>
+                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613238352">See it on Etsy</a>
               </div>
             </article>
-
             <article class="card reveal">
-              <div class="card-band" style="--band: linear-gradient(160deg, #5E548E, #2F2A47)" aria-hidden="true">
+              <div class="card-band" style="--band: linear-gradient(160deg, #5B4A68, #2E2438)" aria-hidden="true">
                 <svg class="band-star" viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#e6c877"/></svg>
+                <svg class="band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.2 L12 4 L20 11.2"/><path d="M6.4 9.8 V20 H17.6 V9.8"/><path d="M12 16.9c-1.9-1.4-3-2.6-3-4 0-1 .8-1.8 1.7-1.8.5 0 1 .3 1.3.7.3-.4.8-.7 1.3-.7.9 0 1.7.8 1.7 1.8 0 1.4-1.1 2.6-3 4z" fill="currentColor" stroke="none"/></svg>
               </div>
               <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3>Just in Case Binder</h3>
               <p class="es-name">Carpeta Por si acaso</p>
               <p class="desc">What your family would need to locate if one day you were not here: who steps in, where the documents are, which accounts and policies exist, and the wishes you leave written. It organizes information. It is not a legal document.</p>
-              <div class="spec"><span><b>59</b> fillable sheets</span><span>With reading companion</span></div>
               <p class="listing-title">On Etsy: &ldquo;Just in Case Binder Fillable PDF, End of Life Organizer with Reading Companion EN ES Instant Download&rdquo;</p>
+              <div class="spec"><span><b>59</b> fillable sheets</span><span>With reading companion</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$25</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613241276/just-in-case-binder-fillable-pdf-end-of">Buy on Etsy</a>
+                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613241276">See it on Etsy</a>
               </div>
             </article>
-
             <article class="card reveal">
               <div class="card-band" style="--band: linear-gradient(160deg, #3E6B4F, #1E3628)" aria-hidden="true">
                 <svg class="band-star" viewBox="0 0 100 100"><path d="M50 2 L59 41 L98 50 L59 59 L50 98 L41 59 L2 50 L41 41 Z" fill="#e6c877"/></svg>
+                <svg class="band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10" cy="10" r="6.2"/><path d="M10 6.6v6.8M12.1 8.1c-.6-.5-1.3-.8-2.1-.8-1.1 0-1.9.6-1.9 1.5 0 2.1 4 1.2 4 3 0 .9-.9 1.5-2 1.5-.8 0-1.6-.3-2.2-.9"/><path d="M15.8 5.4a6.2 6.2 0 0 1 3 5.1"/></svg>
               </div>
               <div class="card-top"><span class="card-kind">Printable planner</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3>Paycheck Budget Planner</h3>
               <p class="es-name">Presupuesto por sueldo</p>
               <p class="desc">The budget organized by your paycheck: each pay period with its income, its bills and its balance, for weekly, biweekly, twice a month, monthly or irregular pay. A guided log you fill in by hand, not a spreadsheet.</p>
-              <div class="spec"><span><b>30</b> fillable sheets</span><span>EN · ES only</span></div>
               <p class="listing-title">On Etsy: &ldquo;Paycheck Budget Planner Fillable PDF by Pay Period Weekly Biweekly En Es Instant Download&rdquo;</p>
+              <div class="spec"><span><b>30</b> fillable sheets</span><span class="etsy-badge">On Etsy</span></div>
               <div class="card-foot">
                 <span class="price">$14.99</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613243238/paycheck-budget-planner-fillable-pdf-by">Buy on Etsy</a>
+                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613243238">See it on Etsy</a>
               </div>
             </article>
           </div>
@@ -1383,8 +1564,8 @@
             <details class="faq reveal">
               <summary>What exactly do I receive?</summary>
               <div class="a">
-                <p>You get files. Gumroad delivers the packs at checkout, and Etsy delivers the binders and planners the same way, in your Etsy account. Guides, plus audio on the audiobooks. You download them once and keep them. There's no DRM, you need no account, and nothing turns into a subscription. They're yours.</p>
-                <p class="es">Archivos entregados al pagar, por Gumroad en los packs y por Etsy en las carpetas y los planificadores: se descargan una vez y son tuyos, sin DRM ni suscripciones.</p>
+                <p>You get files, and Gumroad delivers them at checkout. Guides, plus audio on the audiobooks. You download them once and keep them. There's no DRM, you need no account, and nothing turns into a subscription. They're yours.</p>
+                <p class="es">Archivos entregados por Gumroad: se descargan una vez y son tuyos, sin DRM ni suscripciones.</p>
               </div>
             </details>
             <details class="faq reveal">
@@ -1420,11 +1601,41 @@
     <!-- ============ FOOTER ============ -->
     <footer class="site" id="support">
       <div class="wrap">
+<div class="foot-horizon" aria-hidden="true">
+          <svg viewBox="0 0 1440 120" focusable="false">
+            <defs>
+              <linearGradient id="azSunFoot" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#e6c877"/><stop offset="1" stop-color="#b87333"/>
+              </linearGradient>
+            </defs>
+            <circle class="az-sun" cx="716" cy="76" r="32" fill="url(#azSunFoot)" opacity="0.9"/>
+            <g stroke="#b87333" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0.8">
+              <path d="M470,34 q7,-7 14,0"/><path d="M492,26 q6,-6 12,0"/>
+              <path d="M950,30 q7,-7 14,0"/>
+            </g>
+            <g fill="currentColor">
+              <path d="M0,120 L0,70 L118,70 L148,84 L302,84 L332,120 Z"/>
+              <path d="M1440,120 L1440,64 L1292,64 L1260,80 L1122,80 L1092,120 Z"/>
+              <path d="M330,120 C520,100 700,108 902,102 C1002,99 1052,108 1092,120 Z"/>
+              <rect x="0" y="114" width="1440" height="6"/>
+            </g>
+            <g stroke="currentColor" stroke-width="11" stroke-linecap="round" fill="none">
+              <path d="M219,118 V46"/><path d="M219,72 H201 V56"/><path d="M219,64 H237 V50"/>
+            </g>
+            <g stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none">
+              <path d="M1186,118 V68"/><path d="M1186,90 H1172 V78"/><path d="M1186,84 H1200 V72"/>
+            </g>
+            <g stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none">
+              <path d="M420,118 V84"/><path d="M420,100 H409 V91"/>
+            </g>
+          </svg>
+        </div>
         <div class="foot-grid">
           <div>
             <h4>SALVORA PACKS</h4>
             <p>Emergency knowledge we check line by line, made to work without a connection. You download once and the files stay yours.</p>
             <p>salvorapacks.com · Gumroad handles checkout and delivery · Prices in USD</p>
+            <p>Made in Tucson, Arizona. Hecho en Tucson, Arizona.</p>
           </div>
           <div>
             <h4>Store</h4>
@@ -1432,8 +1643,7 @@
               <li><a href="#collection">The Complete Collection</a></li>
               <li><a href="#packs">Packs, books and audiobooks</a></li>
               <li><a href="#binders">Printable binders</a></li>
-              <li><a href="#etsy">The Etsy shop</a></li>
-              <li><a href="https://www.etsy.com/shop/salvorapacks">salvorapacks on Etsy</a></li>
+              <li><a href="#etsy">The binders on Etsy</a></li>
               <li><a href="#nido">NIDO, the free app</a></li>
               <li><a href="#faq">FAQ</a></li>
             </ul>
@@ -1590,6 +1800,272 @@
             });
           }, { threshold: 0.4 });
           counters.forEach(function (el) { cio.observe(el); });
+        }
+
+
+        /* Is your home ready? Every answer stays in this browser:
+           no storage, no network, no tracking. */
+        var QUIZ_ITEMS = [
+          { risk: 3, src: "U.S. Fire Administration (USFA)",
+            en: { q: "Do working smoke alarms cover every sleeping area and every level of your home?",
+                  fix: "Fit alarms inside and outside every sleeping area and on every level, then press the test button on each one today.",
+                  why: "The U.S. Fire Administration says working smoke alarms cut the risk of dying in a home fire in half. Test each alarm monthly and replace the whole alarm every 10 years." },
+            es: { q: "¿Hay alarmas de humo que funcionan en cada zona de dormir y en cada planta de tu casa?",
+                  fix: "Coloca alarmas dentro y fuera de cada zona de dormir y en cada planta, y hoy mismo pulsa el botón de prueba de cada una.",
+                  why: "La Administración de Incendios de Estados Unidos (USFA) dice que las alarmas de humo que funcionan reducen a la mitad el riesgo de morir en un incendio en casa. Prueba cada alarma una vez al mes y cambia la alarma completa cada 10 años." },
+            cover: { en: "Home Emergencies pack, $19", es: "Pack Emergencias en casa, $19", url: "https://salvorapacks.gumroad.com/l/emergencias-casa" } },
+          { risk: 3, src: "CDC",
+            en: { q: "Is there a carbon monoxide detector near every sleeping area?",
+                  fix: "Put a carbon monoxide detector near every sleeping area and test it today.",
+                  why: "Carbon monoxide has no smell and no color. The CDC asks for a battery powered or battery backup detector near every sleeping area, and to check the batteries when the clocks change in spring and fall." },
+            es: { q: "¿Hay un detector de monóxido de carbono cerca de cada zona de dormir?",
+                  fix: "Pon un detector de monóxido de carbono cerca de cada zona de dormir y pruébalo hoy.",
+                  why: "El monóxido de carbono no huele ni se ve. Los CDC piden un detector a pilas, o con batería de respaldo, cerca de cada zona de dormir, y revisar las pilas al cambiar la hora en primavera y otoño." },
+            cover: { en: "Home Emergencies pack, $19", es: "Pack Emergencias en casa, $19", url: "https://salvorapacks.gumroad.com/l/emergencias-casa" } },
+          { risk: 3, src: "American Red Cross",
+            en: { q: "Does everyone at home know two ways out of each room, and one meeting place outside?",
+                  fix: "Draw the plan tonight: two ways out of every room, one meeting place outside, and a practice date on the calendar.",
+                  why: "The American Red Cross says you may have less than two minutes to get out of a burning home. Everyone should know two ways out of each room, and the household should practice the plan twice a year." },
+            es: { q: "¿Todos en casa conocen dos salidas de cada cuarto y un punto de encuentro fuera?",
+                  fix: "Dibuja el plan esta noche: dos salidas de cada cuarto, un punto de encuentro fuera y una fecha de práctica en el calendario.",
+                  why: "La Cruz Roja Americana dice que puedes tener menos de dos minutos para salir de una casa en llamas. Todos deben conocer dos salidas de cada cuarto, y toda la casa debe practicar el plan dos veces al año." },
+            cover: { en: "Family Emergency Binder on Etsy, $19", es: "Carpeta familiar de emergencias en Etsy, $19", url: "https://www.etsy.com/listing/4612303247" } },
+          { risk: 3, src: "Ready.gov",
+            en: { q: "Could everyone at home shut off the main water valve, and do they know the gas shutoff procedure?",
+                  fix: "Find the main water valve and tag it, learn the gas procedure from your gas company, and show one more person in the house.",
+                  why: "Ready.gov asks every household to learn the shutoffs before they are needed. If you ever turn the gas off, only a qualified professional can turn it back on." },
+            es: { q: "¿Todos en casa sabrían cerrar la válvula principal del agua, y conocen el procedimiento de cierre del gas?",
+                  fix: "Encuentra la válvula principal del agua y márcala, aprende el procedimiento del gas con tu compañía y enséñaselo a otra persona de la casa.",
+                  why: "Ready.gov pide que cada casa aprenda los cierres antes de necesitarlos. Si alguna vez cierras el gas, solo un profesional cualificado puede volver a abrirlo." },
+            cover: { en: "The Home Binder on Etsy, $19", es: "Carpeta del hogar en Etsy, $19", url: "https://www.etsy.com/listing/4612962932" } },
+          { risk: 2, src: "U.S. Fire Administration (USFA)",
+            en: { q: "Is there a fire extinguisher you can reach fast, and do you know how to use it?",
+                  fix: "Keep one extinguisher where you can reach it fast, check its pressure gauge, and read its instructions before you ever need it.",
+                  why: "The U.S. Fire Administration teaches the word PASS for a small fire: pull the pin, aim low at the base, squeeze the lever slowly, sweep side to side. It also asks that nothing blocks the extinguisher and that the pressure sits at the recommended level." },
+            es: { q: "¿Hay un extintor que puedas alcanzar rápido, y sabes cómo se usa?",
+                  fix: "Ten un extintor donde puedas alcanzarlo rápido, revisa su manómetro y lee sus instrucciones antes de necesitarlo.",
+                  why: "La USFA enseña la palabra PASS para un fuego pequeño: tira de la anilla, apunta bajo a la base, aprieta la palanca despacio y barre de lado a lado. También pide comprobar que nada bloquea el extintor y que la presión está en el nivel recomendado." },
+            cover: { en: "Home Emergencies pack, $19", es: "Pack Emergencias en casa, $19", url: "https://salvorapacks.gumroad.com/l/emergencias-casa" } },
+          { risk: 3, src: "Ready.gov",
+            en: { q: "Do you store water for everyone at home, one gallon per person per day, for several days?",
+                  fix: "Count your people, multiply by the days, and store one gallon per person per day. Start with three days and build from there.",
+                  why: "Ready.gov asks for one gallon of water per person per day, for drinking and sanitation, stored for several days. In very hot weather the need can double, which desert homes know well." },
+            es: { q: "¿Guardas agua para todos en casa, un galón por persona y día, para varios días?",
+                  fix: "Cuenta a tu gente, multiplica por los días y guarda un galón por persona y día. Empieza con tres días y crece desde ahí.",
+                  why: "Ready.gov pide un galón de agua por persona y día, para beber y para higiene, guardado para varios días. Con mucho calor la necesidad puede duplicarse, y las casas del desierto lo saben bien." },
+            cover: { en: "Natural Disasters pack, $19", es: "Pack Desastres naturales, $19", url: "https://salvorapacks.gumroad.com/l/desastres" } },
+          { risk: 2, src: "Ready.gov",
+            en: { q: "Are copies of your key documents gathered in one waterproof place you can grab and go?",
+                  fix: "Gather IDs, insurance and property papers today, copy them, and keep the set in one waterproof place you can grab.",
+                  why: "Ready.gov keeps copies of key papers in the emergency kit, in a waterproof and portable container, with electronic copies backed up as well. Papers are easier to gather on a calm day than during an evacuation." },
+            es: { q: "¿Están las copias de tus documentos clave juntas en un lugar impermeable, listas para agarrar y salir?",
+                  fix: "Junta hoy identificaciones, seguros y papeles de la casa, cópialos y guarda el juego en un lugar impermeable que puedas agarrar al salir.",
+                  why: "Ready.gov guarda copias de los documentos clave en el kit de emergencia, en un contenedor impermeable y fácil de llevar, con copias electrónicas de respaldo. Los papeles se juntan mucho mejor en un día tranquilo que en plena evacuación." },
+            cover: { en: "Family Emergency Binder on Etsy, $19", es: "Carpeta familiar de emergencias en Etsy, $19", url: "https://www.etsy.com/listing/4612303247" } },
+          { risk: 2, src: "Ready.gov",
+            en: { q: "Is there a written contact list, with one out of area contact, that everyone can reach?",
+                  fix: "Write the contact list tonight: household numbers, one out of area contact, school, doctor and vet, and put a paper copy in the kit.",
+                  why: "Ready.gov builds a family communication plan because a disaster can catch a household apart. One out of area contact can relay messages when local lines are jammed, and the plan should live on paper too." },
+            es: { q: "¿Hay una lista de contactos escrita, con un contacto fuera de la zona, al alcance de todos?",
+                  fix: "Escribe esta noche la lista de contactos: números de la casa, un contacto fuera de la zona, escuela, médico y veterinario, y mete una copia en papel en el kit.",
+                  why: "Ready.gov crea un plan de comunicación familiar porque un desastre puede pillar a la casa separada. Un contacto fuera de la zona puede pasar los mensajes cuando las líneas locales se saturan, y el plan debe estar también en papel." },
+            cover: { en: "Family Emergency Binder on Etsy, $19", es: "Carpeta familiar de emergencias en Etsy, $19", url: "https://www.etsy.com/listing/4612303247" } },
+          { risk: 2, src: "Ready.gov",
+            en: { q: "Do you keep a first aid kit stocked, with the medicines your household relies on?",
+                  fix: "Put a first aid kit together and add the medicines your household relies on, with a note of doses and times.",
+                  why: "A first aid kit sits on the Ready.gov build a kit list, next to water and food. The same list asks for the prescription medicines the household cannot go without, so the kit matches the people who live there." },
+            es: { q: "¿Tienes un botiquín completo, con los medicamentos de los que depende tu casa?",
+                  fix: "Arma un botiquín y añade los medicamentos de los que depende tu casa, con una nota de dosis y horarios.",
+                  why: "El botiquín está en la lista de Ready.gov para armar el kit, junto al agua y la comida. La misma lista pide los medicamentos con receta que la casa no puede pasar sin tomar, para que el kit sea el de la gente que vive ahí." },
+            cover: { en: "The Caregiver’s Binder on Etsy, $19", es: "Carpeta del cuidador en Etsy, $19", url: "https://www.etsy.com/listing/4612959154" } },
+          { risk: 1, src: "Ready.gov",
+            en: { q: "Are there flashlights and spare batteries that work tonight if the power goes out?",
+                  fix: "Put a flashlight and spare batteries where you can find them in the dark, and check them when you check the alarms.",
+                  why: "Ready.gov puts flashlights on its kit list, with extra batteries kept with them. A phone light dies with the phone battery, and an outage can last all night." },
+            es: { q: "¿Hay linternas y pilas de repuesto que funcionen esta noche si se va la luz?",
+                  fix: "Pon una linterna y pilas de repuesto donde puedas encontrarlas a oscuras, y revísalas cuando revises las alarmas.",
+                  why: "Ready.gov pone las linternas en su lista del kit, con pilas de repuesto guardadas con ellas. La luz del teléfono muere con su batería, y un apagón puede durar toda la noche." },
+            cover: { en: "Home Emergencies pack, $19", es: "Pack Emergencias en casa, $19", url: "https://salvorapacks.gumroad.com/l/emergencias-casa" } },
+          { risk: 1, src: "Ready.gov",
+            en: { q: "Do you know where your home insurance policy is, with a copy in your document set?",
+                  fix: "Find your policy, copy it into your document set, and check the cover still matches your house today.",
+                  why: "Ready.gov tells households to keep an insurance policy copy with their important documents and to consider an emergency savings account. After damage, the claim starts with those papers." },
+            es: { q: "¿Sabes dónde está tu póliza de seguro de la casa, con una copia en tu juego de documentos?",
+                  fix: "Encuentra tu póliza, cópiala en tu juego de documentos y comprueba que la cobertura sigue siendo la de tu casa hoy.",
+                  why: "Ready.gov recomienda guardar una copia de la póliza de seguro con los documentos importantes y considerar una cuenta de ahorro para emergencias. Tras un daño, la reclamación empieza por esos papeles." },
+            cover: { en: "The Home Binder on Etsy, $19", es: "Carpeta del hogar en Etsy, $19", url: "https://www.etsy.com/listing/4612962932" } },
+          { risk: 2, src: "Ready.gov",
+            en: { q: "If you have pets, is there a plan and a kit for them too? If you have no pets, answer yes.",
+                  fix: "Pack three days of food and water for each pet, keep the carrier where you can grab it, and agree with a neighbor who steps in.",
+                  why: "Ready.gov is plain about pets: if you leave them behind they may be lost, injured or worse. Its plan asks for food and water for each pet for at least three days, a carrier, and a buddy who can step in if you are away." },
+            es: { q: "Si tienes mascotas, ¿hay también un plan y un kit para ellas? Si no tienes, responde sí.",
+                  fix: "Prepara tres días de comida y agua para cada mascota, ten el transportín a mano y acuerda con un vecino quién se encarga.",
+                  why: "Ready.gov lo dice claro sobre las mascotas: si las dejas atrás pueden perderse, herirse o algo peor. Su plan pide comida y agua para cada mascota para al menos tres días, un transportín y una persona de confianza que pueda encargarse si tú no estás." },
+            cover: { en: "Pets pack, $24", es: "Pack Mascotas, $24", url: "https://salvorapacks.gumroad.com/l/mascotas" } }
+        ];
+        var QUIZ_UI = {
+          en: { title: "Is your home ready?",
+                intro: "Twelve questions and a few honest minutes. At the end you get your gaps in plain order, worst first, each one with the official source behind it and the product that covers it, if you want it.",
+                privacy: "Your answers stay in this browser. Nothing is sent, saved or tracked.",
+                yes: "Yes", no: "No", dk: "Not sure",
+                answered: "answered", see: "See my list", clear: "Clear my answers",
+                resTitle: "Your list, worst first",
+                coveredA: "You have", coveredB: "of 12 covered.",
+                allOk: "Every box ticked. Keep the monthly test button habit and this list stays short.",
+                gap: "Gap", check: "Worth checking",
+                risk: { 3: "Fix first", 2: "Soon", 1: "When you can" },
+                source: "Source", covers: "What covers it",
+                note: "Start free: the Essential Pack covers the basics and costs nothing.",
+                print: "Print or save my list" },
+          es: { title: "¿Tu casa está lista?",
+                intro: "Doce preguntas y unos minutos honestos. Al final recibes tus huecos en orden claro, lo peor primero, cada uno con la fuente oficial que lo respalda y el producto que lo cubre, si lo quieres.",
+                privacy: "Tus respuestas se quedan en este navegador: no se envían, no se guardan y no se rastrean.",
+                yes: "Sí", no: "No", dk: "No lo sé",
+                answered: "respondidas", see: "Ver mi lista", clear: "Borrar mis respuestas",
+                resTitle: "Tu lista, lo peor primero",
+                coveredA: "Tienes", coveredB: "de 12 cubiertos.",
+                allOk: "Todo marcado. Mantén el hábito mensual del botón de prueba y esta lista seguirá corta.",
+                gap: "Hueco", check: "Vale la pena revisarlo",
+                risk: { 3: "Primero esto", 2: "Pronto", 1: "Cuando puedas" },
+                source: "Fuente", covers: "Lo cubre",
+                note: "Empieza gratis: el Paquete Esencial cubre lo básico y no cuesta nada.",
+                print: "Imprimir o guardar mi lista" }
+        };
+        var quizLang = "en";
+        var quizAnswers = {};
+        var quizBox = document.getElementById("quizQuestions");
+        function quizRender() {
+          var ui = QUIZ_UI[quizLang];
+          document.getElementById("quizTitle").textContent = ui.title;
+          document.getElementById("quizIntro").textContent = ui.intro;
+          document.getElementById("quizPrivacy").textContent = ui.privacy;
+          document.getElementById("quizSee").textContent = ui.see;
+          document.getElementById("quizClear").textContent = ui.clear;
+          document.getElementById("quizPrint").textContent = ui.print;
+          document.getElementById("langEn").setAttribute("aria-pressed", quizLang === "en" ? "true" : "false");
+          document.getElementById("langEs").setAttribute("aria-pressed", quizLang === "es" ? "true" : "false");
+          quizBox.innerHTML = "";
+          QUIZ_ITEMS.forEach(function (item, i) {
+            var fs = document.createElement("fieldset");
+            fs.className = "q";
+            var lg = document.createElement("legend");
+            var num = document.createElement("span");
+            num.className = "qnum";
+            num.textContent = (i + 1) + " / 12";
+            lg.appendChild(num);
+            lg.appendChild(document.createTextNode(item[quizLang].q));
+            fs.appendChild(lg);
+            var opts = document.createElement("div");
+            opts.className = "q-opts";
+            [["yes", ui.yes], ["no", ui.no], ["dk", ui.dk]].forEach(function (pair) {
+              var lab = document.createElement("label");
+              var inp = document.createElement("input");
+              inp.type = "radio";
+              inp.name = "q" + i;
+              inp.value = pair[0];
+              if (quizAnswers[i] === pair[0]) inp.checked = true;
+              inp.addEventListener("change", function () {
+                quizAnswers[i] = pair[0];
+                quizProgress();
+              });
+              lab.appendChild(inp);
+              lab.appendChild(document.createTextNode(pair[1]));
+              opts.appendChild(lab);
+            });
+            fs.appendChild(opts);
+            quizBox.appendChild(fs);
+          });
+          quizProgress();
+          var res = document.getElementById("quizResults");
+          if (!res.hidden) quizShow();
+        }
+        function quizProgress() {
+          var ui = QUIZ_UI[quizLang];
+          var n = Object.keys(quizAnswers).length;
+          document.getElementById("quizProgress").textContent = n + " / 12 " + ui.answered;
+          document.getElementById("quizBarFill").style.width = (n / 12 * 100) + "%";
+        }
+        function quizShow() {
+          var ui = QUIZ_UI[quizLang];
+          var gaps = [];
+          var covered = 0;
+          QUIZ_ITEMS.forEach(function (item, i) {
+            if (quizAnswers[i] === "yes") { covered++; }
+            else if (quizAnswers[i]) { gaps.push({ item: item, i: i, a: quizAnswers[i] }); }
+          });
+          gaps.sort(function (x, y) { return y.item.risk - x.item.risk || x.i - y.i; });
+          var box = document.getElementById("quizGaps");
+          box.innerHTML = "";
+          gaps.forEach(function (g) {
+            var d = g.item[quizLang];
+            var div = document.createElement("div");
+            div.className = "gap-item r" + g.item.risk;
+            var head = document.createElement("div");
+            head.className = "gap-head";
+            var badge = document.createElement("span");
+            badge.className = "gap-badge";
+            badge.textContent = g.a === "no" ? ui.gap : ui.check;
+            var risk = document.createElement("span");
+            risk.className = "gap-risk";
+            risk.textContent = ui.risk[g.item.risk];
+            head.appendChild(badge);
+            head.appendChild(risk);
+            div.appendChild(head);
+            var h = document.createElement("h4");
+            h.textContent = d.q;
+            div.appendChild(h);
+            var fix = document.createElement("p");
+            fix.className = "fix";
+            fix.textContent = d.fix;
+            div.appendChild(fix);
+            var why = document.createElement("p");
+            why.textContent = d.why;
+            div.appendChild(why);
+            var src = document.createElement("p");
+            src.className = "src";
+            var b = document.createElement("b");
+            b.textContent = ui.source + ": ";
+            src.appendChild(b);
+            src.appendChild(document.createTextNode(g.item.src));
+            div.appendChild(src);
+            var link = document.createElement("a");
+            link.className = "btn btn-ghost btn-sm";
+            link.href = g.item.cover.url;
+            link.textContent = ui.covers + ": " + g.item.cover[quizLang];
+            div.appendChild(link);
+            box.appendChild(div);
+          });
+          document.getElementById("quizResTitle").textContent = ui.resTitle;
+          document.getElementById("quizScore").innerHTML = "";
+          var sc = document.getElementById("quizScore");
+          var strong = document.createElement("b");
+          strong.textContent = covered + "";
+          sc.appendChild(document.createTextNode(ui.coveredA + " "));
+          sc.appendChild(strong);
+          sc.appendChild(document.createTextNode(" " + ui.coveredB));
+          if (gaps.length === 0 && covered === 12) {
+            var ok = document.createElement("p");
+            ok.textContent = ui.allOk;
+            box.appendChild(ok);
+          }
+          document.getElementById("quizNote").textContent = ui.note;
+          document.getElementById("quizResults").hidden = false;
+        }
+        if (quizBox) {
+          quizRender();
+          document.getElementById("langEn").addEventListener("click", function () { quizLang = "en"; quizRender(); });
+          document.getElementById("langEs").addEventListener("click", function () { quizLang = "es"; quizRender(); });
+          document.getElementById("quizForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            quizShow();
+            document.getElementById("quizResults").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+          });
+          document.getElementById("quizClear").addEventListener("click", function () {
+            quizAnswers = {};
+            document.getElementById("quizResults").hidden = true;
+            quizRender();
+          });
+          document.getElementById("quizPrint").addEventListener("click", function () { window.print(); });
         }
 
         /* Year */
