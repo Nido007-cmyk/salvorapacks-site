@@ -9,7 +9,7 @@
     <title>SALVORA PACKS · Official store · Emergency knowledge that works offline</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
     <style>
       :root {
         --ink: #15222b;
@@ -31,10 +31,11 @@
         --text-faint: #8a9ea8;
         --radius: 10px;
         --serif: "Spectral", Georgia, "Times New Roman", serif;
+        --display: "Fraunces", "Spectral", Georgia, serif;
         --sans: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
       }
       * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+      html { scroll-behavior: smooth; scroll-padding-top: 84px; }
       body {
         margin: 0;
         background: var(--ink);
@@ -54,10 +55,11 @@
         background: var(--header-bg);
         border-bottom: 1px solid var(--line);
         box-shadow: 0 8px 20px -14px rgba(0, 0, 0, 0.55);
+        height: 64px; overflow: hidden;
       }
       .header-in {
         display: flex; align-items: center; justify-content: space-between;
-        gap: 16px; padding-top: 10px; padding-bottom: 10px;
+        gap: 16px; height: 100%; padding-top: 0; padding-bottom: 0;
       }
       .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); min-width: 0; }
       .brand svg { flex: none; }
@@ -89,24 +91,26 @@
       .hero { border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--ink-deep) 0%, var(--ink) 78%); }
       .hero-in {
         display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 48px;
-        align-items: center; padding-top: 72px; padding-bottom: 104px;
+        align-items: center; padding-top: 84px; padding-bottom: 128px;
       }
       .hero-eyebrow {
         color: var(--gold); font-weight: 700; font-size: 13px;
         letter-spacing: 0.24em; text-transform: uppercase; margin: 0 0 18px;
       }
       .hero-voice {
-        font-family: var(--serif); font-style: italic; font-weight: 600;
-        font-size: clamp(19px, 2.4vw, 24px); color: var(--gold-bright);
-        margin: 0 0 14px; line-height: 1.3;
+        font-family: var(--display); font-style: italic; font-weight: 480;
+        font-variation-settings: "opsz" 60, "wght" 480;
+        font-size: clamp(22px, 2.8vw, 29px); color: var(--gold-bright);
+        margin: 0 0 16px; line-height: 1.3;
       }
       .hero-voice-es {
         font-size: 15px; color: var(--text-faint); font-style: italic; margin: -6px 0 26px;
       }
       h1 {
-        font-family: var(--serif); font-weight: 600;
-        font-size: clamp(38px, 5.6vw, 64px); line-height: 1.08;
-        margin: 0 0 22px; letter-spacing: 0.005em;
+        font-family: var(--display); font-weight: 560;
+        font-variation-settings: "opsz" var(--d-opsz, 144), "wght" var(--d-wght, 560);
+        font-size: clamp(44px, 6.4vw, 76px); line-height: 1.04;
+        margin: 0 0 26px; letter-spacing: 0;
       }
       h1 em { font-style: italic; color: var(--gold-bright); }
       .hero-lede { font-size: 19px; color: var(--text-dim); margin: 0 0 14px; max-width: 34em; }
@@ -152,8 +156,9 @@
         letter-spacing: 0.24em; text-transform: uppercase; margin: 0 0 10px;
       }
       h2 {
-        font-family: var(--serif); font-weight: 600;
-        font-size: clamp(27px, 3.4vw, 38px); line-height: 1.18; margin: 0 0 12px;
+        font-family: var(--display); font-weight: 540;
+        font-variation-settings: "opsz" var(--d-opsz, 100), "wght" var(--d-wght, 540);
+        font-size: clamp(31px, 4vw, 46px); line-height: 1.12; margin: 0 0 14px;
       }
       .sec-head p { color: var(--text-dim); margin: 0; font-size: 17.5px; }
       .sec-head p.es { color: var(--text-faint); font-style: italic; font-size: 15.5px; margin-top: 6px; }
@@ -174,7 +179,8 @@
       .featured p.es { color: var(--text-faint); font-style: italic; font-size: 15.5px; }
       .featured-stats { display: flex; gap: 36px; flex-wrap: wrap; margin: 26px 0 4px; }
       .stat b {
-        display: block; font-family: var(--serif); font-size: 34px; font-weight: 700;
+        display: block; font-family: var(--display); font-size: 42px; font-weight: 600;
+        font-variation-settings: "opsz" 144, "wght" 600;
         color: var(--gold-bright); line-height: 1;
       }
       .stat span { font-size: 13.5px; color: var(--text-faint); letter-spacing: 0.06em; text-transform: uppercase; }
@@ -182,7 +188,7 @@
         border-left: 1px solid var(--line); padding-left: 44px;
         display: flex; flex-direction: column; justify-content: center; gap: 6px;
       }
-      .price-big { font-family: var(--serif); font-size: 56px; font-weight: 700; line-height: 1; color: var(--text); }
+      .price-big { font-family: var(--display); font-size: 64px; font-weight: 600; font-variation-settings: "opsz" 144, "wght" 600; line-height: 1; color: var(--text); }
       .price-note { color: var(--text-faint); font-size: 14.5px; margin: 0 0 18px; }
       .featured-buy .btn { justify-content: center; }
       .buy-fine { font-size: 13.5px; color: var(--text-faint); text-align: center; margin: 12px 0 0; }
@@ -297,11 +303,11 @@
       .hero.fx-in .hero-glow { animation: breathe 7s ease-in-out infinite; }
       .hero-star {
         position: absolute; top: -60px; right: 30px; width: 300px; height: 300px;
-        pointer-events: none; opacity: 0.5; will-change: transform;
+        pointer-events: none; opacity: 0.66; will-change: transform;
       }
       .hero-star svg {
         width: 100%; height: 100%;
-        filter: drop-shadow(0 0 24px rgba(230,200,119,0.5));
+        filter: drop-shadow(0 0 34px rgba(230,200,119,0.65));
       }
       .hero.fx-in .hero-star svg { animation: starspin 140s linear infinite; }
       @keyframes starspin { to { transform: rotate(360deg); } }
@@ -385,8 +391,9 @@
       .figure { padding: 30px 22px; border-left: 1px solid var(--line); }
       .figure:first-child { border-left: none; padding-left: 0; }
       .figure b {
-        display: block; font-family: var(--serif); font-size: 40px; font-weight: 700;
-        color: var(--gold-bright); line-height: 1; margin-bottom: 6px;
+        display: block; font-family: var(--display); font-size: 52px; font-weight: 600;
+        font-variation-settings: "opsz" 144, "wght" 600;
+        color: var(--gold-bright); line-height: 1; margin-bottom: 8px;
       }
       .figure span { font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-faint); }
 
@@ -658,7 +665,7 @@
 
       /* ---------- Responsive ---------- */
       @media (max-width: 960px) {
-        .hero-in { grid-template-columns: 1fr; gap: 34px; padding-top: 48px; padding-bottom: 96px; }
+        .hero-in { grid-template-columns: 1fr; gap: 34px; padding-top: 54px; padding-bottom: 112px; }
         .trust-in { grid-template-columns: 1fr 1fr; }
         .trust-item { border-left: none; padding-left: 0; padding-right: 18px; }
         .featured { grid-template-columns: 1fr; padding: 32px; gap: 28px; }
@@ -674,6 +681,12 @@
         .brand { gap: 9px; min-width: 0; }
         .brand svg { width: 28px; height: 28px; }
         .brand-name { font-size: 16px; letter-spacing: 0.09em; }
+        .brand svg { display: none; }
+        .brand::before {
+          content: ""; flex: none; width: 30px; height: 30px;
+          background: var(--gold);
+          clip-path: polygon(50% 0%, 59% 41%, 100% 50%, 59% 59%, 50% 100%, 41% 59%, 0% 50%, 41% 41%);
+        }
         .brand-sub { display: none; }
         .menu-btn { padding: 7px 11px; }
         .theme-btn { padding: 7px; }
@@ -702,14 +715,14 @@
       @media (max-width: 400px) {
         .header-in { gap: 8px; padding-left: 12px; padding-right: 12px; }
         .brand { gap: 7px; }
-        .brand svg { width: 24px; height: 24px; }
+        .brand::before { width: 26px; height: 26px; }
         .brand-name { font-size: 15px; letter-spacing: 0.07em; }
         .menu-btn { padding: 6px 9px; font-size: 14.5px; }
         .theme-btn { padding: 6px; }
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
-        #ready fieldset.q, #quizResults { scroll-margin-top: 76px; }
+        #ready fieldset.q, #quizResults { scroll-margin-top: 84px; }
         .hero-star svg, .hero-glow, .hero.fx-in .hero-star svg, .hero.fx-in .hero-glow { animation: none; }
         .btn-gold::after { display: none; }
         .card, .btn, .header-in, .bo-switch::after { transition: none; }
@@ -1840,6 +1853,25 @@
             if (!starTick) { starTick = true; requestAnimationFrame(turnStar); }
           }, { passive: true });
           turnStar();
+        }
+
+        /* The display type answers the scroll: the headline and the
+           section titles gain weight as the page moves, in small steps,
+           and settle at rest. Reduced motion turns it off with the rest. */
+        if (!reduced && "requestAnimationFrame" in window) {
+          var dispTick = false;
+          var dispSet = function () {
+            dispTick = false;
+            var y = window.scrollY || window.pageYOffset || 0;
+            var w = 560 + Math.min(y / 6, 190);
+            var o = 100 + Math.min(y / 14, 44);
+            document.documentElement.style.setProperty("--d-wght", w.toFixed(0));
+            document.documentElement.style.setProperty("--d-opsz", o.toFixed(0));
+          };
+          window.addEventListener("scroll", function () {
+            if (!dispTick) { dispTick = true; requestAnimationFrame(dispSet); }
+          }, { passive: true });
+          dispSet();
         }
 
         /* Reveal on scroll (once) + count-up figures */
