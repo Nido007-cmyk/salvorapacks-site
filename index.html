@@ -774,6 +774,43 @@
         .hero.fx-in .hero-art img { animation: none; }
         .q-opts label.demo-pick { transform: none; }
       }
+
+      /* ---------- Polish, third pass: company finish ---------- */
+      ::selection { background: rgba(201, 162, 75, 0.38); }
+      html { scrollbar-width: thin; scrollbar-color: var(--gold-deep) var(--ink-deep); }
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { background: var(--ink-deep); }
+      ::-webkit-scrollbar-thumb { background: var(--gold-deep); border-radius: 5px; border: 2px solid var(--ink-deep); }
+      .btn { transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease; }
+      .btn:active { transform: translateY(1px); }
+      .quiz-lang button { padding: 10px 16px; }
+      .bo-switch { width: 56px; height: 32px; }
+      .bo-switch::after { width: 24px; height: 24px; }
+      .bo-switch[aria-pressed="true"]::after { left: 28px; }
+      @media (max-width: 960px) {
+        .hero-in { padding-bottom: 84px; }
+        .hero-in > div { display: flex; flex-direction: column; }
+        .hero-in > div > .hero-voice { order: 1; }
+        .hero-in > div > .hero-eyebrow { order: 2; }
+        .hero-in > div > h1 { order: 3; }
+        .hero-in > div > .hero-ctas { order: 4; }
+        .hero-in > div > .hero-lede { order: 5; }
+        .hero-in > div > .hero-lede-es { order: 6; }
+        .hero-in > div > .hero-note { order: 7; }
+        .hero-in > div > .origin-line { order: 8; margin-bottom: 0; }
+        .hero-in > div > .bo-control { order: 9; }
+        .hero-in > div > .blackout-msg { order: 10; }
+      }
+      @media (max-width: 620px) {
+        .hero-in { padding-top: 30px; gap: 26px; }
+        .menu-btn { display: inline-flex; align-items: center; min-height: 44px; }
+        .theme-btn { min-width: 40px; min-height: 40px; }
+        .foot-grid ul { gap: 12px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .btn { transition: none; }
+        .btn:active { transform: none; }
+      }
     </style>
   </head>
   <body>
