@@ -856,6 +856,21 @@
       @media (prefers-reduced-motion: reduce) {
         .lang-switch button { transition: none; }
       }
+
+      /* ---------- Cierre auditoría 3: el hero a la escala de la referencia ---------- */
+      h1 { font-size: clamp(52px, 7.4vw, 76px); }
+      @media (min-width: 961px) {
+        .hero-in { grid-template-columns: 0.98fr 1.02fr; padding-top: 44px; }
+      }
+      @media (max-width: 620px) {
+        .hero-in { padding-top: 22px; gap: 24px; }
+        .hero-voice { margin-bottom: 10px; }
+        .hero-eyebrow { margin-bottom: 12px; }
+        h1 { margin-bottom: 18px; }
+        .hero-ctas { gap: 10px; }
+        .hero-art img { height: 278px; object-fit: cover; }
+        html.lang-es h1 { font-size: 46px; }
+      }
     </style>
   </head>
   <body>
@@ -933,8 +948,8 @@
         <div class="wrap hero-in">
           <div>
             <p class="hero-voice"><span data-l="en">Ready before it happens.</span> <span data-l="es">Preparados antes de que pase.</span></p>
-            <p class="hero-eyebrow">We check our sources · Works offline</p>
-            <h1>Emergency knowledge that works <em>when the network doesn’t.</em></h1>
+            <p class="hero-eyebrow"><span data-l="en">We check our sources · Works offline</span><span data-l="es">Revisamos nuestras fuentes · Funciona sin conexión</span></p>
+            <h1><span data-l="en">Emergency knowledge that works <em>when the network doesn’t.</em></span><span data-l="es">Conocimiento de emergencia que funciona <em>cuando la red no funciona.</em></span></h1>
             <p class="hero-lede" data-l="en">
               We write preparedness guides and we check every line against official sources: the Red Cross and official guides. You download a pack once and it stays on your device. You won't open an account with us, nothing renews month to month, and there's no DRM on the files. They're yours.
             </p>
@@ -942,11 +957,11 @@
               Escribimos guías de preparación y revisamos cada línea contra fuentes oficiales. Descargas el pack una vez y queda en tu dispositivo. Después no necesitas conexión.
             </p>
             <div class="hero-ctas">
-              <a class="btn btn-gold" href="https://salvorapacks.gumroad.com/l/coleccion">See the Collection, $59</a>
-              <a class="btn btn-ghost" href="https://salvorapacks.gumroad.com/l/esencial">Get the Essential Pack free</a>
+              <a class="btn btn-gold" href="https://salvorapacks.gumroad.com/l/coleccion"><span data-l="en">See the Collection, $59</span><span data-l="es">Ver la Colección, $59</span></a>
+              <a class="btn btn-ghost" href="https://salvorapacks.gumroad.com/l/esencial"><span data-l="en">Get the Essential Pack free</span><span data-l="es">Consigue el Paquete Esencial gratis</span></a>
             </div>
             <p class="hero-note">
-              <strong>English · Español · Português.</strong> Gumroad handles the checkout and sends you the files.
+              <span data-l="en"><strong>English · Español · Português.</strong> Gumroad handles the checkout and sends you the files.</span><span data-l="es"><strong>Inglés · Español · Portugués.</strong> Gumroad se encarga del pago y te envía los archivos.</span>
             </p>
 <div class="origin-line">
               <p data-l="en">Our heat and dust guides come from living under this sun.</p>
@@ -1046,10 +1061,10 @@
       <!-- ============ FIGURES ============ -->
       <div class="figures">
         <div class="wrap figures-in">
-          <div class="figure reveal"><b><span class="count" data-count="869">869</span></b><span>Guides in the Collection</span></div>
-          <div class="figure reveal"><b><span class="count" data-count="29">29</span></b><span>Products in our stores</span></div>
-          <div class="figure reveal"><b><span class="count" data-count="3">3</span></b><span>Languages · EN · ES · PT</span></div>
-          <div class="figure reveal"><b>$0</b><span>Subscriptions, not one</span></div>
+          <div class="figure reveal"><b><span class="count" data-count="869">869</span></b><span data-l="en">Guides in the Collection</span><span data-l="es">Guías en la Colección</span></div>
+          <div class="figure reveal"><b><span class="count" data-count="29">29</span></b><span data-l="en">Products in our stores</span><span data-l="es">Productos en nuestras tiendas</span></div>
+          <div class="figure reveal"><b><span class="count" data-count="3">3</span></b><span data-l="en">Languages · EN · ES · PT</span><span data-l="es">Idiomas · EN · ES · PT</span></div>
+          <div class="figure reveal"><b>$0</b><span data-l="en">Subscriptions, not one</span><span data-l="es">Suscripciones, ninguna</span></div>
         </div>
       </div>
 
@@ -1102,8 +1117,8 @@
               </div>
               <div class="featured-stats">
                 <div class="stat"><b>18</b><span>Packs</span></div>
-                <div class="stat"><b>869</b><span>Guides</span></div>
-                <div class="stat"><b>3</b><span>Languages</span></div>
+                <div class="stat"><b>869</b><span data-l="en">Guides</span><span data-l="es">Guías</span></div>
+                <div class="stat"><b>3</b><span data-l="en">Languages</span><span data-l="es">Idiomas</span></div>
               </div>
             </div>
             <div class="featured-buy">
@@ -1111,7 +1126,7 @@
               <p class="price-note">You pay once. There's no subscription and the files stay yours.</p>
               <div class="save-math">
                 <span data-l="en">Bought one by one, the 18 packs add up to more than <b>$59</b>. The Collection gives you all 18 for <b>$59</b>, in a single download. The binders are sold separately.</span>
-                <span style="display: block; margin-top: 6px; font-style: italic; color: var(--text-faint); font-size: 14px;" data-l="es">Comprados uno por uno, los 18 packs salen más caros. La Colección te da los 18 por $59, en una sola descarga. Las carpetas se venden aparte.</span>
+                <span style="display: block; margin-top: 6px; font-style: italic; color: var(--text-faint); font-size: 14px;" data-l="es">Comprados uno por uno, los 18 packs suman más de $59. La Colección te da los 18 por $59, en una sola descarga. Las carpetas se venden aparte.</span>
               </div>
               <a class="btn btn-gold" href="https://salvorapacks.gumroad.com/l/coleccion">Get the Collection on Gumroad</a>
               <p class="buy-fine">Checkout is secure and Gumroad delivers the files right away.</p>
@@ -1483,7 +1498,7 @@
             <h2>Paper that works when screens don’t</h2>
             <p data-l="en">Binders you print and fill in by hand, each one with its guides. You print once, fill in the sheets, and the binder sits in a drawer. It needs no battery, no signal and no login.</p>
             <p class="es" data-l="es">Carpetas imprimibles y rellenables, cada una con sus guías. Se imprimen una vez y quedan en un cajón.</p>
-            <p style="margin-top:16px"><a class="btn btn-ghost btn-sm" href="#etsy">See the eleven listings on Etsy</a></p>
+            <p style="margin-top:16px"><a class="btn btn-ghost btn-sm" href="#etsy"><span data-l="en">See the twelve listings on Etsy</span><span data-l="es">Mira los doce anuncios en Etsy</span></a></p>
             <p style="margin-top:10px; font-size:14.5px; color:var(--text-faint)">The three planners, the Dementia Care Binder, the Small Business Binder and the Living Paycheck Budget spreadsheet at the end of the Etsy section also sell here on Gumroad: the second button on each of their cards.</p>
           </div>
           <div class="grid">
