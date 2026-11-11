@@ -1555,6 +1555,86 @@
       .filtro.is-on { background: var(--gold, #c9a227); border-color: var(--gold, #c9a227); color: #1d1a12; }
       .filtro-oculta { display: none !important; }
     </style>
+    <style id="sv-integracion">
+      /* ---------- SV · integración 2026-11-11 ----------
+         Solo lo que suma sobre los sistemas que la página ya trae. Las
+         animaciones nuevas mueven transform y opacity; la única excepción
+         es el subrayado del titular (una vez, sobre el propio texto).
+         Con «reducir movimiento» todo queda quieto: final del bloque. */
+
+      /* Subrayado dorado: se dibuja una vez bajo la promesa del titular. */
+      h1 em {
+        background: linear-gradient(var(--gold), var(--gold)) no-repeat 0 96% / 0% 0.07em;
+        -webkit-box-decoration-break: clone; box-decoration-break: clone;
+        animation: svUnderline 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s 1 forwards;
+      }
+      @keyframes svUnderline { to { background-size: 100% 0.07em; } }
+
+      /* Barra de compra en móvil: sale al pasar el hero y se aparta al
+         llegar al bloque de compra de La Colección y al pie. Va por debajo
+         de la cabecera (z-index 50). */
+      .sv-bar {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
+        background: var(--header-bg); border-top: 1px solid var(--line-gold);
+        box-shadow: 0 -10px 24px -14px rgba(0, 0, 0, 0.7);
+        padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+        transform: translateY(110%); visibility: hidden;
+        transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), visibility 0s linear 0.35s;
+      }
+      .sv-bar.on { transform: none; visibility: visible; transition-delay: 0s; }
+      .sv-bar-in { display: flex; align-items: center; gap: 10px; max-width: 620px; margin: 0 auto; }
+      .sv-bar-t { flex: 1; min-width: 0; line-height: 1.25; }
+      .sv-bar-t b { display: block; font-family: var(--serif); font-size: 15.5px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .sv-bar-t small { font-size: 13.5px; color: var(--text-dim); }
+      .sv-bar-t small strong { color: var(--gold-bright); }
+      .sv-bar .btn { flex: none; min-height: 44px; }
+      .sv-bar-x { flex: none; width: 36px; height: 44px; background: none; border: 0; color: var(--text-dim); font-size: 22px; line-height: 1; cursor: pointer; border-radius: 6px; }
+      @media (min-width: 761px) { .sv-bar { display: none; } }
+
+      /* Filtros por tipo y por tema. En pantallas anchas la barra acompaña
+         el catálogo; en el teléfono se queda en su sitio para no tapar. */
+      .sv-filtros { background: var(--ink); padding-top: 14px; padding-bottom: 10px; margin-top: 8px; }
+      .sv-filtros .filtros { padding: 0; align-items: center; }
+      .sv-filtros .filtros + .filtros { margin-top: 10px; }
+      .sv-filtros .filtro { min-height: 40px; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease; }
+      .sv-filtros .filtro:hover { border-color: var(--gold); }
+      .sv-filtros .filtro:active { transform: scale(0.96); }
+      .sv-fl { flex: none; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); min-width: 4.4em; }
+      .sv-count { margin: 10px 0 0; font-size: 14.5px; color: var(--text-dim); min-height: 1.5em; }
+      .sv-count:empty { display: none; }
+      .sv-count b { color: var(--gold-bright); }
+      .sv-count button { font: inherit; font-weight: 700; color: var(--gold-bright); background: none; border: 0; border-bottom: 1px solid var(--line-gold); padding: 0 0 1px; margin-left: 10px; cursor: pointer; }
+      @media (min-width: 961px) {
+        .sv-filtros { position: sticky; top: 64px; z-index: 30; border-bottom: 1px solid var(--line); }
+        #catalogo section[id] { scroll-margin-top: 190px; }
+      }
+      @media (max-width: 620px) {
+        .sv-fl { min-width: 0; width: 100%; }
+        .sv-filtros .filtro { min-height: 44px; }
+      }
+      .card.sv-pop { animation: svPop 0.36s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: var(--sv-d, 0ms); }
+      @keyframes svPop { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+      /* La muestra de la guía, cerca del principio. */
+      .sv-sample { margin: 14px 0 0; font-size: 15.5px; }
+
+      /* Toque de la casa: la suma de los packs propios, tachada junto al
+         precio de La Colección. La cifra la sirve SALVORA_DATOS. */
+      .price-was { font-size: 30px; color: var(--text-faint); text-decoration-thickness: 2px; margin-left: 10px; white-space: nowrap; }
+
+      /* Defecto encontrado en lo recibido: `.figure span` (13 px, gris) alcanzaba
+         también al número del contador, que es un span dentro de la cifra
+         grande. El número vuelve al tamaño y al dorado de su cifra. */
+      .figure b span { font-size: inherit; letter-spacing: inherit; text-transform: none; color: inherit; }
+
+      @media print { .sv-bar, .sv-filtros { display: none !important; } }
+      @media (prefers-reduced-motion: reduce) {
+        h1 em { animation: none; background-size: 100% 0.07em; }
+        .sv-bar, .sv-bar.on, .sv-filtros .filtro { transition: none; }
+        .sv-filtros .filtro:active { transform: none; }
+        .card.sv-pop { animation: none; }
+      }
+    </style>
   </head>
   <body>
     <script>
@@ -1741,6 +1821,23 @@
         </div>
       </section>
 
+      <!-- ============ PAUSE: ONE OPEN GUIDE ============ -->
+      <section class="block pause-band" style="padding-top: 8px">
+        <div class="wrap pause-in">
+          <figure class="pause-page reveal" style="margin:0">
+            <img src="img/interior-emergencias.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Home Emergencies readable edition, open at a gas leak guide" data-alt-en="A real page from the Home Emergencies readable edition, open at a gas leak guide" data-alt-es="Una página real de la edición legible de Emergencias en casa, abierta en la guía de la fuga de gas" />
+          </figure>
+          <div class="reveal">
+            <p class="sec-kicker"><span data-l="en">One open guide</span><span class="lg-sep"> · </span><span data-l="es">Una guía abierta</span></p>
+            <h2><span data-l="en">This is what a page looks like at 2 a.m.</span><span data-l="es">Así se ve una página a las 2 de la madrugada</span></h2>
+            <p data-l="en">One real page from the Home Emergencies pack, the gas leak guide, exactly as it prints in the readable edition. Short lines, the steps in order, nothing to tap and nothing to load. Every pack reads like this one.</p>
+            <p class="es" data-l="es">Una página real del pack Emergencias en casa, la guía de la fuga de gas, tal como sale en la edición legible. Líneas cortas, los pasos en orden, nada que tocar y nada que cargar. Cada pack se lee así.</p>
+            <p style="margin-top:18px"><a class="btn btn-ghost" href="https://salvorapacks.gumroad.com/l/emergencias-casa"><span data-l="en">See the Home Emergencies pack</span><span data-l="es">Ver el pack Emergencias en casa</span></a></p>
+            <p class="sv-sample"><a href="producto/emergencias-en-casa.html"><span data-l="en">Read two full guides as a sample</span><span data-l="es">Lee dos guías enteras de muestra</span></a></p>
+          </div>
+        </div>
+      </section>
+
       <!-- ============ FIGURES ============ -->
       <div class="figures">
         <div class="wrap figures-in">
@@ -1807,11 +1904,11 @@
               </div>
             </div>
             <div class="featured-buy">
-              <div class="price-big">$59</div>
+              <div class="price-big">$59 <s class="price-was">$<span data-cf="sumaPropios">214</span></s></div>
               <p class="price-note">You pay once. There's no subscription and the files stay yours.</p>
               <div class="save-math">
-                <span data-l="en">Bought one by one, our <span data-cf="propios">10</span> own packs alone add up to <b>$<span data-cf="sumaPropios">195</span></b>. The other <span data-cf="nido">9</span> are NIDO packs, free at their source. The Collection gives you all <span data-cf="packs">19</span> for <b>$59</b>, in a single download. The binders are sold separately.</span>
-                <span style="display: block; margin-top: 6px; font-style: italic; color: var(--text-faint); font-size: 14px;" data-l="es">Comprados uno por uno, solo nuestros <span data-cf="propios">10</span> packs propios suman <b>$<span data-cf="sumaPropios">195</span></b>. Los otros <span data-cf="nido">9</span> son packs de NIDO, gratuitos en su origen. La Colección te da los <span data-cf="packs">19</span> por $59, en una sola descarga. Las carpetas se venden aparte.</span>
+                <span data-l="en">Bought one by one, our <span data-cf="propios">11</span> own packs alone add up to <b>$<span data-cf="sumaPropios">214</span></b>. The other <span data-cf="nido">9</span> are NIDO packs, free at their source. The Collection gives you all <span data-cf="packs">20</span> for <b>$59</b>, in a single download. The binders are sold separately.</span>
+                <span style="display: block; margin-top: 6px; font-style: italic; color: var(--text-faint); font-size: 14px;" data-l="es">Comprados uno por uno, solo nuestros <span data-cf="propios">11</span> packs propios suman <b>$<span data-cf="sumaPropios">214</span></b>. Los otros <span data-cf="nido">9</span> son packs de NIDO, gratuitos en su origen. La Colección te da los <span data-cf="packs">20</span> por $59, en una sola descarga. Las carpetas se venden aparte.</span>
               </div>
               <a class="btn btn-gold" href="https://salvorapacks.gumroad.com/l/coleccion">Get the Collection on Gumroad</a>
               <p class="buy-fine">Checkout is secure and Gumroad delivers the files right away.</p>
@@ -1952,13 +2049,26 @@
         </div>
       </section>
 
-      <!-- ============ FILTERS (fase 4, preparado) ============ -->
-      <div class="wrap filtros" role="group" aria-label="Filter the catalog" data-aria-en="Filter the catalog" data-aria-es="Filtrar el catálogo">
-        <button type="button" class="filtro is-on" data-filtro="todos"><span data-l="en">Everything</span><span data-l="es">Todo</span></button>
-        <button type="button" class="filtro" data-filtro="packs"><span data-l="en">Guide packs</span><span data-l="es">Packs de guías</span></button>
-        <button type="button" class="filtro" data-filtro="plantillas"><span data-l="en">Binders and planners</span><span data-l="es">Carpetas y planificadores</span></button>
-        <button type="button" class="filtro" data-filtro="libros"><span data-l="en">Books</span><span data-l="es">Libros</span></button>
-        <button type="button" class="filtro" data-filtro="audios"><span data-l="en">Audio</span><span data-l="es">Audio</span></button>
+      <!-- ============ CATÁLOGO: filtros por tipo y por tema (fase 4 + SV) ============ -->
+      <div id="catalogo" style="scroll-margin-top: 64px">
+      <div class="wrap sv-filtros" id="filtros">
+        <div class="filtros" role="group" aria-label="Filter the catalog by type" data-aria-en="Filter the catalog by type" data-aria-es="Filtrar el catálogo por tipo">
+          <span class="sv-fl"><span data-l="en">Type</span><span data-l="es">Tipo</span></span>
+          <button type="button" class="filtro is-on" aria-pressed="true" data-filtro="todos"><span data-l="en">Everything</span><span data-l="es">Todo</span></button>
+          <button type="button" class="filtro" aria-pressed="false" data-filtro="packs"><span data-l="en">Guide packs</span><span data-l="es">Packs de guías</span></button>
+          <button type="button" class="filtro" aria-pressed="false" data-filtro="plantillas"><span data-l="en">Binders and planners</span><span data-l="es">Carpetas y planificadores</span></button>
+          <button type="button" class="filtro" aria-pressed="false" data-filtro="libros"><span data-l="en">Books</span><span data-l="es">Libros</span></button>
+          <button type="button" class="filtro" aria-pressed="false" data-filtro="audios"><span data-l="en">Audio</span><span data-l="es">Audio</span></button>
+        </div>
+        <div class="filtros" role="group" aria-label="Filter the catalog by subject" data-aria-en="Filter the catalog by subject" data-aria-es="Filtrar el catálogo por tema">
+          <span class="sv-fl"><span data-l="en">Subject</span><span data-l="es">Tema</span></span>
+          <button type="button" class="filtro is-on" aria-pressed="true" data-tema="todos"><span data-l="en">All subjects</span><span data-l="es">Todos los temas</span></button>
+          <button type="button" class="filtro" aria-pressed="false" data-tema="emergencias"><span data-l="en">Emergencies</span><span data-l="es">Emergencias</span></button>
+          <button type="button" class="filtro" aria-pressed="false" data-tema="casa"><span data-l="en">Home</span><span data-l="es">Casa</span></button>
+          <button type="button" class="filtro" aria-pressed="false" data-tema="cuidado"><span data-l="en">Care</span><span data-l="es">Cuidado</span></button>
+          <button type="button" class="filtro" aria-pressed="false" data-tema="dinero"><span data-l="en">Money</span><span data-l="es">Dinero</span></button>
+        </div>
+        <p class="sv-count" id="svCount" role="status"></p>
       </div>
 
       <section class="block" id="packs" style="padding-top: 8px">
@@ -1972,7 +2082,7 @@
             <p class="es" data-l="es">Cómo lo comprobamos: cada guía cita dentro sus fuentes oficiales, para que puedas leerlas tú mismo. Cada pack lleva un archivo de verificación con la huella de cada archivo que contiene, y nuestra firma sobre el pack. La app NIDO comprueba esa firma antes de aceptar un pack, así que un pack cambiado después de firmar, o que no venga de nosotros, no entra.</p>
           </div>
           <div class="grid">
-            <article class="card free reveal" data-tipo="packs">
+            <article class="card free reveal" data-tipo="packs" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-esencial.webp" width="720" height="405" loading="lazy" decoding="async" alt="Essential Pack cover" /><img class="cm-inside" src="img/interior-esencial.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Essential Pack readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Starter pack</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Essential Pack</h3>
@@ -1984,10 +2094,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/esencial">Get it</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal" data-tipo="packs" data-tema="casa">
               <div class="card-media"><img class="cm-cover" src="img/portada-reparaciones.webp" width="720" height="405" loading="lazy" decoding="async" alt="Essential Home Repairs cover" /><img class="cm-inside" src="img/interior-reparaciones.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Essential Home Repairs readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Essential Home Repairs</h3>
@@ -1999,10 +2109,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/reparaciones">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal" data-tipo="packs" data-tema="cuidado">
               <div class="card-media"><img class="cm-cover" src="img/portada-cuidado-mayores.webp" width="720" height="405" loading="lazy" decoding="async" alt="Elder Care at Home cover" /><img class="cm-inside" src="img/interior-cuidado-mayores.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Elder Care at Home readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Elder Care at Home</h3>
@@ -2014,10 +2124,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/cuidado-mayores">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal" data-tipo="packs" data-tema="casa">
               <div class="card-media"><img class="cm-cover" src="img/portada-conservacion.webp" width="720" height="405" loading="lazy" decoding="async" alt="Food Preservation cover" /><img class="cm-inside" src="img/interior-conservacion.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Food Preservation readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Food Preservation</h3>
@@ -2029,10 +2139,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/conservacion">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal" data-tipo="packs" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-huracanes.webp" width="720" height="405" loading="lazy" decoding="async" alt="Hurricanes cover" /><img class="cm-inside" src="img/interior-huracanes.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Hurricanes readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Hurricanes</h3>
@@ -2044,10 +2154,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/huracanes">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal" data-tipo="packs" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-carretera.webp" width="720" height="405" loading="lazy" decoding="async" alt="Roadside Emergencies cover" /><img class="cm-inside" src="img/interior-carretera.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Roadside Emergencies readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Roadside Emergencies</h3>
@@ -2059,10 +2169,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/carretera">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal" data-tipo="packs" data-tema="casa">
               <div class="card-media"><img class="cm-cover" src="img/portada-huerta.webp" width="720" height="405" loading="lazy" decoding="async" alt="Dry Climate Gardening cover" /><img class="cm-inside" src="img/interior-huerta.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Dry Climate Gardening readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Dry Climate Gardening</h3>
@@ -2074,10 +2184,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/huerta">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal" data-tipo="packs" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-frio.webp" width="720" height="405" loading="lazy" decoding="async" alt="Extreme Cold and Snow cover" /><img class="cm-inside" src="img/interior-frio.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Extreme Cold and Snow readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Extreme Cold and Snow</h3>
@@ -2089,10 +2199,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/frio">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal" data-tipo="packs" data-tema="cuidado">
               <div class="card-media"><img class="cm-cover" src="img/portada-paquete-familia.webp" width="720" height="405" loading="lazy" decoding="async" alt="Family Bundle cover" /><img class="cm-inside" src="img/interior-paquete-familia.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Family Bundle readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack bundle</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Family Bundle</h3>
@@ -2104,10 +2214,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/paquete-familia">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal" data-tipo="packs" data-tema="casa emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-paquete-cocina.webp" width="720" height="405" loading="lazy" decoding="async" alt="Kitchen Bundle cover" /><img class="cm-inside" src="img/interior-paquete-cocina.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Kitchen Bundle readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack bundle</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Kitchen Bundle</h3>
@@ -2119,10 +2229,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/paquete-cocina">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal home-card" data-tipo="packs">
+            <article class="card reveal home-card" data-tipo="packs" data-tema="emergencias casa">
               <div class="card-media"><img class="cm-cover" src="img/portada-emergencias.webp" width="720" height="405" loading="lazy" decoding="async" alt="Home Emergencies cover" /><img class="cm-inside" src="img/interior-emergencias.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Home Emergencies readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Home Emergencies</h3>
@@ -2134,10 +2244,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/emergencias-casa">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-fx data-tipo="packs">
+            <article class="card reveal" data-fx data-tipo="packs" data-tema="cuidado emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-mascotas.webp" width="720" height="405" loading="lazy" decoding="async" alt="Pets cover" /><img class="cm-inside" src="img/interior-mascotas.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Pets readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Pets</h3>
@@ -2149,10 +2259,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/mascotas">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-fx data-tipo="packs">
+            <article class="card reveal" data-fx data-tipo="packs" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-desastres.webp" width="720" height="405" loading="lazy" decoding="async" alt="Natural Disasters cover" /><img class="cm-inside" src="img/interior-desastres.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Natural Disasters readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Natural Disasters</h3>
@@ -2164,10 +2274,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/desastres">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-fx data-tipo="packs">
+            <article class="card reveal" data-fx data-tipo="packs" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-calor.webp" width="720" height="405" loading="lazy" decoding="async" alt="Heat and Desert cover" /><img class="cm-inside" src="img/interior-calor.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Heat and Desert readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Guide pack</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Heat &amp; Desert</h3>
@@ -2179,10 +2289,10 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/calor-desierto">Get it on Gumroad</a>
               </div>
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
-              </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+            </article>
 
-            <article class="card reveal" data-fx data-tipo="audios">
+            <article class="card reveal" data-fx data-tipo="audios" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-audio-emergencias.webp" width="720" height="405" loading="lazy" decoding="async" alt="Emergency Audio cover" /></div>
                             <div class="card-top"><span class="card-kind">Audiobook</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Emergency Audio</h3>
@@ -2193,10 +2303,10 @@
                 <span class="price">$19</span>
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/audio-emergencias">Get it on Gumroad</a>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-fx data-tipo="audios">
+            <article class="card reveal" data-fx data-tipo="audios" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-audio-calor-desierto.webp" width="720" height="405" loading="lazy" decoding="async" alt="Extreme Heat Audio cover" /></div>
                             <div class="card-top"><span class="card-kind">Audiobook</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Heat &amp; Desert Audio</h3>
@@ -2207,10 +2317,10 @@
                 <span class="price">$19</span>
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/audio-calor-desierto">Get it on Gumroad</a>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-fx data-tipo="audios">
+            <article class="card reveal" data-fx data-tipo="audios" data-tema="cuidado emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-audio-mascotas.webp" width="720" height="405" loading="lazy" decoding="async" alt="Pet First Aid Audio cover" /></div>
                             <div class="card-top"><span class="card-kind">Audiobook</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Pet First Aid Audio</h3>
@@ -2221,10 +2331,10 @@
                 <span class="price">$19</span>
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/audio-mascotas">Get it on Gumroad</a>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-tipo="libros">
+            <article class="card reveal" data-tipo="libros" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-libro-manual.webp" width="720" height="405" loading="lazy" decoding="async" alt="Family Emergency Manual cover" /><img class="cm-inside" src="img/interior-libro-manual.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Family Emergency Manual" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Book</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Family Emergency Manual</h3>
@@ -2235,10 +2345,10 @@
                 <span class="price">$4.99</span>
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/manual-emergencias">Get it on Gumroad</a>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-fx data-tipo="libros">
+            <article class="card reveal" data-fx data-tipo="libros" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-libro-invierno.webp" width="720" height="405" loading="lazy" decoding="async" alt="Winter cover" /><img class="cm-inside" src="img/interior-libro-invierno.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Winter book" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Book</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Winter</h3>
@@ -2249,10 +2359,10 @@
                 <span class="price">$3.99</span>
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/invierno">Get it on Gumroad</a>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-fx data-tipo="audios">
+            <article class="card reveal" data-fx data-tipo="audios" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-audiolibro-invierno.webp" width="720" height="405" loading="lazy" decoding="async" alt="Winter Audiobook cover" /></div>
                             <div class="card-top"><span class="card-kind">Audiobook</span><span class="langs"><span>ES</span></span></div>
               <h3 data-l="en">Winter Audiobook</h3>
@@ -2263,8 +2373,8 @@
                 <span class="price">$8.99</span>
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/audiolibro-invierno">Get it on Gumroad</a>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
           </div>
           <p class="license-line reveal">
             <b>Licensing:</b> the Essential Pack is <b>CC BY 4.0</b>, so you can share it freely as long as you credit us. Every paid product carries a <b>personal use license</b>. The files are yours, on your devices, for good.
@@ -2288,22 +2398,6 @@
         </div>
       </section>
 
-      <!-- ============ PAUSE: ONE OPEN GUIDE ============ -->
-      <section class="block pause-band" style="padding-top: 8px">
-        <div class="wrap pause-in">
-          <figure class="pause-page reveal" style="margin:0">
-            <img src="img/interior-emergencias.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Home Emergencies readable edition, open at a gas leak guide" />
-          </figure>
-          <div class="reveal">
-            <p class="sec-kicker"><span data-l="en">One open guide</span><span class="lg-sep"> · </span><span data-l="es">Una guía abierta</span></p>
-            <h2>This is what a page looks like at 2 a.m.</h2>
-            <p data-l="en">One real page from the Home Emergencies pack, the gas leak guide, exactly as it prints in the readable edition. Short lines, the steps in order, nothing to tap and nothing to load. Every pack reads like this one.</p>
-            <p class="es" data-l="es">Una página real del pack Emergencias en casa, la guía de la fuga de gas, tal como sale en la edición legible. Líneas cortas, los pasos en orden, nada que tocar y nada que cargar. Cada pack se lee así.</p>
-            <p style="margin-top:18px"><a class="btn btn-ghost" href="https://salvorapacks.gumroad.com/l/emergencias-casa">See the Home Emergencies pack</a></p>
-          </div>
-        </div>
-      </section>
-
       <!-- ============ BINDERS ============ -->
       <section class="block binders" id="binders">
         <div class="wrap">
@@ -2316,7 +2410,7 @@
             <p style="margin-top:10px; font-size:14.5px; color:var(--text-faint)">The three planners, the Dementia Care Binder, the Small Business Binder and the Living Paycheck Budget spreadsheet at the end of the Etsy section also sell here on Gumroad: the second button on each of their cards.</p>
           </div>
           <div class="grid">
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="emergencias">
               <div class="card-media"><img class="cm-cover" src="img/portada-familiar.webp" width="720" height="405" loading="lazy" decoding="async" alt="Family Emergency Binder cover" /><img class="cm-inside" src="img/interior-familiar.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Family Emergency Binder: the family communication plan" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Family Emergency Binder</h3>
@@ -2325,12 +2419,12 @@
               <div class="spec"><span><b>71</b> sheets per language, to fill in</span><span>With its guides</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-familiar">Get it on Gumroad</a>
+                <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-familiar"><span data-l="en">Get it on Gumroad</span><span data-l="es">Conseguirla en Gumroad</span></a> <a class="btn btn-ghost btn-sm" href="https://www.etsy.com/listing/4612303247"><span data-l="en">See it on Etsy</span><span data-l="es">Verla en Etsy</span></a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="cuidado">
               <div class="card-media"><img class="cm-cover" src="img/portada-cuidador.webp" width="720" height="405" loading="lazy" decoding="async" alt="The Caregiver’s Binder cover" /><img class="cm-inside" src="img/interior-cuidador.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Caregiver’s Binder: the dose log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">The Caregiver’s Binder</h3>
@@ -2339,12 +2433,12 @@
               <div class="spec"><span><b>72</b> sheets per language, to fill in</span><span>With its guides</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-cuidador">Get it on Gumroad</a>
+                <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-cuidador"><span data-l="en">Get it on Gumroad</span><span data-l="es">Conseguirla en Gumroad</span></a> <a class="btn btn-ghost btn-sm" href="https://www.etsy.com/listing/4612959154"><span data-l="en">See it on Etsy</span><span data-l="es">Verla en Etsy</span></a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="casa">
               <div class="card-media"><img class="cm-cover" src="img/portada-hogar.webp" width="720" height="405" loading="lazy" decoding="async" alt="The Home Binder cover" /><img class="cm-inside" src="img/interior-hogar.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Home Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">The Home Binder</h3>
@@ -2353,12 +2447,12 @@
               <div class="spec"><span><b>65</b> sheets per language, to fill in</span><span>With its guides</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-hogar">Get it on Gumroad</a>
+                <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-hogar"><span data-l="en">Get it on Gumroad</span><span data-l="es">Conseguirla en Gumroad</span></a> <a class="btn btn-ghost btn-sm" href="https://www.etsy.com/listing/4612962932"><span data-l="en">See it on Etsy</span><span data-l="es">Verla en Etsy</span></a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="dinero cuidado">
               <div class="card-media"><img class="cm-cover" src="img/portada-facturas.webp" width="720" height="405" loading="lazy" decoding="async" alt="Medical Bills Binder cover" /><img class="cm-inside" src="img/interior-facturas.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Medical Bills Binder: year totals" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Medical Bills Binder</h3>
@@ -2367,12 +2461,12 @@
               <div class="spec"><span><b>67</b> sheets per language, to fill in</span><span>With its guides</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/facturas-medicas">Get it on Gumroad</a>
+                <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/facturas-medicas"><span data-l="en">Get it on Gumroad</span><span data-l="es">Conseguirla en Gumroad</span></a> <a class="btn btn-ghost btn-sm" href="https://www.etsy.com/listing/4612966850"><span data-l="en">See it on Etsy</span><span data-l="es">Verla en Etsy</span></a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="dinero casa">
               <div class="card-media"><img class="cm-cover" src="img/portada-inquilino.webp" width="720" height="405" loading="lazy" decoding="async" alt="Tenant Kit cover" /><img class="cm-inside" src="img/interior-inquilino.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Tenant Kit: the rent payment log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable kit</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Tenant Kit: Deposit &amp; Moving</h3>
@@ -2381,12 +2475,12 @@
               <div class="spec"><span><b>52</b> sheets per language, to fill in</span><span>With its guides</span></div>
               <div class="card-foot">
                 <span class="price">$14.99</span>
-                <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/kit-inquilino">Get it on Gumroad</a>
+                <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/kit-inquilino"><span data-l="en">Get it on Gumroad</span><span data-l="es">Conseguirlo en Gumroad</span></a> <a class="btn btn-ghost btn-sm" href="https://www.etsy.com/listing/4612958849"><span data-l="en">See it on Etsy</span><span data-l="es">Verlo en Etsy</span></a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
               <div class="card-media"><img class="cm-cover" src="img/portada-papeles.webp" width="720" height="405" loading="lazy" decoding="async" alt="Annual Papers and Taxes Binder cover" /><img class="cm-inside" src="img/interior-papeles.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Annual Papers and Taxes Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Annual Papers &amp; Taxes Binder</h3>
@@ -2395,10 +2489,10 @@
               <div class="spec"><span><b>68</b> sheets per language, to fill in</span><span>EN · ES only</span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/papeles-impuestos">Get it on Gumroad</a>
+                <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/papeles-impuestos"><span data-l="en">Get it on Gumroad</span><span data-l="es">Conseguirla en Gumroad</span></a> <a class="btn btn-ghost btn-sm" href="https://www.etsy.com/listing/4612979936"><span data-l="en">See it on Etsy</span><span data-l="es">Verla en Etsy</span></a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
           </div>
         </div>
       </section>
@@ -2416,93 +2510,10 @@
               <a class="btn btn-gold" href="https://www.etsy.com/shop/salvorapacks">Visit the Etsy shop</a>
               <span style="color: var(--text-faint); font-size: 14.5px">salvorapacks on Etsy · Etsy handles checkout and delivery there</span>
             </div>
+            <p style="margin-top:14px"><span data-l="en">The binders that come with their guides are in <a href="#binders">the section above</a>, each one with its Etsy button next to the Gumroad one. Below is the rest of the shop.</span><span data-l="es">Las carpetas que traen sus guías están en <a href="#binders">la sección de arriba</a>, cada una con su botón de Etsy junto al de Gumroad. Abajo está el resto de la tienda.</span></p>
           </div>
           <div class="grid">
-            <article class="card reveal" data-tipo="plantillas">
-              <div class="card-media"><img class="cm-cover" src="img/portada-familiar.webp" width="720" height="405" loading="lazy" decoding="async" alt="Family Emergency Binder cover" /><img class="cm-inside" src="img/interior-familiar.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Family Emergency Binder: the family communication plan" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
-                            <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
-              <h3 data-l="en">Family Emergency Binder</h3>
-              <p class="es-name" data-l="es">Carpeta familiar de emergencias</p>
-              <p class="desc">Your family&rsquo;s emergency information, printed and filled in by hand, sitting in the drawer ready for the day you need it.</p>
-              <p class="listing-title">On Etsy: &ldquo;Emergency Binder Fillable PDF with Verified Guide EN ES PT Instant Download&rdquo;</p>
-              <div class="spec"><span><b>71</b> sheets per language, to fill in</span><span class="etsy-badge">On Etsy</span></div>
-              <div class="card-foot">
-                <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612303247">See it on Etsy</a>
-              </div>
-            </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
-              <div class="card-media"><img class="cm-cover" src="img/portada-cuidador.webp" width="720" height="405" loading="lazy" decoding="async" alt="The Caregiver’s Binder cover" /><img class="cm-inside" src="img/interior-cuidador.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Caregiver’s Binder: the dose log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
-                            <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
-              <h3 data-l="en">The Caregiver&rsquo;s Binder</h3>
-              <p class="es-name" data-l="es">Carpeta del cuidador</p>
-              <p class="desc">Care routines, contacts and notes in one binder. It&rsquo;s there for the person who gives the care, and for whoever has to step in one day.</p>
-              <p class="listing-title">On Etsy: &ldquo;Caregiver Binder Fillable PDF with Verified Guide En Es Pt Instant Download&rdquo;</p>
-              <div class="spec"><span><b>72</b> sheets per language, to fill in</span><span class="etsy-badge">On Etsy</span></div>
-              <div class="card-foot">
-                <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612959154">See it on Etsy</a>
-              </div>
-            </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
-              <div class="card-media"><img class="cm-cover" src="img/portada-hogar.webp" width="720" height="405" loading="lazy" decoding="async" alt="The Home Binder cover" /><img class="cm-inside" src="img/interior-hogar.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Home Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
-                            <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
-              <h3 data-l="en">The Home Binder</h3>
-              <p class="es-name" data-l="es">Carpeta del hogar</p>
-              <p class="desc">The binder for the house itself. Systems, schedules, warranties and records, all kept in one place.</p>
-              <p class="listing-title">On Etsy: &ldquo;Home Binder Fillable PDF with Verified Guide En Es Pt Instant Download&rdquo;</p>
-              <div class="spec"><span><b>65</b> sheets per language, to fill in</span><span class="etsy-badge">On Etsy</span></div>
-              <div class="card-foot">
-                <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612962932">See it on Etsy</a>
-              </div>
-            </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
-              <div class="card-media"><img class="cm-cover" src="img/portada-facturas.webp" width="720" height="405" loading="lazy" decoding="async" alt="Medical Bills Binder cover" /><img class="cm-inside" src="img/interior-facturas.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Medical Bills Binder: year totals" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
-                            <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
-              <h3 data-l="en">Medical Bills Binder</h3>
-              <p class="es-name" data-l="es">Carpeta de facturas médicas</p>
-              <p class="desc">Medical bills, statements and insurance papers, tracked sheet by sheet. They stop piling up in a drawer.</p>
-              <p class="listing-title">On Etsy: &ldquo;Medical Bill Organizer Fillable PDF with Verified Guide En Es Pt Instant Download&rdquo;</p>
-              <div class="spec"><span><b>67</b> sheets per language, to fill in</span><span class="etsy-badge">On Etsy</span></div>
-              <div class="card-foot">
-                <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612966850">See it on Etsy</a>
-              </div>
-            </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
-              <div class="card-media"><img class="cm-cover" src="img/portada-inquilino.webp" width="720" height="405" loading="lazy" decoding="async" alt="Tenant Kit cover" /><img class="cm-inside" src="img/interior-inquilino.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Tenant Kit: the rent payment log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
-                            <div class="card-top"><span class="card-kind">Printable kit</span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
-              <h3 data-l="en">Tenant Kit: Deposit &amp; Moving</h3>
-              <p class="es-name" data-l="es">Kit del inquilino</p>
-              <p class="desc">Paper proof that protects your deposit. Move in and move out inspections, inventories and records, all written down.</p>
-              <p class="listing-title">On Etsy: &ldquo;Renter Deposit Kit Fillable PDF Move In Move Out Binder with Verified Guide En Es Pt&rdquo;</p>
-              <div class="spec"><span><b>52</b> sheets per language, to fill in</span><span class="etsy-badge">On Etsy</span></div>
-              <div class="card-foot">
-                <span class="price">$14.99</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612958849">See it on Etsy</a>
-              </div>
-            </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
-              <div class="card-media"><img class="cm-cover" src="img/portada-papeles.webp" width="720" height="405" loading="lazy" decoding="async" alt="Annual Papers and Taxes Binder cover" /><img class="cm-inside" src="img/interior-papeles.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Annual Papers and Taxes Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
-                            <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span></span></div>
-              <h3 data-l="en">Annual Papers &amp; Taxes Binder</h3>
-              <p class="es-name" data-l="es">Carpeta anual de papeles e impuestos</p>
-              <p class="desc">A full year of household papers and taxes, filed month by month. When April comes, you won&rsquo;t have to dig for anything.</p>
-              <p class="listing-title">On Etsy: &ldquo;Tax Organizer Fillable PDF Annual Paperwork Binder with Verified Guide En Es Instant Download&rdquo;</p>
-              <div class="spec"><span><b>68</b> sheets per language, to fill in</span><span>EN · ES only</span><span class="etsy-badge">On Etsy</span></div>
-              <div class="card-foot">
-                <span class="price">$19</span>
-                <a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4612979936">See it on Etsy</a>
-              </div>
-            </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="casa">
               <div class="card-media"><img class="cm-cover" src="img/portada-planificador.webp" width="720" height="405" loading="lazy" decoding="async" alt="Undated Home Planner cover" /><img class="cm-inside" src="img/interior-planificador.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Undated Home Planner" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable planner</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Undated Home Planner</h3>
@@ -2514,9 +2525,9 @@
                 <span class="price">$19</span>
                 <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613238352">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/planificador-hogar">On Gumroad</a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="cuidado">
               <div class="card-media"><img class="cm-cover" src="img/portada-por-si-acaso.webp" width="720" height="405" loading="lazy" decoding="async" alt="Just in Case Binder cover" /><img class="cm-inside" src="img/interior-por-si-acaso.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Just in Case Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Just in Case Binder</h3>
@@ -2528,9 +2539,9 @@
                 <span class="price">$25</span>
                 <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613241276">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-por-si-acaso">On Gumroad</a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
               <div class="card-media"><img class="cm-cover" src="img/portada-presupuesto.webp" width="720" height="405" loading="lazy" decoding="async" alt="Paycheck Budget Planner cover" /><img class="cm-inside" src="img/interior-presupuesto.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Paycheck Budget Planner" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable planner</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Paycheck Budget Planner</h3>
@@ -2542,9 +2553,9 @@
                 <span class="price">$14.99</span>
                 <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613243238">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/presupuesto-sueldo">On Gumroad</a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="cuidado">
               <div class="card-media"><img class="cm-cover" src="img/portada-demencia.webp" width="720" height="405" loading="lazy" decoding="async" alt="Dementia Care Binder cover" /><img class="cm-inside" src="img/interior-demencia.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Dementia Care Binder: the person sheet" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Dementia Care Binder</h3>
@@ -2556,9 +2567,9 @@
                 <span class="price">$19</span>
                 <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613902494">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-demencia">On Gumroad</a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
               <div class="card-media"><img class="cm-cover" src="img/portada-presupuesto-vivo.webp" width="720" height="405" loading="lazy" decoding="async" alt="Living Paycheck Budget cover" /><img class="cm-inside" src="img/interior-presupuesto-vivo.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real tab from the Living Paycheck Budget: the pay periods sheet, with example figures marked as example" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Budget spreadsheet</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Living Paycheck Budget</h3>
@@ -2570,9 +2581,9 @@
                 <span class="price">$19</span>
                 <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613956828/paycheck-budget-spreadsheet-for-google">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/presupuesto-vivo">On Gumroad</a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
               <div class="card-media"><img class="cm-cover" src="img/portada-pequena-empresa.webp" width="720" height="405" loading="lazy" decoding="async" alt="Small Business Binder cover" /><img class="cm-inside" src="img/interior-pequena-empresa.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Small Business Binder: the monthly income register" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Small Business Binder</h3>
@@ -2584,10 +2595,10 @@
                 <span class="price">$19</span>
                 <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4614029488/small-business-binder-income-and-expense">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-pequena-empresa">On Gumroad</a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="cuidado dinero">
               <div class="card-media"><img class="cm-cover" src="img/portada-universidad.webp" width="720" height="405" loading="lazy" decoding="async" alt="Off to College Binder cover" /><img class="cm-inside" src="img/interior-universidad.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Off to College Binder: the FERPA record sheet" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Off to College Binder</h3>
@@ -2599,10 +2610,10 @@
                 <span class="price">$19</span>
                 <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4614643350/off-to-college-binder-documents-for-a">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-universidad">On Gumroad</a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="cuidado dinero">
               <div class="card-media"><img class="cm-cover" src="img/portada-divorcio.webp" width="720" height="405" loading="lazy" decoding="async" alt="Divorce and Custody Paperwork Binder cover" /><img class="cm-inside" src="img/interior-divorcio.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Divorce and Custody Paperwork Binder: the visits and exchanges log sheet" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Printable binder</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Divorce and Custody Paperwork Binder</h3>
@@ -2614,10 +2625,10 @@
                 <span class="price">$19</span>
                 <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4614704552/divorce-and-custody-paperwork-binder">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-divorcio-custodia">On Gumroad</a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
 
-            <article class="card reveal" data-tipo="plantillas">
+            <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
               <div class="card-media"><img class="cm-cover" src="img/portada-conductor.webp" width="720" height="405" loading="lazy" decoding="async" alt="Self-Employed Driver Daily Log Kit cover" /><img class="cm-inside" src="img/interior-conductor.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Self-Employed Driver Daily Log Kit: the week mileage log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind">Driver log kit</span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Self-Employed Driver Daily Log Kit</h3>
@@ -2629,11 +2640,12 @@
                 <span class="price">$19</span>
                 <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4614746855/self-employed-driver-log-kit-mileage-log">See it on Etsy</a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/kit-conductor">On Gumroad</a></span>
               </div>
+              <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
-                <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
           </div>
         </div>
       </section>
+      </div><!-- /#catalogo -->
 
       <!-- ============ NIDO ============ -->
       <section class="block" id="nido">
@@ -2815,17 +2827,29 @@
       </div>
     </footer>
 
+    <!-- ============ BARRA DE COMPRA MÓVIL (SV) ============ -->
+    <div class="sv-bar" id="svBar">
+      <div class="sv-bar-in">
+        <span class="sv-bar-t">
+          <b><span data-l="en">The Complete Collection</span><span data-l="es">La Colección completa</span></b>
+          <small><span data-l="en">All <span data-cf="packs">20</span> packs · <strong>$<span data-cf="precio">59</span></strong>, you pay once</span><span data-l="es">Los <span data-cf="packs">20</span> packs · <strong>$<span data-cf="precio">59</span></strong>, pagas una vez</span></small>
+        </span>
+        <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/coleccion"><span data-l="en">Get it</span><span data-l="es">Conseguirla</span></a>
+        <button class="sv-bar-x" type="button" aria-label="Hide this bar" data-aria-en="Hide this bar" data-aria-es="Ocultar esta barra">&times;</button>
+      </div>
+    </div>
+
     <script>
       /* FUENTE ÚNICA DE CIFRAS: toda cifra de La Colección y el contador de
          productos salen de este bloque. Las sincronizaciones de tienda
          cambian solo estos números y la página entera los sigue. */
       window.SALVORA_DATOS = {
         productos: 36,
-        coleccion: { packs: 20, guias: 957, guiasEn: 371, guiasEs: 371, guiasPt: 215, propios: 11, sumaPropios: 214, nido: 9 }
+        coleccion: { precio: 59, packs: 20, guias: 957, guiasEn: 371, guiasEs: 371, guiasPt: 215, propios: 11, sumaPropios: 214, nido: 9 }
       };
       (function () {
         var d = window.SALVORA_DATOS, c = d.coleccion;
-        var map = { productos: d.productos, packs: c.packs, guias: c.guias, guiasEn: c.guiasEn, guiasEs: c.guiasEs, guiasPt: c.guiasPt, propios: c.propios, sumaPropios: c.sumaPropios, nido: c.nido };
+        var map = { productos: d.productos, precio: c.precio, packs: c.packs, guias: c.guias, guiasEn: c.guiasEn, guiasEs: c.guiasEs, guiasPt: c.guiasPt, propios: c.propios, sumaPropios: c.sumaPropios, nido: c.nido };
         document.querySelectorAll("[data-cf]").forEach(function (el) {
           var k = el.getAttribute("data-cf");
           if (!(k in map)) return;
@@ -3409,30 +3433,90 @@
       })();
     </script>
   
-    <script>
+    <script id="sv-integracion-js">
+      /* SV · integración 2026-11-11: filtros por tipo y por tema, y barra
+         de compra en móvil. Sin librerías. Sin JavaScript el catálogo se ve
+         entero y la barra no aparece. */
       (function () {
-        var botones = document.querySelectorAll(".filtro[data-filtro]");
-        if (!botones.length) return;
-        function aplicar(f) {
-          botones.forEach(function (b) { b.classList.toggle("is-on", b.getAttribute("data-filtro") === f); });
-          document.querySelectorAll("[data-tipo]").forEach(function (c) {
-            var oculta = f !== "todos" && c.getAttribute("data-tipo") !== f;
-            c.classList.toggle("filtro-oculta", oculta);
-            var g = c.nextElementSibling;
-            if (g && g.classList.contains("card-guarantee")) {
-              g.classList.toggle("filtro-oculta", oculta);
+        var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* ---- Filtros: tipo Y tema a la vez ---- */
+        var barra = document.getElementById("filtros");
+        var cat = document.getElementById("catalogo");
+        if (barra && cat) {
+          var bTipo = barra.querySelectorAll(".filtro[data-filtro]");
+          var bTema = barra.querySelectorAll(".filtro[data-tema]");
+          var cards = cat.querySelectorAll("[data-tipo]");
+          var cuenta = document.getElementById("svCount");
+          var estado = { tipo: "todos", tema: "todos" };
+          var pinta = function (mueve) {
+            var n = 0, k = 0;
+            bTipo.forEach(function (b) { var on = b.getAttribute("data-filtro") === estado.tipo; b.classList.toggle("is-on", on); b.setAttribute("aria-pressed", on ? "true" : "false"); });
+            bTema.forEach(function (b) { var on = b.getAttribute("data-tema") === estado.tema; b.classList.toggle("is-on", on); b.setAttribute("aria-pressed", on ? "true" : "false"); });
+            cards.forEach(function (c) {
+              var temas = " " + (c.getAttribute("data-tema") || "") + " ";
+              var ve = (estado.tipo === "todos" || c.getAttribute("data-tipo") === estado.tipo) &&
+                       (estado.tema === "todos" || temas.indexOf(" " + estado.tema + " ") !== -1);
+              c.classList.toggle("filtro-oculta", !ve);
+              var g = c.nextElementSibling;
+              if (g && g.classList.contains("card-guarantee")) g.classList.toggle("filtro-oculta", !ve);
+              c.classList.remove("sv-pop");
+              if (ve) {
+                n++;
+                if (mueve && !reduced && k < 9) { c.style.setProperty("--sv-d", (k * 45) + "ms"); void c.offsetWidth; c.classList.add("sv-pop"); k++; }
+                /* una tarjeta filtrada antes de entrar en pantalla no debe quedarse invisible */
+                if (mueve) c.classList.add("in");
+              }
+            });
+            ["packs", "binders", "etsy"].forEach(function (id) {
+              var sec = document.getElementById(id);
+              if (sec) sec.style.display = sec.querySelectorAll("[data-tipo]:not(.filtro-oculta)").length ? "" : "none";
+            });
+            if (cuenta) {
+              var libre = estado.tipo === "todos" && estado.tema === "todos";
+              cuenta.textContent = "";
+              if (!libre) {
+                var mk = function (lang, txt) { var s = document.createElement("span"); s.setAttribute("data-l", lang); s.appendChild(txt); cuenta.appendChild(s); };
+                var frase = function (antes, despues) { var f = document.createDocumentFragment(); if (antes) f.appendChild(document.createTextNode(antes)); var b = document.createElement("b"); b.textContent = n; f.appendChild(b); f.appendChild(document.createTextNode(despues)); return f; };
+                if (n) { mk("en", frase("", n === 1 ? " product matches." : " products match.")); mk("es", frase("", n === 1 ? " producto coincide." : " productos coinciden.")); }
+                else { mk("en", document.createTextNode("Nothing matches these two filters together.")); mk("es", document.createTextNode("Nada coincide con estos dos filtros juntos.")); }
+                var r = document.createElement("button"); r.type = "button";
+                r.innerHTML = '<span data-l="en">Show everything</span><span data-l="es">Ver todo</span>';
+                r.addEventListener("click", function () { estado.tipo = "todos"; estado.tema = "todos"; pinta(true); });
+                cuenta.appendChild(r);
+              }
             }
-          });
-          ["packs", "binders", "etsy"].forEach(function (id) {
-            var sec = document.getElementById(id);
-            if (!sec) return;
-            var visibles = sec.querySelectorAll("[data-tipo]:not(.filtro-oculta)").length;
-            sec.style.display = visibles ? "" : "none";
-          });
+            if (mueve && cat.getBoundingClientRect().top < 0) cat.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+          };
+          bTipo.forEach(function (b) { b.addEventListener("click", function () { estado.tipo = b.getAttribute("data-filtro"); pinta(true); }); });
+          bTema.forEach(function (b) { b.addEventListener("click", function () { estado.tema = b.getAttribute("data-tema"); pinta(true); }); });
+          /* Las anclas del menú y de la página nunca llevan a una sección
+             escondida por un filtro: si lo está, primero se muestra todo. */
+          document.addEventListener("click", function (e) {
+            var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+            if (!a) return;
+            var dest = document.getElementById(a.getAttribute("href").slice(1));
+            if (dest && cat.contains(dest) && dest.style.display === "none") { estado.tipo = "todos"; estado.tema = "todos"; pinta(false); }
+          }, true);
+          pinta(false);
         }
-        botones.forEach(function (b) {
-          b.addEventListener("click", function () { aplicar(b.getAttribute("data-filtro")); });
-        });
+
+        /* ---- Barra de compra en móvil ---- */
+        var bar = document.getElementById("svBar");
+        var hero = document.querySelector(".hero");
+        if (bar && hero && "IntersectionObserver" in window) {
+          var visto = { hero: true, compra: false, pie: false }, cerrada = false;
+          var pone = function () { bar.classList.toggle("on", !cerrada && !visto.hero && !visto.compra && !visto.pie); };
+          var mira = function (el, clave) {
+            if (!el) return;
+            new IntersectionObserver(function (es) { visto[clave] = es[0].isIntersecting; pone(); }, { threshold: 0 }).observe(el);
+          };
+          mira(hero, "hero");
+          mira(document.querySelector("#collection .featured-buy"), "compra");
+          mira(document.querySelector("footer.site"), "pie");
+          var x = bar.querySelector(".sv-bar-x");
+          if (x) x.addEventListener("click", function () { cerrada = true; pone(); });
+        }
       })();
     </script>
   </body>
