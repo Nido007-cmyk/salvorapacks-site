@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function () {
+        var lang = "en";
+        try {
+          var saved = window.localStorage.getItem("salvora-lang");
+          if (saved === "es" || saved === "en") { lang = saved; }
+          else if ((window.navigator.language || "").toLowerCase().indexOf("es") === 0) { lang = "es"; }
+        } catch (e) {}
+        document.documentElement.classList.add("lang-" + lang);
+        document.documentElement.setAttribute("lang", lang);
+      })();
+    </script>
+    <script>
+      window.SALVORA_DATOS = {
+        libro: { capitulos: 12, acuarelas: 51, voces: 802, edadMin: 5, edadMax: 9 }
+      };
+    </script>
+    <title>Aprendo a cuidarme · SALVORA PACKS</title>
+    <meta name="description" content="Aprendo a cuidarme (I learn to keep myself safe): our interactive safety book for children ages 5 to 9, narrated in Spanish and English. Every chapter teaches one whole action and closes with: I know what to do. Play the first chapter free here." />
+    <link rel="canonical" href="https://salvorapacks.com/aprendo-a-cuidarme.html" />
+    <link href="/fonts/fonts.css" rel="stylesheet" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SALVORA PACKS" />
+    <meta property="og:title" content="Aprendo a cuidarme · SALVORA PACKS" />
+    <meta property="og:description" content="Our interactive safety book for children, narrated in Spanish and English. Play the first chapter free here." />
+    <meta property="og:url" content="https://salvorapacks.com/aprendo-a-cuidarme.html" />
+    <meta property="og:image" content="https://salvorapacks.com/img/portada-libro-infantil.webp" />
+    <meta property="og:image:width" content="880" />
+    <meta property="og:image:height" content="587" />
+    <meta property="og:image:alt" content="Watercolor cover of the first chapter of Aprendo a cuidarme: a small house and Luz, the gold star who guides the book" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aprendo a cuidarme · SALVORA PACKS" />
+    <meta name="twitter:description" content="Our interactive safety book for children, narrated in Spanish and English. Play the first chapter free here." />
+    <meta name="twitter:image" content="https://salvorapacks.com/img/portada-libro-infantil.webp" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "Aprendo a cuidarme",
+  "alternateName": "I learn to keep myself safe",
+  "inLanguage": ["es", "en"],
+  "url": "https://salvorapacks.com/aprendo-a-cuidarme.html",
+  "image": "https://salvorapacks.com/img/portada-libro-infantil.webp",
+  "author": { "@type": "Organization", "name": "SALVORA PACKS", "url": "https://salvorapacks.com/" }
+}
+    </script>
+    <style>
+      :root { --ink:#15222b; --ink-deep:#0f191f; --ink-panel:#1b2c38; --line:#2e4553; --line-gold:#6d5a24; --gold:#c9a24b; --gold-bright:#e6c877; --on-gold:#101a21; --text:#eef2f0; --text-dim:#b3c0c6; --text-faint:#8a9ea8; --serif:"Spectral", Georgia, serif; --display:"Fraunces", "Spectral", Georgia, serif; --sans:"Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin:0; background:var(--ink); color:var(--text); font-family:var(--sans); font-size:17px; line-height:1.65; }
+      html.lang-en [data-l="es"] { display:none !important; }
+      html.lang-es [data-l="en"] { display:none !important; }
+      .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px 64px; }
+      header.site { border-bottom: 1px solid var(--line); }
+      .head-in { max-width: 820px; margin: 0 auto; padding: 18px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+      .brand { font-family: var(--serif); font-weight:700; font-size:20px; color:var(--text); text-decoration:none; }
+      .lang-switch { display:inline-flex; border:1px solid var(--line-gold); border-radius:999px; overflow:hidden; }
+      .lang-switch button { background:transparent; color:var(--text-dim); border:0; cursor:pointer; font:inherit; font-weight:600; padding:8px 14px; }
+      .lang-switch button[aria-pressed="true"] { background:var(--gold); color:#101a21; }
+      h1 { font-family: var(--display); font-weight:560; font-size: clamp(34px, 6vw, 50px); line-height:1.1; margin: 38px 0 6px; }
+      .eff { color: var(--text-faint); margin: 0 0 26px; }
+      h2 { font-family: var(--serif); font-size: 23px; font-weight:600; margin: 34px 0 10px; }
+      p, li { color: var(--text-dim); }
+      a { color: var(--gold-bright); }
+      .cover { border: 1px solid var(--line-gold); border-radius: 10px; overflow: hidden; background: var(--ink-deep); margin: 0 0 28px; }
+      .cover img { width: 100%; height: auto; display: block; }
+      .stats { display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 26px 0 6px; }
+      .stat { border: 1px solid var(--line); border-radius: 10px; padding: 16px 14px; background: var(--ink-panel); }
+      .stat b { display:block; font-family: var(--display); font-size: 34px; font-weight: 600; color: var(--gold-bright); line-height: 1.05; }
+      .stat span.lbl { font-size: 13.5px; color: var(--text-faint); line-height: 1.4; display:block; margin-top: 4px; }
+      .how { margin: 0; padding-left: 22px; }
+      .how li { margin-bottom: 10px; }
+      .how strong { color: var(--text); }
+      ol.chapters { margin: 0; padding-left: 24px; columns: 2; column-gap: 44px; }
+      ol.chapters li { margin-bottom: 8px; break-inside: avoid; }
+      .cta-row { display:flex; flex-wrap:wrap; gap: 14px; margin: 20px 0 6px; }
+      .btn { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; font-weight: 700; font-size: 16px; padding: 13px 24px; border-radius: 8px; border: 1px solid transparent; }
+      .btn-gold { background: var(--gold); color: var(--on-gold); }
+      .btn-gold:hover { background: var(--gold-bright); }
+      .btn-ghost { border-color: var(--line-gold); color: var(--gold-bright); background: transparent; }
+      .btn-ghost:hover { border-color: var(--gold); }
+      .note { border-left: 3px solid var(--gold); padding: 4px 0 4px 16px; margin: 26px 0; }
+      .note p { margin: 0 0 8px; }
+      .ai-note { font-size: 14.5px; color: var(--text-faint); border-top: 1px solid var(--line); padding-top: 18px; margin-top: 36px; }
+      footer.site { border-top: 1px solid var(--line); margin-top: 44px; }
+      .foot-in { max-width: 820px; margin: 0 auto; padding: 26px 24px 40px; }
+      .foot-in ul { list-style:none; margin:0 0 16px; padding:0; display:flex; flex-wrap:wrap; gap:8px 24px; }
+      .foot-in p { font-size: 14px; color: var(--text-faint); }
+      @media (max-width: 620px) {
+        .stats { grid-template-columns: repeat(2, 1fr); }
+        ol.chapters { columns: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site"><div class="head-in">
+      <a class="brand" href="/">SALVORA PACKS</a>
+      <span class="lang-switch"><button type="button" id="pageLangEn" aria-pressed="true">EN</button><button type="button" id="pageLangEs" aria-pressed="false">ES</button></span>
+    </div></header>
+    <main class="wrap">
+      <h1><span data-l="en">I learn to keep myself safe</span><span data-l="es">Aprendo a cuidarme</span></h1>
+      <p class="eff"><span data-l="en">Our interactive safety book for children, with Luz.</span><span data-l="es">Nuestro libro interactivo de seguridad para niños, con Luz.</span></p>
+
+      <figure class="cover" style="margin-top:0">
+        <img src="/img/portada-libro-infantil.webp" width="880" height="587" alt="Watercolor cover of the first chapter of Aprendo a cuidarme: a small house and Luz, the gold star who guides the book" data-alt-en="Watercolor cover of the first chapter of Aprendo a cuidarme: a small house and Luz, the gold star who guides the book" data-alt-es="Portada en acuarela del primer capítulo de Aprendo a cuidarme: una casita y Luz, la estrella dorada que guía el libro" />
+      </figure>
+
+      <div data-l="en">
+        <p>We built this book so a child can learn what to do before a hard moment arrives. Every chapter starts with a situation a child can meet at home, at school or outside, teaches the whole action step by step, and ends with the child practicing it in order and closing with the line: I know what to do.</p>
+        <p>Luz, a small gold star, guides every page. The book is read aloud in Spanish and in English, so a child who is still learning to read can follow it all by ear. On each scene the child touches the objects that matter, and on the practice screen puts the steps and the help phrase in their right order. Nothing moves on until the action is complete.</p>
+      </div>
+      <div data-l="es">
+        <p>Hicimos este libro para que un niño aprenda qué hacer antes de que llegue un momento difícil. Cada capítulo empieza con una situación que un niño puede encontrarse en casa, en la escuela o fuera, enseña la acción completa paso a paso y cierra con el niño practicándola en orden y diciendo la frase: yo sé qué hacer.</p>
+        <p>Luz, una estrella dorada chica, guía cada página. El libro se lee en voz alta en español y en inglés, para que un niño que todavía está aprendiendo a leer pueda seguirlo todo de oído. En cada escena el niño toca los objetos que importan, y en la pantalla de práctica pone los pasos y la frase de ayuda en su orden. Nada avanza hasta que la acción queda completa.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b data-cf="capitulos">12</b><span class="lbl"><span data-l="en">chapters of safety practice</span><span data-l="es">capítulos de práctica de seguridad</span></span></div>
+        <div class="stat"><b data-cf="acuarelas">51</b><span class="lbl"><span data-l="en">watercolors painted for the book</span><span data-l="es">acuarelas pintadas para el libro</span></span></div>
+        <div class="stat"><b data-cf="voces">802</b><span class="lbl"><span data-l="en">narrated voices, in Spanish and English</span><span data-l="es">voces narradas, en español y en inglés</span></span></div>
+        <div class="stat"><b><span data-cf="edadMin">5</span> to <span data-cf="edadMax">9</span></b><span class="lbl"><span data-l="en">the ages the book is made for</span><span data-l="es">las edades para las que está hecho el libro</span></span></div>
+      </div>
+
+      <h2><span data-l="en">How each chapter works</span><span data-l="es">Cómo funciona cada capítulo</span></h2>
+      <div data-l="en">
+        <ul class="how">
+          <li><strong>Listen first.</strong> The narration plays and the scene stays still, so the teaching comes before any question.</li>
+          <li><strong>Then touch and practice.</strong> The object that matters lights up, the child touches it and hears its bubble, and later repeats the whole action in order on the practice screen.</li>
+          <li><strong>And say it.</strong> Each chapter teaches the help phrase (who I am, where I am, what is happening) and closes when the child can say: I know what to do.</li>
+        </ul>
+      </div>
+      <div data-l="es">
+        <ul class="how">
+          <li><strong>Primero se escucha.</strong> La narración suena y la escena se queda quieta, para que la enseñanza vaya antes que cualquier pregunta.</li>
+          <li><strong>Después se toca y se practica.</strong> El objeto que importa se ilumina, el niño lo toca y escucha su burbuja, y después repite la acción completa en orden en la pantalla de práctica.</li>
+          <li><strong>Y se dice.</strong> Cada capítulo enseña la frase de ayuda (quién soy, dónde estoy, qué está pasando) y cierra cuando el niño puede decir: yo sé qué hacer.</li>
+        </ul>
+      </div>
+
+      <h2><span data-l="en">The twelve chapters</span><span data-l="es">Los doce capítulos</span></h2>
+      <div data-l="en">
+        <ol class="chapters">
+          <li>When the smoke alarm sounds</li>
+          <li>I get lost in a busy place</li>
+          <li>Someone asks me to go with them</li>
+          <li>Monsoon: lightning, running water and dust</li>
+          <li>Desert heat and the hot car</li>
+          <li>Earthquake: drop, cover, hold on</li>
+          <li>Tornado or very strong wind: the safe room</li>
+          <li>Water and pools: never alone</li>
+          <li>If someone gets hurt</li>
+          <li>Pills and bottles I do not touch</li>
+          <li>A dog I do not know</li>
+          <li>Crossing the street</li>
+        </ol>
+      </div>
+      <div data-l="es">
+        <ol class="chapters">
+          <li>Si suena la alarma de humo</li>
+          <li>Me pierdo en un lugar con gente</li>
+          <li>Alguien me pide que vaya con él</li>
+          <li>Monzón: rayos, agua que corre y polvo</li>
+          <li>Calor del desierto y el coche caliente</li>
+          <li>Terremoto: agacharse, cubrirse, agarrarse</li>
+          <li>Tornado o viento muy fuerte: el cuarto seguro</li>
+          <li>Agua y piscinas: nunca solo</li>
+          <li>Si alguien se lastima</li>
+          <li>Pastillas y botes que no se tocan</li>
+          <li>Un perro que no conozco</li>
+          <li>Cruzar la calle</li>
+        </ol>
+      </div>
+
+      <h2><span data-l="en">No account, no connection</span><span data-l="es">Sin cuenta y sin conexión</span></h2>
+      <div data-l="en">
+        <p>The book plays right in the browser. It asks for no account and no sign up, and once it is open on a device it keeps working with no connection. When a child has practiced all twelve chapters, the book opens a certificate with the child's name on it, signed by the adult who stayed close.</p>
+      </div>
+      <div data-l="es">
+        <p>El libro se juega en el navegador mismo. No pide cuenta ni registro, y una vez abierto en un aparato sigue funcionando sin conexión. Cuando un niño ha practicado los doce capítulos, el libro abre un certificado con su nombre, firmado por el adulto que lo acompañó.</p>
+      </div>
+
+      <h2><span data-l="en">Play the first chapter free</span><span data-l="es">Juega gratis el primer capítulo</span></h2>
+      <div data-l="en">
+        <p>The first chapter, When the smoke alarm sounds, lives here on the site, whole and free. Open it and play it with your child, in Spanish or in English, with all its voices.</p>
+      </div>
+      <div data-l="es">
+        <p>El primer capítulo, Si suena la alarma de humo, vive aquí en la web, entero y gratis. Ábrelo y juégalo con tu niño, en español o en inglés, con todas sus voces.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="/prueba-libro-7h3x/"><span data-l="en">Play the free chapter</span><span data-l="es">Jugar el capítulo gratis</span></a>
+        <a class="btn btn-ghost" href="/"><span data-l="en">Back to the shop page</span><span data-l="es">Volver a la página de la tienda</span></a>
+      </div>
+
+      <div class="note">
+        <div data-l="en">
+          <p>The full book is coming soon. When its sale is decided, this page will say where to find it.</p>
+          <p>A note from us: this book is for learning and practicing together. In a real emergency, get an adult and call your local emergency number. See also our <a href="/aviso-salud-emergencias.html">health and emergency notice</a>.</p>
+        </div>
+        <div data-l="es">
+          <p>El libro completo llega pronto. Cuando su venta esté decidida, esta página dirá dónde encontrarlo.</p>
+          <p>Una nota nuestra: este libro es para aprender y practicar juntos. En una emergencia de verdad, busca a un adulto y llama al número de emergencias de tu lugar. Mira también nuestro <a href="/aviso-salud-emergencias.html">aviso de salud y emergencias</a>.</p>
+        </div>
+      </div>
+
+      <p class="ai-note"><span data-l="en">Designed by the seller with AI assistance. The watercolors and the voices were produced with AI tools under the seller's direction, and every chapter was checked and played from start to finish before this page went up.</span><span data-l="es">Diseñado por el vendedor con ayuda de IA. Las acuarelas y las voces se produjeron con herramientas de IA bajo la dirección del vendedor, y cada capítulo fue cotejado y jugado de principio a fin antes de publicar esta página.</span></p>
+    </main>
+    <footer class="site"><div class="foot-in">
+      <ul>
+        <li><a href="/terminos.html"><span data-l="en">Terms of sale and use</span><span data-l="es">Términos de venta y de uso</span></a></li>
+        <li><a href="/privacidad.html"><span data-l="en">Privacy policy</span><span data-l="es">Política de privacidad</span></a></li>
+        <li><a href="/reembolsos.html"><span data-l="en">Refund policy</span><span data-l="es">Política de reembolsos</span></a></li>
+        <li><a href="/licencias.html"><span data-l="en">Licenses</span><span data-l="es">Licencias</span></a></li>
+        <li><a href="/aviso-salud-emergencias.html"><span data-l="en">Health and emergency notice</span><span data-l="es">Aviso de salud y emergencias</span></a></li>
+        <li><a href="/quien-esta-detras.html"><span data-l="en">Who is behind SALVORA PACKS</span><span data-l="es">Quién está detrás de SALVORA PACKS</span></a></li>
+      </ul>
+      <p><span data-l="en">SALVORA PACKS · Tucson, Arizona · Support: soporte@salvorapacks.com</span><span data-l="es">SALVORA PACKS · Tucson, Arizona · Soporte: soporte@salvorapacks.com</span></p>
+      <p><a href="/"><span data-l="en">Back to the shop page</span><span data-l="es">Volver a la página de la tienda</span></a></p>
+    </div></footer>
+    <script>
+      (function () {
+        var d = window.SALVORA_DATOS && window.SALVORA_DATOS.libro;
+        if (d) {
+          document.querySelectorAll("[data-cf]").forEach(function (el) {
+            var k = el.getAttribute("data-cf");
+            if (k in d) el.textContent = d[k];
+          });
+        }
+      })();
+    </script>
+    <script>
+      (function () {
+        var en = document.getElementById("pageLangEn"), es = document.getElementById("pageLangEs");
+        function setPageLang(lang) {
+          if (lang !== "es") lang = "en";
+          document.documentElement.classList.remove("lang-en", "lang-es");
+          document.documentElement.classList.add("lang-" + lang);
+          document.documentElement.setAttribute("lang", lang);
+          try { window.localStorage.setItem("salvora-lang", lang); } catch (e) {}
+          if (en) en.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+          if (es) es.setAttribute("aria-pressed", lang === "es" ? "true" : "false");
+          document.querySelectorAll("img[data-alt-en]").forEach(function (img) {
+            var v = img.getAttribute(lang === "es" ? "data-alt-es" : "data-alt-en");
+            if (v) img.setAttribute("alt", v);
+          });
+        }
+        if (en) en.addEventListener("click", function () { setPageLang("en"); });
+        if (es) es.addEventListener("click", function () { setPageLang("es"); });
+        setPageLang(document.documentElement.classList.contains("lang-es") ? "es" : "en");
+      })();
+    </script>
+  </body>
+</html>
