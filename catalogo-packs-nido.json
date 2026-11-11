@@ -1,8 +1,8 @@
 {
- "descripcion": "Catálogo de packs de guías de SALVORA PACKS para la sugerencia de pack dentro de NIDO (fase 6 del plan de la web) y para Claude, que pidió la lista de packs con sus temas y el enlace de compra de cada uno.",
+ "descripcion": "Archivo de datos en formato JSON con el catálogo de packs de guías de SALVORA PACKS: de cada pack, su nombre, su precio, su estado, sus idiomas, el número de guías por idioma, sus temas y su enlace de compra. Es un archivo pensado para programas, no para lectura directa: lo lee la sugerencia de packs de la app NIDO para ofrecer el pack que encaja con cada guía.",
  "fecha": "2026-11-11",
- "fuentes": "Precios, estados y nombres: INDICE.md dentro de salvora-para-claude-parte-1.zip (paquete de auditoría cerrado el 2026-11-10). Enlace de compra: el índice declara que cada carpeta lleva el nombre corto de su dirección de Gumroad, y los destinos vivos se verificaron uno por uno en el acta de la fase 0 y los conteos de La Colección se recomputaron desde las tarjetas vivas en el cierre de la fase 6 (2026-11-11). Idiomas y guías por idioma: conteo directo de los ficheros de lectura (lectura-reading) dentro de cada zip de venta, contando los títulos numerados de guía; coincide con las fichas en los casos comprobados (Emergencias 23 por idioma, Mascotas 22, Desastres 24, Calor 24, Reparaciones 22). Edición fusionada el 2026-11-11: las entradas del Esencial y de La Colección plegadas desde el catálogo de Claude (auditoría de integración del 2026-11-10), con La Colección actualizada a su v16 (20 packs, 957 guías: 371 EN, 371 ES, 215 PT).",
- "alcance": "Solo packs de guías y paquetes. Libros, audios, plantillas y kits quedan fuera a propósito: la sugerencia dentro de la app es sobre guías.",
+ "fuentes": "Los nombres, los precios y los estados son los de la tienda en Gumroad. Los idiomas y el número de guías salen del contenido de cada pack, tal como se vende.",
+ "alcance": "Solo packs de guías. Los libros, los audios, las plantillas y los kits no forman parte de este archivo.",
  "packs": [
   {
    "id": "esencial",
