@@ -912,11 +912,40 @@
       .fp { margin: 14px 0 4px; padding: 14px 16px; background: var(--ink-deep); border: 1px solid var(--line-gold); border-radius: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; line-height: 1.7; word-break: break-all; color: var(--gold-bright); }
       .help-list { margin: 12px 0 0; padding-left: 20px; color: var(--text-dim); display: grid; gap: 8px; line-height: 1.6; }
       .install-back { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+      /* ---------- Arreglo página de producto 2026-11-11: portada contenida
+         y fila de compra que nunca se solapa ----------
+         La .card-media nació para vivir dentro de una .card con 26px de
+         padding, sangrando hasta sus bordes con márgenes de -26px. Suelta en
+         <main>, ese mismo margen la montaba sobre el enlace de vuelta y la
+         sacaba de la pantalla por los dos lados. Contenida, manda su marco. */
+      main > .card-media {
+        margin: 0 0 18px; width: 100%; max-width: 720px;
+        border-radius: var(--radius);
+      }
+      main > .card-media > img { width: 100%; height: 100%; }
+
+      /* La fila precio + botones de esta página lleva dos botones (en las
+         tarjetas del índice va uno solo). Sin salto de línea, la fila
+         aplastaba el precio hasta dejar su texto bajo el botón dorado.
+         El precio queda fijo a su ancho natural y los botones envuelven
+         en orden si no caben, sin invadir nunca al vecino. */
+      main .card-foot { flex-wrap: wrap; }
+      main .card-foot .price { flex: none; }
+      main .card-foot .btn {
+        max-width: 100%; white-space: normal; text-align: center;
+      }
+      @media (max-width: 620px) {
+        main .card-foot .btn {
+          flex: 1 1 auto; min-width: min(220px, 100%);
+          justify-content: center;
+        }
+      }
     </style>
   </head>
   <body>
-    <header class="site-head">
-      <div class="wrap head-in">
+    <header class="site">
+      <div class="wrap header-in">
         <a class="brand" href="../index.html" aria-label="SALVORA PACKS, home">SALVORA PACKS</a>
         <div class="lang-switch" role="group" aria-label="Language">
           <button type="button" id="pageLangEn">EN</button>
