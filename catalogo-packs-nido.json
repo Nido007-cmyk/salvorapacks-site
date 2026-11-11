@@ -529,7 +529,7 @@
   },
   {
    "id": "coleccion",
-   "nombre": "La Colección completa (v16)",
+   "nombre": "La Colección completa (v17)",
    "precio": "$59",
    "estado": "En venta",
    "enlace_compra": "https://salvorapacks.gumroad.com/l/coleccion",
@@ -544,8 +544,8 @@
     "pt": 215
    },
    "temas_es": [],
-   "guias_nota": "Total de la v16 recomputado en su acta de fusión del 2026-11-11: 957 guías en 20 packs (371 EN, 371 ES, 215 PT). El conteo automático por títulos de lectura solo cubre los packs con formato SALVORA y da menos; manda la cifra del acta.",
-   "temas_nota": "Es el conjunto de los 20 packs: los 9 del catálogo de NIDO (el Esencial, que también se vende suelto, y 8 que no se venden sueltos: Local, Hogar, Niños, Crisis, Desastres, Sin servicios, Campo y Viaje) y los 11 packs propios de SALVORA de este catálogo (todos los packs de guías sueltos, incluido Frío extremo y nieve). No incluye los packs de Embarazo y Primer año del bebé, que van en el Paquete Familia. Desde la v16 los 8 packs de NIDO que no se venden sueltos traen su edición legible (lectura-reading: 24 PDF, 24 Markdown y 8 LEEME)."
+   "guias_nota": "Total de la v17: 957 guías en 20 packs (371 en inglés, 371 en español y 215 en portugués).",
+   "temas_nota": "Es el conjunto de los 20 packs: los 9 del catálogo de NIDO (el Esencial, que también se vende suelto, y 8 que no se venden sueltos: Local, Hogar, Niños, Crisis, Desastres, Sin servicios, Campo y Viaje) y los 11 packs propios de SALVORA de este catálogo (todos los packs de guías sueltos, incluido Frío extremo y nieve). No incluye los packs de Embarazo y Primer año del bebé, que van en el Paquete Familia. Desde la v17 los 8 packs de NIDO que no se venden sueltos traen su edición legible (lectura-reading: 24 PDF, 24 Markdown y 8 LEEME)."
   },
   {
    "id": "paquete-familia",

@@ -1422,7 +1422,7 @@
       @media (max-width: 620px) { .foot-legal { grid-template-columns: 1fr; gap: 26px; } }
 
 
-      section[id], .q-card, #quizResults { scroll-margin-top: 76px; }
+      section[id], .q-card, #quizResults { scroll-margin-top: 96px; }
 
       /* ---------- Arizona origin ---------- */
       .brand-copper { margin-left: -17px; margin-top: 21px; flex: none; }
@@ -1598,7 +1598,7 @@
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
-        #ready .q-card, #quizResults { scroll-margin-top: 84px; }
+        #ready .q-card, #quizResults { scroll-margin-top: 96px; }
         .hero-star svg, .hero-glow, .hero.fx-in .hero-star svg, .hero.fx-in .hero-glow { animation: none; }
         .btn-gold::after { display: none; }
         .card, .btn, .header-in, .bo-switch::after { transition: none; }
@@ -1793,7 +1793,7 @@
       .sv-count button { font: inherit; font-weight: 700; color: var(--gold-bright); background: none; border: 0; border-bottom: 1px solid var(--line-gold); padding: 0 0 1px; margin-left: 10px; cursor: pointer; }
       @media (min-width: 961px) {
         .sv-filtros { position: sticky; top: 64px; z-index: 30; border-bottom: 1px solid var(--line); }
-        #catalogo section[id] { scroll-margin-top: 190px; }
+        #catalogo section[id] { scroll-margin-top: 212px; }
       }
       @media (max-width: 620px) {
         .sv-fl { min-width: 0; width: 100%; }
@@ -1815,6 +1815,12 @@
       .figure b span { font-size: inherit; letter-spacing: inherit; text-transform: none; color: inherit; }
 
       @media print { .sv-bar, .sv-filtros { display: none !important; } }
+      /* Corrección de la auditoría 2026-11-11: en escritorio ancho los textos
+         de la cabecera no se parten en dos líneas. */
+      @media (min-width: 1100px) {
+        nav.main a { white-space: nowrap; flex: none; padding-left: 10px; padding-right: 10px; }
+        nav.main a.nav-cta { padding-left: 16px; padding-right: 16px; }
+      }
       @media (prefers-reduced-motion: reduce) {
         h1 em { animation: none; background-size: 100% 0.07em; }
         .sv-bar, .sv-bar.on, .sv-filtros .filtro { transition: none; }
@@ -1973,7 +1979,7 @@
             <p class="sec-kicker"><span data-l="en">Free tool</span><span class="lg-sep"> · </span><span data-l="es">Herramienta gratis</span></p>
             <h2 id="quizTitle">Is your home ready?</h2>
             <p id="quizIntro">Twelve questions and a few honest minutes. At the end you get your gaps in plain order, worst first, each one with the official source behind it and the product that covers it, if you want it.</p>
-            <p class="quiz-privacy" id="quizPrivacy">Your answers stay in this browser. Nothing is sent, saved or tracked.</p>
+            <p class="quiz-privacy" id="quizPrivacy">Your answers stay in this browser, saved only on this device so they survive a reload. Nothing is sent or tracked.</p>
           </div>
           <div class="quiz-shell reveal">
             <div class="quiz-top">
@@ -2395,11 +2401,11 @@
       </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="cuidado">
-              <div class="card-media"><img class="cm-cover" src="img/portada-paquete-familia.webp" width="720" height="405" loading="lazy" decoding="async" alt="Family Bundle cover" /><img class="cm-inside" src="img/interior-paquete-familia.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Family Bundle readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-paquete-familia.webp" width="720" height="405" loading="lazy" decoding="async" alt="Family Bundle cover" data-alt-en="Family Bundle cover" data-alt-es="Portada del Paquete Familia" /><img class="cm-inside" src="img/interior-paquete-familia.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Family Bundle readable edition" data-alt-en="A real page from the Family Bundle readable edition" data-alt-es="Una página real de la edición legible del Paquete Familia" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack bundle</span><span data-l="es">Paquete combinado de guías</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Family Bundle</h3>
               <p class="es-name" data-l="es">Paquete Familia</p>
-              <p class="desc">Two packs in one download, from the positive test to the first birthday: Pregnancy Week by Week and Your Baby's First Year, written from official health sources and checked line by line.</p>
+              <p class="desc"><span data-l="en">Two packs in one download, from the positive test to the first birthday: Pregnancy Week by Week and Your Baby's First Year, written from official health sources and checked line by line.</span><span data-l="es">Dos packs en una sola descarga, desde la prueba positiva hasta el primer cumpleaños: Embarazo semana a semana y El primer año del bebé, escritos desde fuentes oficiales de salud y cotejados línea por línea.</span></p>
               <div class="spec"><span><b>98</b> <span data-l="en">guides</span><span data-l="es">guías</span></span><span><span data-l="en">Works offline</span><span data-l="es">Funciona sin conexión</span></span></div>
               <div class="card-foot">
                 <span class="price">$49</span>
@@ -2411,11 +2417,11 @@
       </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="casa emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-paquete-cocina.webp" width="720" height="405" loading="lazy" decoding="async" alt="Kitchen Bundle cover" /><img class="cm-inside" src="img/interior-paquete-cocina.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Kitchen Bundle readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-paquete-cocina.webp" width="720" height="405" loading="lazy" decoding="async" alt="Kitchen Bundle cover" data-alt-en="Kitchen Bundle cover" data-alt-es="Portada del Paquete Cocina" /><img class="cm-inside" src="img/interior-paquete-cocina.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Kitchen Bundle readable edition" data-alt-en="A real page from the Kitchen Bundle readable edition" data-alt-es="Una página real de la edición legible del Paquete Cocina" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack bundle</span><span data-l="es">Paquete combinado de guías</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Kitchen Bundle</h3>
               <p class="es-name" data-l="es">Paquete Cocina</p>
-              <p class="desc">Three packs in one download, the whole food chain of the house: Family Disaster Preparedness, Food Preservation and Home Emergencies, written from official sources and checked line by line.</p>
+              <p class="desc"><span data-l="en">Three packs in one download, the whole food chain of the house: Family Disaster Preparedness, Food Preservation and Home Emergencies, written from official sources and checked line by line.</span><span data-l="es">Tres packs en una sola descarga, toda la cadena de alimentos de la casa: Preparación familiar ante desastres, Conservación de alimentos y Emergencias en casa, escritos desde fuentes oficiales y cotejados línea por línea.</span></p>
               <div class="spec"><span><b>189</b> <span data-l="en">guides</span><span data-l="es">guías</span></span><span><span data-l="en">Works offline</span><span data-l="es">Funciona sin conexión</span></span></div>
               <div class="card-foot">
                 <span class="price">$49</span>
@@ -2764,13 +2770,13 @@
               <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
             <article class="card reveal" data-tipo="plantillas" data-tema="cuidado">
-              <div class="card-media"><img class="cm-cover" src="img/portada-demencia.webp" width="720" height="405" loading="lazy" decoding="async" alt="Dementia Care Binder cover" /><img class="cm-inside" src="img/interior-demencia.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Dementia Care Binder: the person sheet" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-demencia.webp" width="720" height="405" loading="lazy" decoding="async" alt="Dementia Care Binder cover" data-alt-en="Dementia Care Binder cover" data-alt-es="Portada de la Carpeta de demencia" /><img class="cm-inside" src="img/interior-demencia.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Dementia Care Binder: the person sheet" data-alt-en="A real sheet from the Dementia Care Binder: the person sheet" data-alt-es="Una hoja real de la Carpeta de demencia: la hoja de la persona" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Dementia Care Binder</h3>
               <p class="es-name" data-l="es">Carpeta de demencia</p>
-              <p class="desc">The binder for caring for a loved one with dementia at home: their routines, their safety, their communication, the changes you observe and the papers of their care, in ten sections, with a reading companion inside. Every line is written from the official guidance cited inside and checked against it.</p>
+              <p class="desc"><span data-l="en">The binder for caring for a loved one with dementia at home: their routines, their safety, their communication, the changes you observe and the papers of their care, in ten sections, with a reading companion inside. Every line is written from the official guidance cited inside and checked against it.</span><span data-l="es">La carpeta para cuidar en casa a un ser querido con demencia: sus rutinas, su seguridad, su comunicación, los cambios que observas y los papeles de su cuidado, en diez secciones, con compañero de lectura dentro. Cada línea está escrita desde la guía oficial citada dentro y cotejada contra ella.</span></p>
               <p class="listing-title">On Etsy: &ldquo;Dementia Care Binder: Routines, Safety, Communication and Daily Care Records. 57 Fillable Sheets in English and Spanish&rdquo;</p>
-              <div class="spec"><span><b>57</b> <span data-l="en">fillable sheets</span><span data-l="es">hojas rellenables</span></span><span>With reading companion</span><span class="etsy-badge"><span data-l="en">On Etsy</span><span data-l="es">En Etsy</span></span></div>
+              <div class="spec"><span><b>57</b> <span data-l="en">fillable sheets</span><span data-l="es">hojas rellenables</span></span><span><span data-l="en">With reading companion</span><span data-l="es">Con compañero de lectura</span></span><span class="etsy-badge"><span data-l="en">On Etsy</span><span data-l="es">En Etsy</span></span></div>
               <div class="card-foot">
                 <span class="price">$19</span>
                 <span class="card-btns"><a class="btn btn-gold btn-sm" href="https://www.etsy.com/listing/4613902494"><span data-l="en">See it on Etsy</span><span data-l="es">Verlo en Etsy</span></a> <a class="btn btn-ghost btn-sm" href="https://salvorapacks.gumroad.com/l/carpeta-demencia"><span data-l="en">On Gumroad</span><span data-l="es">En Gumroad</span></a></span>
@@ -3375,7 +3381,7 @@
         var QUIZ_UI = {
           en: { title: "Is your home ready?",
                 intro: "Twelve questions and a few honest minutes. At the end you get your gaps in plain order, worst first, each one with the official source behind it and the product that covers it, if you want it.",
-                privacy: "Your answers stay in this browser. Nothing is sent, saved or tracked.",
+                privacy: "Your answers stay in this browser, saved only on this device so they survive a reload. Nothing is sent or tracked.",
                 yes: "Yes", no: "No", dk: "Not sure",
                 answered: "answered", see: "See my list", clear: "Clear my answers",
                 resTitle: "Your list, worst first",
@@ -3388,7 +3394,7 @@
                 print: "Print or save my list" },
           es: { title: "¿Tu casa está lista?",
                 intro: "Doce preguntas y unos minutos honestos. Al final recibes tus huecos en orden claro, lo peor primero, cada uno con la fuente oficial que lo respalda y el producto que lo cubre, si lo quieres.",
-                privacy: "Tus respuestas se quedan en este navegador: no se envían, no se guardan y no se rastrean.",
+                privacy: "Tus respuestas se quedan en este navegador, guardadas solo en este aparato para que sobrevivan a una recarga. No se envían ni se rastrean.",
                 yes: "Sí", no: "No", dk: "No lo sé",
                 answered: "respondidas", see: "Ver mi lista", clear: "Borrar mis respuestas",
                 resTitle: "Tu lista, lo peor primero",
@@ -3402,6 +3408,9 @@
         };
         var quizLang = "en";
         var quizAnswers = {};
+        var QUIZ_STORE = "salvora-ready";
+        function quizSave() { try { window.localStorage.setItem(QUIZ_STORE, JSON.stringify(quizAnswers)); } catch (e) {} }
+        (function () { try { var rawA = window.localStorage.getItem(QUIZ_STORE); if (rawA) { var savedA = JSON.parse(rawA); if (savedA && typeof savedA === "object") { Object.keys(savedA).forEach(function (k) { var idxA = Number(k); if (idxA >= 0 && idxA < 12 && (savedA[k] === "yes" || savedA[k] === "no" || savedA[k] === "dk")) quizAnswers[idxA] = savedA[k]; }); } } } catch (e) {} })();
         var quizBox = document.getElementById("quizQuestions");
         function quizRender() {
           var ui = QUIZ_UI[quizLang];
@@ -3438,6 +3447,7 @@
               if (quizAnswers[i] === pair[0]) inp.checked = true;
               inp.addEventListener("change", function () {
                 quizAnswers[i] = pair[0];
+                quizSave();
                 fs.classList.add("answered");
                 if (!reduced) {
                   fs.classList.remove("pulse");
@@ -3540,6 +3550,7 @@
           });
           document.getElementById("quizClear").addEventListener("click", function () {
             quizAnswers = {};
+            try { window.localStorage.removeItem(QUIZ_STORE); } catch (e) {}
             document.getElementById("quizResults").hidden = true;
             quizRender();
           });
