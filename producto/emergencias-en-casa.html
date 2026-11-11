@@ -1,0 +1,1098 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function () {
+        var lang = "en";
+        try {
+          var saved = window.localStorage.getItem("salvora-lang");
+          if (saved === "es" || saved === "en") { lang = saved; }
+          else if ((window.navigator.language || "").toLowerCase().indexOf("es") === 0) { lang = "es"; }
+        } catch (e) {}
+        document.documentElement.classList.add("lang-" + lang);
+        document.documentElement.setAttribute("lang", lang);
+      })();
+    </script>
+    <meta name="description" content="Home Emergencies, the SALVORA star pack: 69 guides on fire, gas, water and home safety in English, Spanish and Portuguese, checked line by line against official sources. Read two full guides here as a sample." />
+    <title>Home Emergencies · SALVORA PACKS</title>
+    <link rel="canonical" href="https://salvorapacks.com/producto/emergencias-en-casa.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SALVORA PACKS" />
+    <meta property="og:title" content="Home Emergencies · SALVORA PACKS" />
+    <meta property="og:description" content="69 guides on fire, gas, water and home safety, checked line by line against official sources. Works offline in the free NIDO app." />
+    <meta property="og:url" content="https://salvorapacks.com/producto/emergencias-en-casa.html" />
+    <meta property="og:image" content="https://salvorapacks.com/img/portada-emergencias.webp" />
+    <meta property="og:image:width" content="720" />
+    <meta property="og:image:height" content="405" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Home Emergencies · SALVORA PACKS" />
+    <meta name="twitter:description" content="69 guides on fire, gas, water and home safety, checked line by line against official sources. Works offline in the free NIDO app." />
+    <meta name="twitter:image" content="https://salvorapacks.com/img/portada-emergencias.webp" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Home Emergencies",
+  "image": "https://salvorapacks.com/img/portada-emergencias.webp",
+  "url": "https://salvorapacks.gumroad.com/l/emergencias-casa",
+  "description": "69 guides on fire, gas, water and home safety in English, Spanish and Portuguese, checked line by line against official sources.",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://salvorapacks.gumroad.com/l/emergencias-casa",
+    "price": "19.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  }
+}
+    </script>
+    <style>
+      :root {
+        --ink: #15222b;
+        --ink-deep: #0f191f;
+        --ink-panel: #1b2c38;
+        --ink-panel-2: #20333f;
+        --line: #2e4553;
+        --line-gold: #6d5a24;
+        --gold: #c9a24b;
+        --gold-bright: #e6c877;
+        --gold-deep: #a37f2c;
+        --copper: #b87333;
+        --copper-bright: #d99a55;
+        --paper: #f2ede1;
+        --header-bg: rgb(15, 25, 31);
+        --on-gold: #101a21;
+        --text: #eef2f0;
+        --text-dim: #b3c0c6;
+        --text-faint: #8a9ea8;
+        --radius: 10px;
+        --serif: "Spectral", Georgia, "Times New Roman", serif;
+        --display: "Fraunces", "Spectral", Georgia, serif;
+        --sans: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+      body {
+        margin: 0;
+        background: var(--ink);
+        color: var(--text);
+        font-family: var(--sans);
+        font-size: 17px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      img { max-width: 100%; display: block; }
+      a { color: var(--gold-bright); }
+      .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+      /* ---------- Header ---------- */
+      header.site {
+        position: sticky; top: 0; z-index: 50;
+        background: var(--header-bg);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 8px 20px -14px rgba(0, 0, 0, 0.55);
+        height: 64px; overflow: hidden;
+      }
+      .header-in {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 16px; height: 100%; padding-top: 0; padding-bottom: 0;
+      }
+      .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); min-width: 0; }
+      .brand svg { flex: none; }
+      .brand-stack { display: flex; flex-direction: column; min-width: 0; }
+      .brand-name {
+        font-family: var(--serif); font-weight: 700; font-size: 20px;
+        letter-spacing: 0.14em; line-height: 1.1; white-space: nowrap;
+      }
+      .brand-name span { color: var(--gold); }
+      .brand-sub { font-size: 11px; letter-spacing: 0.22em; color: var(--text-faint); text-transform: uppercase; white-space: nowrap; }
+      nav.main { display: flex; align-items: center; gap: 6px; }
+      nav.main a {
+        color: var(--text-dim); text-decoration: none; font-weight: 600;
+        font-size: 15px; padding: 8px 12px; border-radius: 6px;
+      }
+      nav.main a:hover { color: var(--gold-bright); }
+      nav.main a.nav-cta {
+        color: var(--on-gold); background: var(--gold);
+        padding: 8px 16px; margin-left: 8px;
+      }
+      nav.main a.nav-cta:hover { background: var(--gold-bright); color: var(--on-gold); }
+      .menu-btn {
+        display: none; background: none; border: 1px solid var(--line);
+        border-radius: 6px; color: var(--text); padding: 8px 12px;
+        font: inherit; font-weight: 600; cursor: pointer;
+      }
+
+      /* ---------- Hero ---------- */
+      .hero { border-bottom: 1px solid var(--line); background: linear-gradient(180deg, var(--ink-deep) 0%, var(--ink) 78%); }
+      .hero-in {
+        display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 48px;
+        align-items: center; padding-top: 84px; padding-bottom: 128px;
+      }
+      .hero-eyebrow {
+        color: var(--gold); font-weight: 700; font-size: 13px;
+        letter-spacing: 0.24em; text-transform: uppercase; margin: 0 0 18px;
+      }
+      .hero-voice {
+        font-family: var(--display); font-style: italic; font-weight: 480;
+        font-variation-settings: "opsz" 60, "wght" 480;
+        font-size: clamp(22px, 2.8vw, 29px); color: var(--gold-bright);
+        margin: 0 0 16px; line-height: 1.3;
+      }
+      .hero-voice-es {
+        font-size: 15px; color: var(--text-faint); font-style: italic; margin: -6px 0 26px;
+      }
+      h1 {
+        font-family: var(--display); font-weight: 560;
+        font-variation-settings: "opsz" var(--d-opsz, 144), "wght" var(--d-wght, 560);
+        font-size: clamp(52px, 7.4vw, 96px); line-height: 1.02;
+        margin: 0 0 26px; letter-spacing: 0;
+      }
+      h1 em { font-style: italic; color: var(--gold-bright); }
+      .hero-lede { font-size: 19px; color: var(--text-dim); margin: 0 0 14px; max-width: 34em; }
+      .hero-lede-es { font-size: 16px; color: var(--text-faint); font-style: italic; margin: 0 0 30px; max-width: 36em; }
+      .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 22px; }
+      .btn {
+        display: inline-flex; align-items: center; gap: 9px;
+        text-decoration: none; font-weight: 700; font-size: 16px;
+        padding: 13px 24px; border-radius: 8px; border: 1px solid transparent;
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+      .btn-gold { background: var(--gold); color: var(--on-gold); }
+      .btn-gold:hover { background: var(--gold-bright); }
+      .btn-ghost { border-color: var(--line-gold); color: var(--gold-bright); background: transparent; }
+      .btn-ghost:hover { border-color: var(--gold); background: rgba(201, 162, 75, 0.08); }
+      .hero-note { font-size: 14.5px; color: var(--text-faint); margin: 0; }
+      .hero-note strong { color: var(--text-dim); font-weight: 600; }
+      .hero-art {
+        border: 1px solid var(--line-gold); border-radius: var(--radius);
+        overflow: hidden; background: var(--ink-deep);
+        box-shadow: 22px 22px 0 -8px rgba(201, 162, 75, 0.20), 0 30px 60px -30px rgba(0, 0, 0, 0.65);
+        transform: rotate(-1.1deg);
+      }
+      .hero-art img { width: 100%; height: auto; }
+
+      .hero-in > div, .hero-in > figure { animation: heroUp 0.95s cubic-bezier(0.22, 0.61, 0.21, 1) both; }
+      .hero-in > figure { animation-delay: 0.16s; }
+      @keyframes heroUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+      .hero-in > figure.hero-art { animation-name: heroUpTilt; }
+      @keyframes heroUpTilt { from { opacity: 0; transform: translateY(26px) rotate(-1.1deg); } to { opacity: 1; transform: rotate(-1.1deg); } }
+
+      /* ---------- Trust strip ---------- */
+      .trust { border-bottom: 1px solid var(--line); background: var(--ink-deep); }
+      .trust-in {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      }
+      .trust-item {
+        padding: 26px 22px; border-left: 1px solid var(--line);
+        display: flex; gap: 14px; align-items: flex-start;
+      }
+      .trust-item:first-child { border-left: none; padding-left: 0; }
+      .trust-item svg { flex: none; margin-top: 3px; }
+      .trust-item h3 { font-family: var(--serif); font-size: 16.5px; font-weight: 600; margin: 0 0 3px; }
+      .trust-item p { font-size: 14px; color: var(--text-faint); margin: 0; line-height: 1.45; }
+
+      /* ---------- Sections ---------- */
+      section.block { padding: 72px 0; }
+      .sec-head { max-width: 46em; margin-bottom: 38px; }
+      .sec-kicker {
+        color: var(--gold); font-weight: 700; font-size: 12.5px;
+        letter-spacing: 0.24em; text-transform: uppercase; margin: 0 0 10px;
+      }
+      h2 {
+        font-family: var(--display); font-weight: 540;
+        font-variation-settings: "opsz" var(--d-opsz, 100), "wght" var(--d-wght, 540);
+        font-size: clamp(31px, 4vw, 46px); line-height: 1.12; margin: 0 0 14px;
+      }
+      .sec-head p { color: var(--text-dim); margin: 0; font-size: 17.5px; }
+      .sec-head p.es { color: var(--text-faint); font-style: italic; font-size: 15.5px; margin-top: 6px; }
+
+      /* ---------- Featured collection ---------- */
+      .featured {
+        border: 1px solid var(--line-gold); border-radius: var(--radius);
+        background: linear-gradient(160deg, var(--ink-panel-2) 0%, var(--ink-panel) 55%, var(--ink-deep) 100%);
+        padding: 44px; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 44px;
+      }
+      .featured .tag {
+        display: inline-block; border: 1px solid var(--line-gold); color: var(--gold-bright);
+        font-size: 12.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+        padding: 5px 12px; border-radius: 999px; margin-bottom: 18px;
+      }
+      .featured h2 { margin-bottom: 14px; }
+      .featured p { color: var(--text-dim); margin: 0 0 10px; max-width: 36em; }
+      .featured p.es { color: var(--text-faint); font-style: italic; font-size: 15.5px; }
+      .featured-stats { display: flex; gap: 36px; flex-wrap: wrap; margin: 26px 0 4px; }
+      .stat b {
+        display: block; font-family: var(--display); font-size: 42px; font-weight: 600;
+        font-variation-settings: "opsz" 144, "wght" 600;
+        color: var(--gold-bright); line-height: 1;
+      }
+      .stat span { font-size: 13.5px; color: var(--text-faint); letter-spacing: 0.06em; text-transform: uppercase; }
+      .featured-buy {
+        border-left: 1px solid var(--line); padding-left: 44px;
+        display: flex; flex-direction: column; justify-content: center; gap: 6px;
+      }
+      .price-big { font-family: var(--display); font-size: 64px; font-weight: 600; font-variation-settings: "opsz" 144, "wght" 600; line-height: 1; color: var(--text); }
+      .price-note { color: var(--text-faint); font-size: 14.5px; margin: 0 0 18px; }
+      .featured-buy .btn { justify-content: center; }
+      .buy-fine { font-size: 13.5px; color: var(--text-faint); text-align: center; margin: 12px 0 0; }
+
+      /* ---------- Product grids ---------- */
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .card {
+        background: var(--ink-panel); border: 1px solid var(--line);
+        border-radius: var(--radius); padding: 26px;
+        display: flex; flex-direction: column; gap: 0;
+      }
+      .card.free { border-color: var(--line-gold); background: linear-gradient(165deg, var(--ink-panel-2), var(--ink-panel)); }
+      .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+      .card-kind {
+        font-size: 12px; font-weight: 700; letter-spacing: 0.16em;
+        text-transform: uppercase; color: var(--gold);
+      }
+      .langs { display: flex; gap: 5px; }
+      .langs span {
+        font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+        border: 1px solid var(--line); color: var(--text-dim);
+        padding: 2px 7px; border-radius: 4px;
+      }
+      .card h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.25; margin: 0 0 2px; }
+      .card .es-name { color: var(--text-faint); font-style: italic; font-size: 15px; margin: 0 0 12px; }
+      .card .desc { color: var(--text-dim); font-size: 15.5px; margin: 0 0 16px; line-height: 1.55; }
+      .card .listing-title { color: var(--text-faint); font-size: 13.5px; line-height: 1.5; margin: 0 0 16px; }
+      .spec {
+        border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+        padding: 10px 0; margin-bottom: 18px;
+        font-size: 14.5px; color: var(--text-dim);
+        display: flex; flex-wrap: wrap; gap: 6px 18px;
+      }
+      .spec b { color: var(--text); font-weight: 700; }
+      .card-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+      .price { font-family: var(--display); font-size: 31px; font-weight: 650; font-variation-settings: "opsz" 100, "wght" 650; letter-spacing: 0.01em; }
+      .price small { font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--text-faint); display: block; letter-spacing: 0.04em; }
+      .price .free-word { color: var(--gold-bright); }
+      .btn-sm { padding: 10px 18px; font-size: 15px; white-space: nowrap; }
+
+      /* ---------- Binders ---------- */
+      .binders { background: var(--ink-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+      /* ---------- NIDO ---------- */
+      .nido-in { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 52px; align-items: center; }
+      .nido-art { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+      .nido-art img { width: 100%; height: auto; }
+      .nido-points { list-style: none; margin: 22px 0 28px; padding: 0; display: grid; gap: 12px; }
+      .nido-points li { display: flex; gap: 12px; align-items: flex-start; color: var(--text-dim); font-size: 16.5px; }
+      .nido-points svg { flex: none; margin-top: 4px; }
+      .nido-points strong { color: var(--text); }
+      .sealed {
+        border: 1px solid var(--line-gold); border-radius: var(--radius);
+        background: rgba(201, 162, 75, 0.07); padding: 18px 20px; margin-bottom: 28px;
+      }
+      .sealed p { margin: 0; font-size: 16px; color: var(--text); }
+      .sealed p.es { color: var(--text-faint); font-style: italic; font-size: 14.5px; margin-top: 6px; }
+      .nido-ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+      .nido-short { font-size: 14.5px; color: var(--text-faint); margin: 14px 0 0; }
+      .nido-short code {
+        font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 14px;
+        color: var(--gold-bright); background: rgba(201,162,75,0.1);
+        padding: 2px 8px; border-radius: 4px;
+      }
+
+      /* ---------- FAQ ---------- */
+      .faq-list { max-width: 820px; }
+      details.faq {
+        border: 1px solid var(--line); border-radius: var(--radius);
+        background: var(--ink-panel); margin-bottom: 12px; padding: 0 22px;
+      }
+      details.faq summary {
+        cursor: pointer; font-family: var(--serif); font-size: 18.5px; font-weight: 600;
+        padding: 18px 0; list-style: none; display: flex; justify-content: space-between; gap: 16px;
+      }
+      details.faq summary::-webkit-details-marker { display: none; }
+      details.faq summary::after { content: "+"; color: var(--gold); font-family: var(--sans); font-weight: 700; }
+      details.faq[open ] summary::after { content: "−"; }
+      details.faq .a { padding: 0 0 20px; color: var(--text-dim); }
+      details.faq .a p { margin: 0 0 8px; }
+      details.faq .a p.es { color: var(--text-faint); font-style: italic; font-size: 15px; }
+
+      /* ---------- Footer ---------- */
+      footer.site { background: var(--ink-deep); border-top: 1px solid var(--line); padding: 56px 0 40px; }
+      .foot-grid { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 44px; margin-bottom: 40px; }
+      .foot-grid h4 {
+        font-family: var(--serif); font-size: 16px; font-weight: 600;
+        margin: 0 0 14px; color: var(--text);
+      }
+      .foot-grid p, .foot-grid li { font-size: 15px; color: var(--text-faint); }
+      .foot-grid p { margin: 0 0 10px; }
+      .foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+      .foot-grid a { color: var(--text-dim); text-decoration: none; }
+      .foot-grid a:hover { color: var(--gold-bright); }
+      .foot-mail { font-size: 17px !important; }
+      .foot-mail a { color: var(--gold-bright); font-weight: 600; }
+      .foot-bottom {
+        border-top: 1px solid var(--line); padding-top: 22px;
+        display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+        font-size: 13.5px; color: var(--text-faint);
+      }
+      .foot-bottom p { margin: 0; }
+
+      /* ---------- Motion & atmosphere ---------- */
+      .hero { position: relative; overflow: hidden; }
+      .hero .wrap { position: relative; z-index: 1; }
+      .hero-glow {
+        position: absolute; top: -170px; right: -110px; width: 540px; height: 540px;
+        border-radius: 50%; pointer-events: none;
+        background: radial-gradient(circle, rgba(201,162,75,0.22) 0%, rgba(201,162,75,0) 62%);
+      }
+      .hero.fx-in .hero-glow { animation: breathe 7s ease-in-out infinite; }
+      .hero-star {
+        position: absolute; top: -60px; right: 30px; width: 300px; height: 300px;
+        pointer-events: none; opacity: 0.66; will-change: transform;
+      }
+      .hero-star svg {
+        width: 100%; height: 100%;
+        filter: drop-shadow(0 0 34px rgba(230,200,119,0.65));
+      }
+      .hero.fx-in .hero-star svg { animation: starspin 26s linear infinite; }
+      .hero.fx-in .hero-star { animation: startwinkle 5.5s ease-in-out infinite; }
+      @keyframes startwinkle { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.97; } }
+      @keyframes starspin { to { transform: rotate(360deg); } }
+      @keyframes breathe { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.07); } }
+
+      .btn { position: relative; overflow: hidden; transition: background 0.15s ease, border-color 0.15s ease, transform 0.18s ease, box-shadow 0.18s ease; }
+      .btn:hover { transform: translateY(-2px); }
+      .btn:active { transform: translateY(1px); }
+      .btn-gold::after {
+        content: ""; position: absolute; top: 0; left: -80%; width: 55%; height: 100%;
+        background: linear-gradient(100deg, transparent, rgba(255,255,255,0.5), transparent);
+        transform: skewX(-18deg); transition: left 0.55s ease;
+      }
+      .btn-gold:hover::after { left: 135%; }
+
+      .card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.55); }
+      .card.show-inside .cm-inside { opacity: 1; }
+      .card.show-inside .cm-cover { opacity: 0; }
+      .card.show-inside .cm-tag { opacity: 1; }
+      @media (hover: none) { .card-media .cm-tag { opacity: 1; } }
+      .card:hover {
+        transform: translateY(-5px); border-color: var(--line-gold);
+        box-shadow: 0 14px 34px -14px rgba(201,162,75,0.35), 0 10px 24px -12px rgba(0,0,0,0.55);
+      }
+
+      a:focus-visible, button:focus-visible, summary:focus-visible, .q-opts label:focus-within {
+        outline: 2px solid var(--gold-bright); outline-offset: 3px; border-radius: 6px;
+      }
+      .rv .reveal { opacity: 0; transform: translateY(30px); }
+      .rv .reveal.in { opacity: 1; transform: none; transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.21, 1), transform 0.9s cubic-bezier(0.22, 0.61, 0.21, 1); }
+      .rv .reveal.done { transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; transition-delay: 0s !important; }
+
+      /* ---------- Card media: the real cover, and a real page inside ---------- */
+      .card-media {
+        margin: -26px -26px 18px; border-radius: var(--radius) var(--radius) 0 0;
+        overflow: hidden; position: relative; flex: none; background: var(--ink-deep);
+        aspect-ratio: 16 / 9;
+      }
+      .card-media > img {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; display: block;
+      }
+      .card-media .cm-cover { opacity: 1; transition: opacity 0.45s ease; }
+      .card-media .cm-inside { opacity: 0; transition: opacity 0.45s ease; }
+      .card:hover .cm-inside, .card:focus-within .cm-inside { opacity: 1; }
+      .card:hover .cm-cover, .card:focus-within .cm-cover { opacity: 0; }
+      .card-media .cm-tag {
+        position: absolute; left: 10px; bottom: 10px; z-index: 2;
+        font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+        background: rgba(10, 18, 24, 0.82); color: var(--gold-bright);
+        padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-gold);
+        opacity: 0; transition: opacity 0.45s ease; pointer-events: none;
+      }
+      .card:hover .cm-tag, .card:focus-within .cm-tag { opacity: 1; }
+      .card-guarantee {
+        margin: 14px 0 0; font-size: 13px; line-height: 1.5; color: var(--text-faint);
+      }
+      .card-guarantee b { color: var(--text-dim); font-weight: 600; }
+
+      /* ---------- Collection mosaic ---------- */
+      .covers-grid {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+        margin: 0 0 26px; padding: 10px;
+        border: 1px solid var(--line-gold); border-radius: var(--radius);
+        background: var(--ink-deep);
+      }
+      .covers-grid img { width: 100%; height: auto; display: block; border-radius: 6px; }
+      @media (max-width: 620px) { .covers-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 8px; } }
+
+      /* ---------- Pause: one open guide between dense sections ---------- */
+      .pause-band { background: var(--ink); border-bottom: 1px solid var(--line); }
+      .pause-in {
+        display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center;
+      }
+      .pause-page {
+        border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+        background: #fff; line-height: 0;
+      }
+      .pause-page img { width: 100%; height: auto; display: block; }
+      .pause-in h2 { margin-bottom: 14px; }
+      .pause-in p { color: var(--text-dim); margin: 0 0 10px; max-width: 34em; }
+      .pause-in p.es { color: var(--text-faint); font-style: italic; font-size: 15.5px; }
+      @media (max-width: 960px) { .pause-in { grid-template-columns: 1fr; gap: 30px; } }
+
+      /* ---------- Figures band ---------- */
+      .figures { border-bottom: 1px solid var(--line); background: var(--ink); }
+      .figures-in { display: grid; grid-template-columns: repeat(4, 1fr); }
+      .figure { padding: 30px 22px; border-left: 1px solid var(--line); }
+      .figure:first-child { border-left: none; padding-left: 0; }
+      .figure b {
+        display: block; font-family: var(--display); font-size: 52px; font-weight: 600;
+        font-variation-settings: "opsz" 144, "wght" 600;
+        color: var(--gold-bright); line-height: 1; margin-bottom: 8px;
+      }
+      .figure span { font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-faint); }
+
+      /* ---------- Verified-against ribbon ---------- */
+      .ribbon { background: var(--ink-deep); border-bottom: 1px solid var(--line); }
+      .ribbon-in {
+        display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; justify-content: center;
+        padding-top: 15px; padding-bottom: 15px;
+        font-size: 14px; letter-spacing: 0.05em; color: var(--text-faint); text-align: center;
+      }
+      .ribbon-in b { color: var(--text-dim); font-weight: 600; }
+      .ribbon-in .sep { color: var(--gold); font-size: 11px; }
+
+      .save-math {
+        border: 1px dashed var(--line-gold); border-radius: 8px;
+        padding: 14px 16px; margin-bottom: 18px;
+        font-size: 15px; color: var(--text-dim); line-height: 1.55;
+      }
+      .save-math b { color: var(--gold-bright); }
+
+      /* ---------- Light mode ---------- */
+      body.light {
+        --ink: #efe5cd; --ink-deep: #e6dabf; --ink-panel: #fdfaf1; --ink-panel-2: #f4ecd7;
+        --line: #d9cba6; --line-gold: #a5832f;
+        --gold: #7a581b; --gold-bright: #7a4a0f; --gold-deep: #5f430d;
+        --copper: #8f5a1d;
+        --copper-bright: #7c4d0c;
+        --on-gold: #fbf4e2;
+        --text: #1e2a32; --text-dim: #45545f; --text-faint: #4f5f68;
+        --header-bg: rgb(242, 234, 216);
+      }
+
+      /* ---------- Theme toggle ---------- */
+      .theme-btn {
+        background: none; border: 1px solid var(--line); border-radius: 6px;
+        color: var(--gold); padding: 8px; cursor: pointer; flex: none;
+        display: inline-flex; align-items: center; justify-content: center;
+      }
+      .theme-btn:hover { color: var(--gold-bright); border-color: var(--line-gold); }
+      .theme-btn .ic-moon { display: none; }
+      body.light .theme-btn .ic-sun { display: none; }
+      body.light .theme-btn .ic-moon { display: block; }
+
+      /* ---------- Blackout mode ---------- */
+      body { transition: background-color 0.6s ease; }
+      body.blackout {
+        --ink: #05090c; --ink-deep: #020405; --ink-panel: #080f13; --ink-panel-2: #0a1216;
+        --line: #1b2933; --text: #e7edea; --text-dim: #aab9be; --text-faint: #758891;
+        --gold: #c9a24b; --gold-bright: #e6c877; --on-gold: #101a21;
+        --header-bg: rgb(2, 4, 5);
+      }
+      body.blackout img { filter: brightness(0.6) contrast(1.03); }
+      body.blackout .hero-star { opacity: 0.95; }
+      .bo-control { display: flex; align-items: center; gap: 12px; margin-top: 28px; }
+      .bo-switch {
+        width: 52px; height: 28px; border-radius: 999px; flex: none; cursor: pointer;
+        border: 1px solid var(--line-gold); background: var(--ink-panel); position: relative; padding: 0;
+      }
+      .bo-switch::after {
+        content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+        border-radius: 50%; background: var(--gold);
+        transition: left 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      }
+      .bo-switch[aria-pressed="true"]::after {
+        left: 27px; background: var(--gold-bright);
+        box-shadow: 0 0 14px rgba(230,200,119,0.9);
+      }
+      .bo-label { font-size: 14.5px; font-weight: 600; color: var(--text-dim); }
+      .bo-label small { display: block; font-weight: 400; color: var(--text-faint); font-size: 13px; }
+      .blackout-msg { display: none; margin-top: 18px; max-width: 35em; }
+      body.blackout .blackout-msg { display: block; }
+      .blackout-msg p { font-family: var(--serif); font-style: italic; font-size: 17.5px; color: var(--gold-bright); margin: 0 0 4px; }
+      .blackout-msg p.es { font-family: var(--sans); font-style: italic; font-size: 14.5px; color: var(--text-faint); }
+
+      /* ---------- Card life: Home Emergencies ---------- */
+      .card { position: relative; }
+      .home-card::after {
+        content: ""; position: absolute; inset: 0; border-radius: var(--radius);
+        background: #030608; opacity: 0; pointer-events: none;
+        transition: opacity 1.15s ease-in-out; z-index: 2;
+      }
+      .home-card.lights-out::after { opacity: 0.9; }
+      .home-card .card-media { z-index: 3; }
+      .home-card.lights-out .card-media img { filter: drop-shadow(0 0 12px rgba(230, 200, 119, 1)); }
+
+            /* ---------- Look inside ---------- */
+      .inside-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .inside-panel {
+        border: 1px solid var(--line); border-radius: var(--radius);
+        overflow: hidden; background: var(--ink-panel);
+      }
+      .inside-panel img { width: 100%; height: auto; }
+      .inside-panel figcaption { padding: 20px 22px; }
+      .inside-panel h3 { font-family: var(--serif); font-size: 19px; font-weight: 600; margin: 0 0 6px; }
+      .inside-panel p { color: var(--text-dim); font-size: 15.5px; margin: 0; }
+
+      /* ---------- Comparison table ---------- */
+      .compare-scroll { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+      table.compare { width: 100%; border-collapse: collapse; background: var(--ink-panel); font-size: 15.5px; }
+      table.compare th, table.compare td { padding: 16px 20px; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+      table.compare thead th { border-top: none; background: var(--ink-panel-2); font-family: var(--serif); font-size: 18px; font-weight: 600; }
+      table.compare thead th .th-sub { display: block; font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--gold-bright); margin-top: 3px; letter-spacing: 0.03em; }
+      table.compare tbody th { font-weight: 700; color: var(--text); white-space: nowrap; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; }
+      table.compare td { color: var(--text-dim); }
+      table.compare td.hot { color: var(--text); background: rgba(201,162,75,0.06); }
+      table.compare thead th.hot { background: rgba(201,162,75,0.14); }
+
+      /* ---------- Honest note / notice ---------- */
+      .ethic {
+        border: 1px solid var(--line); border-radius: var(--radius);
+        background: var(--ink-panel); padding: 34px 38px;
+        display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center;
+      }
+      .ethic h2 { font-size: 26px; margin-bottom: 10px; }
+      .ethic p { color: var(--text-dim); margin: 0 0 8px; max-width: 42em; }
+      .ethic p.es { color: var(--text-faint); font-style: italic; font-size: 15px; }
+      .notice { border-top: 1px solid var(--line); background: var(--ink-deep); }
+      .notice-in { padding-top: 30px; padding-bottom: 30px; display: flex; gap: 16px; align-items: flex-start; }
+      .notice-in svg { flex: none; margin-top: 3px; }
+      .notice-in p { margin: 0 0 6px; color: var(--text-dim); font-size: 15.5px; max-width: 62em; }
+      .notice-in p.es { color: var(--text-faint); font-style: italic; font-size: 14.5px; }
+      .license-line { font-size: 14.5px; color: var(--text-faint); margin: 22px 0 0; }
+      .license-line b { color: var(--text-dim); }
+
+      @media (max-width: 960px) {
+        .inside-grid { grid-template-columns: 1fr; }
+        .ethic { grid-template-columns: 1fr; padding: 28px; }
+      }
+      @media (max-width: 620px) {
+        table.compare, table.compare tbody, table.compare tr, table.compare td { display: block; width: 100%; }
+        table.compare thead { display: none; }
+        table.compare tbody th { border-top: 1px solid var(--line-gold); padding-bottom: 4px; }
+        table.compare td { border-top: none; padding: 6px 20px; }
+        table.compare td::before {
+          content: attr(data-label); display: block;
+          font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+          text-transform: uppercase; color: var(--gold); margin-bottom: 2px;
+        }
+        table.compare td:last-child { padding-bottom: 18px; }
+      }
+
+      .sr-only {
+        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+        overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+      }
+      .foot-legal {
+        border-top: 1px solid var(--line); padding-top: 30px; margin-bottom: 34px;
+        display: grid; grid-template-columns: 1fr 1fr; gap: 44px;
+      }
+      .foot-legal h4 { font-family: var(--serif); font-size: 16px; font-weight: 600; margin: 0 0 12px; color: var(--text); }
+      .foot-legal p { font-size: 14.5px; color: var(--text-faint); margin: 0 0 8px; line-height: 1.6; }
+      .foot-legal p.es { font-style: italic; }
+      .foot-legal strong { color: var(--text-dim); }
+      @media (max-width: 620px) { .foot-legal { grid-template-columns: 1fr; gap: 26px; } }
+
+
+      section[id], .q-card, #quizResults { scroll-margin-top: 76px; }
+
+      /* ---------- Arizona origin ---------- */
+      .brand-copper { margin-left: -17px; margin-top: 21px; flex: none; }
+      .origin-line {
+        border-left: 2px solid var(--copper); padding-left: 14px;
+        margin: 0 0 26px; max-width: 35em;
+      }
+      .origin-line p { margin: 0; font-size: 15.5px; color: var(--text-dim); }
+      .origin-line p.es { color: var(--text-faint); font-style: italic; font-size: 14.5px; margin-top: 3px; }
+      .origin-line b { color: var(--copper-bright); font-weight: 700; }
+      body.light .origin-line b { color: var(--copper); }
+      .hero-horizon {
+        position: absolute; left: 0; right: 0; bottom: -2px; height: 120px;
+        pointer-events: none; opacity: 0.75; z-index: 0;
+      }
+      .hero-horizon svg { width: 100%; height: 100%; display: block; }
+      .foot-horizon { color: #1e3442; margin: 2px 0 30px; }
+      body.light .foot-horizon { color: #c9b384; }
+      .foot-horizon svg { width: 100%; height: auto; display: block; }
+      @keyframes azglow { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+      .fx-in .az-sun { animation: azglow 8s ease-in-out infinite; }
+
+      /* ---------- Ready check ---------- */
+      .ready { background: var(--ink-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .quiz-shell {
+        border: 1px solid var(--line-gold); border-radius: var(--radius);
+        background: linear-gradient(165deg, var(--ink-panel-2), var(--ink-panel));
+        padding: 34px 36px;
+      }
+      .quiz-top { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+      .quiz-lang { display: inline-flex; border: 1px solid var(--line-gold); border-radius: 999px; overflow: hidden; }
+      .quiz-lang button {
+        background: transparent; color: var(--text-dim); border: 0; cursor: pointer;
+        font: inherit; font-weight: 700; font-size: 14px; padding: 7px 16px;
+      }
+      .quiz-lang button[aria-pressed="true"] { background: var(--gold); color: var(--on-gold); }
+      .quiz-privacy { font-size: 14px; color: var(--gold-bright); font-weight: 600; margin: 0; }
+      .quiz-progress { font-size: 13.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin: 14px 0 6px; }
+      .quiz-bar { height: 6px; border-radius: 3px; background: var(--ink-deep); overflow: hidden; margin-bottom: 22px; }
+      .quiz-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--copper), var(--gold)); transition: width 0.45s ease; }
+      .q-card {
+        border: 1px solid var(--line); border-radius: 12px; background: rgba(0,0,0,0.12);
+        padding: 20px 18px 16px; margin: 0 0 12px;
+        transition: border-color 0.3s ease, background 0.3s ease;
+      }
+      body.light .q-card { background: rgba(255,255,255,0.35); }
+      .q-card.answered { border-color: var(--line-gold); }
+      .q-card.pulse { animation: qpulse 0.45s ease; }
+      @keyframes qpulse { 0% { transform: scale(1); } 35% { transform: scale(1.013); } 100% { transform: scale(1); } }
+      .q-head {
+        font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--text);
+        line-height: 1.5; margin: 0 0 12px;
+      }
+      .q-head .qnum { color: var(--copper-bright); font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-right: 8px; }
+      .q-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+      .q-opts label {
+        border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px;
+        font-size: 14.5px; font-weight: 600; color: var(--text-dim); cursor: pointer;
+        transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+      }
+      .q-opts label:hover { border-color: var(--gold); color: var(--text); }
+      .q-opts input { position: absolute; opacity: 0; pointer-events: none; }
+      .q-opts label:has(input:checked) { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+      .q-opts label:has(input:focus-visible) { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+      .quiz-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; align-items: center; }
+      .quiz-results { margin-top: 30px; border-top: 1px dashed var(--line-gold); padding-top: 26px; }
+      .quiz-results h3 { font-family: var(--serif); font-size: 24px; font-weight: 600; margin: 0 0 6px; }
+      .quiz-score { color: var(--text-dim); margin: 0 0 18px; font-size: 16.5px; }
+      .quiz-score b { color: var(--gold-bright); }
+      .gap-item {
+        border: 1px solid var(--line); border-left: 3px solid var(--copper);
+        border-radius: 8px; background: var(--ink-panel); padding: 18px 20px; margin-bottom: 12px;
+      }
+      .gap-item.r3 { border-left-color: #c0452f; }
+      .gap-item.r1 { border-left-color: var(--line-gold); }
+      .gap-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 6px; }
+      .gap-badge {
+        font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+        border: 1px solid var(--copper); color: var(--copper-bright); border-radius: 999px; padding: 2px 10px;
+      }
+      .gap-risk { font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+      .gap-item h4 { font-family: var(--serif); font-size: 18px; font-weight: 600; margin: 0; }
+      .gap-item p { margin: 0 0 8px; color: var(--text-dim); font-size: 15.5px; }
+      .gap-item p.fix { color: var(--text); }
+      .gap-item .src { font-size: 13.5px; color: var(--text-faint); margin: 0 0 10px; }
+      .gap-item .src b { color: var(--text-dim); }
+      .gap-item .btn { max-width: 100%; white-space: normal; text-align: left; }
+      .card-btns { display: inline-flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      .card-foot .price { min-width: 0; }
+      .card-foot .price small { white-space: normal; }
+      .card.free .btn { white-space: normal; text-align: center; }
+      .quiz-note { font-size: 15px; color: var(--text-dim); margin: 18px 0 0; }
+      @media (max-width: 620px) {
+        .quiz-shell { padding: 24px 18px; }
+        .q-head { font-size: 16px; }
+        .brand-copper { margin-left: -14px; width: 12px; height: 12px; }
+      }
+      @media print {
+        header.site, .hero, .trust, .figures, .ribbon, #collection, #inside, #compare,
+        #packs, #binders, #etsy, #nido, #faq, .notice, .quiz-form, .quiz-actions,
+        .pause-band, .foot-grid, .foot-legal { display: none !important; }
+        body, .ready, .quiz-shell, .gap-item { background: #fff !important; color: #111 !important; }
+        .gap-item p, .quiz-score, .gap-item .src { color: #333 !important; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .quiz-bar i { transition: none; }
+        .fx-in .az-sun { animation: none; }
+      }
+
+      /* ---------- Etsy shop ---------- */
+      .etsy-head-cta { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 18px; }
+      .etsy-badge {
+        font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+        color: var(--copper-bright); border: 1px solid var(--copper); border-radius: 999px; padding: 3px 10px;
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 960px) {
+        .hero-in { grid-template-columns: 1fr; gap: 34px; padding-top: 54px; padding-bottom: 112px; }
+        .trust-in { grid-template-columns: 1fr 1fr; }
+        .trust-item { border-left: none; padding-left: 0; padding-right: 18px; }
+        .featured { grid-template-columns: 1fr; padding: 32px; gap: 28px; }
+        .featured-buy { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 26px; }
+        .grid { grid-template-columns: 1fr 1fr; }
+        .nido-in { grid-template-columns: 1fr; gap: 32px; }
+        .foot-grid { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 620px) {
+        body { font-size: 16px; }
+        .menu-btn { display: block; }
+        .header-in { gap: 10px; padding-left: 16px; padding-right: 16px; }
+        .brand { gap: 9px; min-width: 0; }
+        .brand svg { width: 28px; height: 28px; }
+        .brand-name { font-size: 16px; letter-spacing: 0.09em; }
+        .brand svg { display: none; }
+        .brand::before {
+          content: ""; flex: none; width: 30px; height: 30px;
+          background: var(--gold);
+          clip-path: polygon(50% 0%, 59% 41%, 100% 50%, 59% 59%, 50% 100%, 41% 59%, 0% 50%, 41% 41%);
+        }
+        .brand-sub { display: none; }
+        .menu-btn { padding: 7px 11px; }
+        .theme-btn { padding: 7px; }
+        nav.main {
+          display: none; position: absolute; top: 100%; left: 0; right: 0;
+          background: var(--ink-deep); border-bottom: 1px solid var(--line);
+          flex-direction: column; align-items: stretch; padding: 10px 16px 16px; gap: 2px;
+        }
+        nav.main.open { display: flex; }
+        nav.main a { padding: 11px 10px; }
+        nav.main a.nav-cta { margin-left: 0; margin-top: 8px; text-align: center; }
+        header.site { position: sticky; overflow: visible; }
+        .header-in { position: relative; }
+        .grid { grid-template-columns: 1fr; }
+        .figures-in { grid-template-columns: 1fr 1fr; }
+        .figure { border-left: none; padding: 20px 12px 20px 0; }
+        .hero-star { width: 200px; height: 200px; top: -40px; right: -30px; }
+        .trust-in { grid-template-columns: 1fr; }
+        .trust-item { padding: 18px 0; border-top: 1px solid var(--line); }
+        .trust-item:first-child { border-top: none; }
+        section.block { padding: 52px 0; }
+        .featured { padding: 26px; }
+        .foot-grid { grid-template-columns: 1fr; gap: 30px; }
+        .hero-ctas .btn { width: 100%; justify-content: center; }
+      }
+      @media (max-width: 400px) {
+        .header-in { gap: 8px; padding-left: 12px; padding-right: 12px; }
+        .brand { gap: 7px; }
+        .brand::before { width: 26px; height: 26px; }
+        .brand-name { font-size: 15px; letter-spacing: 0.07em; }
+        .menu-btn { padding: 6px 9px; font-size: 14.5px; }
+        .theme-btn { padding: 6px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        #ready .q-card, #quizResults { scroll-margin-top: 84px; }
+        .hero-star svg, .hero-glow, .hero.fx-in .hero-star svg, .hero.fx-in .hero-glow { animation: none; }
+        .btn-gold::after { display: none; }
+        .card, .btn, .header-in, .bo-switch::after { transition: none; }
+        .rv .reveal { opacity: 1; transform: none; }
+        body { transition: none; }
+        .fx-in .az-sun { animation: none; }
+        .home-card::after { transition: none; }
+        .card-media .cm-cover, .card-media .cm-inside, .card-media .cm-tag { transition: none; }
+        .hero-star { transform: none !important; }
+        .hero-in > div, .hero-in > figure { animation: none; }
+        .q-card.pulse { animation: none; }
+        .btn:hover { transform: none; }
+      }
+
+      /* ---------- Motion, second pass: the product stays alive ---------- */
+      body.light .hero-star svg { filter: drop-shadow(0 0 34px rgba(201, 162, 75, 0.5)) saturate(1.55) brightness(0.8); }
+      .hero.fx-in .hero-art img { animation: heroFloat 7s ease-in-out infinite; will-change: transform; }
+      @keyframes heroFloat { 0%, 100% { transform: scale(1.03) translateY(0); } 50% { transform: scale(1.03) translateY(-7px); } }
+      .q-opts label { transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.25s ease; }
+      .q-card.demo { border-color: var(--line-gold); }
+      .q-opts label.demo-pick { border-color: var(--gold); color: var(--text); background: rgba(201, 162, 75, 0.16); transform: scale(1.05); }
+      @media (hover: none) { .card:active { transform: translateY(1px); } }
+      @media (max-width: 620px) {
+        .hero-in { padding-top: 38px; }
+        .hero-in > figure.hero-art { order: -1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero.fx-in .hero-art img { animation: none; }
+        .q-opts label.demo-pick { transform: none; }
+      }
+
+      /* ---------- Polish, third pass: company finish ---------- */
+      ::selection { background: rgba(201, 162, 75, 0.38); }
+      html { scrollbar-width: thin; scrollbar-color: var(--gold-deep) var(--ink-deep); }
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { background: var(--ink-deep); }
+      ::-webkit-scrollbar-thumb { background: var(--gold-deep); border-radius: 5px; border: 2px solid var(--ink-deep); }
+      .btn { transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease; }
+      .btn:active { transform: translateY(1px); }
+      .quiz-lang button { padding: 10px 16px; }
+      .bo-switch { width: 56px; height: 32px; }
+      .bo-switch::after { width: 24px; height: 24px; }
+      .bo-switch[aria-pressed="true"]::after { left: 28px; }
+      @media (max-width: 960px) {
+        .hero-in { padding-bottom: 84px; }
+        .hero-in > div { display: flex; flex-direction: column; }
+        .hero-in > div > .hero-voice { order: 1; }
+        .hero-in > div > .hero-eyebrow { order: 2; }
+        .hero-in > div > h1 { order: 3; }
+        .hero-in > div > .hero-ctas { order: 4; }
+        .hero-in > div > .hero-lede { order: 5; }
+        .hero-in > div > .hero-lede-es { order: 6; }
+        .hero-in > div > .hero-note { order: 7; }
+        .hero-in > div > .origin-line { order: 8; margin-bottom: 0; }
+        .hero-in > div > .bo-control { order: 9; }
+        .hero-in > div > .blackout-msg { order: 10; }
+      }
+      @media (max-width: 620px) {
+        .hero-in { padding-top: 30px; gap: 26px; }
+        .menu-btn { display: inline-flex; align-items: center; min-height: 44px; }
+        .theme-btn { min-width: 40px; min-height: 40px; }
+        .foot-grid ul { gap: 12px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .btn { transition: none; }
+        .btn:active { transform: none; }
+      }
+    
+      /* ---------- One language at a time ---------- */
+      html.lang-en [data-l="es"], html.lang-es [data-l="en"] { display: none !important; }
+      html.lang-en .lg-sep, html.lang-es .lg-sep { display: none !important; }
+      .lang-switch { display: inline-flex; border: 1px solid var(--line-gold); border-radius: 999px; overflow: hidden; flex: none; }
+      .lang-switch button {
+        background: transparent; color: var(--text-dim); border: 0; cursor: pointer;
+        font: inherit; font-weight: 700; font-size: 13.5px; line-height: 1.2;
+        padding: 10px 11px; min-height: 44px;
+      }
+      .lang-switch button[aria-pressed="true"] { background: var(--gold); color: var(--on-gold); }
+      .lang-switch button:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: -2px; }
+      @media (max-width: 620px) {
+        .lang-switch button { padding: 10px 8px; }
+      }
+      /* In Spanish mode the Spanish twin reads as the primary text. */
+      html.lang-es .hero-lede-es { font-size: 19px; color: var(--text-dim); font-style: normal; }
+      html.lang-es .sec-head p.es { color: var(--text-dim); font-style: normal; font-size: 17.5px; margin-top: 0; }
+      html.lang-es .featured p.es { color: var(--text-dim); font-style: normal; font-size: inherit; }
+      html.lang-es .card .es-name { font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.25; color: var(--text); font-style: normal; margin: 0 0 2px; }
+      html.lang-es .sealed p.es { color: var(--text); font-style: normal; font-size: 16px; margin-top: 0; }
+      html.lang-es .pause-in p.es, html.lang-es .ethic p.es { color: var(--text-dim); font-style: normal; font-size: inherit; }
+      html.lang-es details.faq .a p.es { color: var(--text-dim); font-style: normal; font-size: inherit; }
+      html.lang-es .notice-in p.es { color: var(--text-dim); font-style: normal; font-size: 15.5px; }
+      html.lang-es .origin-line p.es { color: var(--text-dim); font-style: normal; font-size: 15.5px; margin-top: 0; }
+      html.lang-es .blackout-msg p.es { font-family: var(--serif); font-size: 17.5px; color: var(--gold-bright); }
+      html.lang-es .foot-legal p.es { font-style: normal; }
+      html.lang-es .save-math [data-l="es"] { font-style: normal !important; color: inherit !important; font-size: inherit !important; }
+      html.lang-es .card-guarantee [data-l="es"], html.lang-es .buy-fine [data-l="es"] { font-style: normal !important; }
+      html.lang-es .bo-label small [data-l="es"] { font-size: 14.5px; font-weight: 600; color: var(--text-dim); }
+      @media (prefers-reduced-motion: reduce) {
+        .lang-switch button { transition: none; }
+      }
+
+      /* ---------- Cierre auditoría 3: el hero a la escala de la referencia ---------- */
+      h1 { font-size: clamp(52px, 7.4vw, 76px); }
+      @media (min-width: 961px) {
+        .hero-in { grid-template-columns: 0.98fr 1.02fr; padding-top: 44px; }
+      }
+      @media (max-width: 620px) {
+        .hero-in { padding-top: 22px; gap: 24px; }
+        .hero-voice { margin-bottom: 10px; }
+        .hero-eyebrow { margin-bottom: 12px; }
+        h1 { margin-bottom: 18px; }
+        .hero-ctas { gap: 10px; }
+        .hero-art img { height: 278px; object-fit: cover; }
+        html.lang-es h1 { font-size: 46px; }
+      }
+
+      /* ---------- Fase 3: pagina de instalacion y enlaces de tarjeta ---------- */
+      .card-install { margin: 12px 0 0; font-size: 14.5px; }
+      .card-install a { color: var(--gold-bright); text-decoration: underline; text-underline-offset: 3px; }
+      .install-head h1 { font-family: "Fraunces", serif; font-weight: 560; font-size: clamp(34px, 6vw, 54px); line-height: 1.08; margin: 10px 0 14px; color: var(--text); }
+      .install-lede { color: var(--text-dim); font-size: 18px; line-height: 1.6; max-width: 62ch; margin: 0; }
+      .steps { display: grid; gap: 16px; margin-top: 30px; }
+      .step { background: var(--ink-panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; }
+      .step h3 { margin: 0 0 8px; font-size: 21px; font-family: "Fraunces", serif; font-weight: 600; }
+      .step p { margin: 0; color: var(--text-dim); line-height: 1.65; }
+      .step p + p { margin-top: 10px; }
+      .fp { margin: 14px 0 4px; padding: 14px 16px; background: var(--ink-deep); border: 1px solid var(--line-gold); border-radius: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; line-height: 1.7; word-break: break-all; color: var(--gold-bright); }
+      .help-list { margin: 12px 0 0; padding-left: 20px; color: var(--text-dim); display: grid; gap: 8px; line-height: 1.6; }
+      .install-back { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+    </style>
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="wrap head-in">
+        <a class="brand" href="../index.html" aria-label="SALVORA PACKS, home">SALVORA PACKS</a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" id="pageLangEn">EN</button>
+          <button type="button" id="pageLangEs">ES</button>
+        </div>
+      </div>
+    </header>
+    <main class="wrap" style="padding-top: 28px; padding-bottom: 40px">
+      <p><a href="../index.html#packs"><span data-l="en">Back to the catalog</span><span data-l="es">Volver al catálogo</span></a></p>
+      <div class="card-media" style="max-width: 720px"><img class="cm-cover" src="../img/portada-emergencias.webp" width="720" height="405" alt="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" /></div>
+      <h1 data-l="en" style="margin-top: 20px">Home Emergencies</h1>
+      <h1 data-l="es" style="margin-top: 20px">Emergencias en casa</h1>
+      <p class="desc" style="max-width: 62ch"><span data-l="en">For the emergencies that happen where you live. We walk you through each one step by step, so panic doesn't get to decide.</span><span data-l="es">Para las emergencias que pasan donde vives. Te llevamos por cada una paso a paso, para que el pánico no decida por ti.</span></p>
+      <div class="spec" style="margin: 14px 0">
+        <span><b>69</b> <span data-l="en">guides, 23 in each language</span><span data-l="es">guías, 23 en cada idioma</span></span>
+        <span>EN · ES · PT</span>
+        <span><span data-l="en">Works offline</span><span data-l="es">Funciona sin conexión</span></span>
+        <span><span data-l="en">Readable edition included</span><span data-l="es">Edición legible incluida</span></span>
+      </div>
+      <div class="card-foot" style="justify-content: flex-start; gap: 16px">
+        <span class="price">$19</span>
+        <a class="btn btn-gold" href="https://salvorapacks.gumroad.com/l/emergencias-casa"><span data-l="en">Get it on Gumroad</span><span data-l="es">Conseguirlo en Gumroad</span></a>
+        <a class="btn btn-ghost" href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a>
+      </div>
+
+      <h2 style="margin-top: 36px"><span data-l="en">Read two full guides, exactly as they come in the pack</span><span data-l="es">Lee dos guías enteras, tal como vienen en el pack</span></h2>
+      <p style="max-width: 62ch"><span data-l="en">This is the readable edition of the pack, word for word. Nothing here is a summary or a teaser: these are guides 1 and 13, complete, in the language you pick above.</span><span data-l="es">Esto es la edición legible del pack, palabra por palabra. Nada de esto es un resumen ni un adelanto: son las guías 1 y 13, completas, en el idioma que elijas arriba.</span></p>
+
+      <article class="muestra">
+        <div data-l="en"><h3>1. Smoke Alarms: Where They Go, How to Care for Them and When to Replace Them</h3>
+<p>Smoke alarms sense smoke well before you can and alert you to danger. In a fire you may have very little time to get out, so every home needs alarms that are well placed and in good working order.</p>
+<h4>Where they go</h4>
+<ul>
+<li>One inside every bedroom and one outside every sleeping area, for example in the hallway.</li>
+<li>One on every level of the home, including the basement.</li>
+<li>On the ceiling or high on a wall.</li>
+<li>No alarms in the kitchen or in bathrooms. Keep them at least 3 meters (10 feet) from the stove.</li>
+<li>Interconnected is best: when one sounds, they all sound, and you hear the warning wherever you are.</li>
+</ul>
+<h4>How to care for them</h4>
+<ul>
+<li>Test each alarm once a month using the test button. It should sound loud.</li>
+<li>Clean it following the manufacturer instructions, which come in the package or on its website.</li>
+<li>Choose alarms listed by a nationally recognized testing laboratory.</li>
+<li>There are two basic types: ionization alarms respond better to flaming fires and photoelectric alarms respond better to smoldering fires.</li>
+</ul>
+<h4>What the sounds mean</h4>
+<ul>
+<li>A continued set of three loud beeps means smoke or fire. Get out, call 911 and stay out.</li>
+<li>A single chirp every 30 or 60 seconds means the battery is low and must be changed.</li>
+<li>If the chirping continues after the battery has been replaced, the alarm is at the end of its life and the whole unit must be replaced.</li>
+</ul>
+<h4>When to replace them</h4>
+<ul>
+<li>Replace the entire alarm 10 years after its manufacturing date, even if it seems to work.</li>
+</ul>
+<h4>People who are deaf or hard of hearing</h4>
+<ul>
+<li>There are alarms and alert devices with strobe lights that flash when the alarm sounds.</li>
+<li>There are also pillow or bed shakers that vibrate when the alarm sounds. Choose these accessories listed by a testing laboratory too.</li>
+</ul>
+<h4>A note on the numbers in this guide</h4>
+<p>The phone numbers in this guide are for the United States. If you live in another country, look up your country&#x27;s emergency number and poison center number and keep them saved in your phone.</p>
+<h4>Source</h4>
+<p>NFPA, «Smoke alarms» page, and USFA, FA-221 «Fire Safety for Older Adults». Checked on November 7, 2026.</p>
+<h4>---</h4>
+<p>Source cited: NFPA, Smoke alarms page; USFA, FA-221 Fire Safety for Older Adults. Verified on 2026-11-07.</p></div>
+        <div data-l="es"><h3>1. Alarmas de humo: dónde van, cómo se cuidan y cuándo se cambian</h3>
+<p>Las alarmas de humo detectan el humo mucho antes que tú y te avisan del peligro. En un incendio puedes tener muy poco tiempo para salir, por eso cada casa necesita alarmas bien puestas y en buen estado.</p>
+<h4>Dónde van</h4>
+<ul>
+<li>Una dentro de cada dormitorio y otra fuera de cada zona de dormir, por ejemplo en el pasillo.</li>
+<li>Una en cada planta de la casa, incluido el sótano.</li>
+<li>En el techo o en la parte alta de una pared.</li>
+<li>Nada de alarmas en la cocina ni en los baños. Déjalas a 3 metros como mínimo de la estufa.</li>
+<li>Mejor interconectadas: si suena una, suenan todas, y oyes el aviso estés donde estés.</li>
+</ul>
+<h4>Cómo se cuidan</h4>
+<ul>
+<li>Prueba cada alarma una vez al mes con el botón de prueba. Tiene que sonar fuerte.</li>
+<li>Límpiala siguiendo las instrucciones del fabricante, que vienen en el paquete o en su web.</li>
+<li>Elige alarmas con la etiqueta de un laboratorio de ensayos reconocido a nivel nacional.</li>
+<li>Hay dos tipos básicos: las de ionización responden mejor a los fuegos con llamas y las fotoeléctricas, a los fuegos que arden sin llama.</li>
+</ul>
+<h4>Qué significan los sonidos</h4>
+<ul>
+<li>Tres pitidos fuertes seguidos significan humo o fuego. Sal, llama al 911 y quédate fuera.</li>
+<li>Un pitido suelto cada 30 o 60 segundos significa que la batería está baja y hay que cambiarla.</li>
+<li>Si sigue pitando después de cambiar la batería, la alarma llegó al final de su vida y hay que cambiarla entera.</li>
+</ul>
+<h4>Cuándo se cambian</h4>
+<ul>
+<li>Cambia toda la alarma a los 10 años de su fecha de fabricación, aunque parezca que funciona.</li>
+</ul>
+<h4>Personas sordas o con pérdida auditiva</h4>
+<ul>
+<li>Hay alarmas y dispositivos con luz estroboscópica que parpadea cuando suena la alarma.</li>
+<li>También hay sacudidores de almohada o de cama que vibran cuando suena la alarma. Elige también estos accesorios con etiqueta de un laboratorio de ensayos.</li>
+</ul>
+<h4>Nota sobre los números de esta guía</h4>
+<p>Los números de teléfono de esta guía son de Estados Unidos. Si vives en otro país, busca el número de emergencias y el centro de toxicología de tu país y tenlos guardados en el teléfono.</p>
+<h4>Fuente</h4>
+<p>NFPA, página «Smoke alarms», y USFA, FA-221 «Fire Safety for Older Adults». Verificado el 7 de noviembre de 2026.</p>
+<h4>---</h4>
+<p>Fuente citada: NFPA, página Smoke alarms; USFA, FA-221 Fire Safety for Older Adults. Verificada el 2026-11-07.</p></div>
+      </article>
+      <article class="muestra">
+        <div data-l="en"><h3>13. Gas Leak: How to Recognize It and Get Out in Time</h3>
+<p>This guide is about natural gas delivered by pipeline. A leak can be recognized by smell, by sound and by sight. The safe response is not to look for where it comes from, but to leave the area by foot and call from outside.</p>
+<h4>Recognizing the leak</h4>
+<p>By smell: an unusual smell, a petroleum odor or a gaseous odor. Distribution systems add mercaptan, a harmless chemical with a skunk like odor, to make a leak easier to detect.</p>
+<p>By sound: the volume can range from a quiet hissing to a loud roar, depending on the size of the leak.</p>
+<p>By sight: blowing dirt around a pipeline area, continuous bubbling in wet or flooded areas, and dead or discolored plants in an otherwise healthy area of vegetation.</p>
+<h4>What not to do</h4>
+<p>Do not cause any flame or any potential source of ignition: do not use electrical switches, do not start motor vehicles or electrical equipment, and do not light a match.</p>
+<p>Do not use a telephone or cell phone inside the area. If you are inside a home or business, do not pull plugs from electrical outlets or open an automatic garage door.</p>
+<p>Do not attempt to operate any pipeline valves yourself: you may inadvertently route more product to the leak or cause a secondary incident.</p>
+<p>Do not try to locate the source of the odor or leak.</p>
+<h4>Leave and call from outside</h4>
+<p>Leave the area by foot immediately. Try to direct other individuals to leave the area too, and try to stay upwind.</p>
+<p>From a safe location, call 911. Then notify the pipeline company or your local emergency response number, if known, and give your name and the location.</p>
+<h4>Before digging, and one option at home</h4>
+<p>Call 811 a few days before any home digging project. The call connects you to your local underground utility operators, who will mark the approximate location of buried natural gas lines and other buried utilities near where you plan to dig.</p>
+<p>If you live near a pipeline, PHMSA suggests talking with the company about good safety habits, including the use of home gas detectors.</p>
+<h4>A note on the numbers in this guide</h4>
+<p>The phone numbers in this guide are for the United States. If you live in another country, look up your country&#x27;s emergency number and poison center number and keep them saved in your phone.</p>
+<h4>Source</h4>
+<p>PHMSA, Pipeline Leak Recognition and What To Do, and PHMSA, National Safe Digging Month. Checked on November 7, 2026.</p>
+<h4>---</h4>
+<p>Source cited: PHMSA, Pipeline Leak Recognition and What To Do, and PHMSA, National Safe Digging Month. Verified on 2026-11-07.</p></div>
+        <div data-l="es"><h3>13. Fuga de gas: cómo reconocerla y salir a tiempo</h3>
+<p>Esta guía trata del gas natural que llega por tubería. Una fuga puede reconocerse por el olor, por el sonido y por la vista. La respuesta segura no es buscar su origen, sino salir a pie y llamar desde fuera.</p>
+<h4>Reconocer la fuga</h4>
+<p>Por el olor: un olor inusual, a petróleo o gaseoso. Los sistemas de distribución añaden mercaptano, una sustancia inofensiva, con un olor parecido al de un zorrillo, para que la fuga se pueda detectar.</p>
+<p>Por el sonido: el volumen puede ir de un silbido suave a un rugido fuerte, según el tamaño de la fuga.</p>
+<p>Por la vista: tierra despedida alrededor de la zona de la tubería, burbujas continuas en zonas mojadas o inundadas, y plantas muertas o descoloridas en medio de una zona de vegetación sana.</p>
+<h4>Lo que no se hace</h4>
+<p>No provoques llamas ni ninguna fuente posible de ignición: no uses interruptores eléctricos, no arranques vehículos ni equipos eléctricos y no enciendas cerillas.</p>
+<p>No uses el teléfono ni el móvil dentro de la zona. Si estás en una casa o un negocio, no desenchufes aparatos de las tomas ni abras la puerta automática del garaje.</p>
+<p>No intentes manejar tú mismo las válvulas de la tubería: podrías enviar más producto hacia la fuga o causar otro incidente.</p>
+<p>No busques el origen del olor ni de la fuga.</p>
+<h4>Salir y llamar desde fuera</h4>
+<p>Sal de la zona a pie de inmediato. Intenta dirigir a las demás personas para que salgan también, e intenta mantenerte a contraviento.</p>
+<p>Desde un lugar seguro, llama al 911. Después avisa a la compañía de la tubería o a tu número local de respuesta a emergencias, si lo conoces, y da tu nombre y el lugar.</p>
+<h4>Antes de excavar y una opción en casa</h4>
+<p>Llama al 811 unos días antes de cualquier proyecto de excavación en casa. La llamada te conecta con los operadores locales, que marcarán la posición aproximada de las líneas enterradas de gas natural y de otros servicios cerca de donde vas a excavar.</p>
+<p>Si vives cerca de una tubería, la PHMSA sugiere hablar con la compañía sobre buenos hábitos de seguridad, incluido el uso de detectores domésticos de gas.</p>
+<h4>Nota sobre los números de esta guía</h4>
+<p>Los números de teléfono de esta guía son de Estados Unidos. Si vives en otro país, busca el número de emergencias y el centro de toxicología de tu país y tenlos guardados en el teléfono.</p>
+<h4>Fuente</h4>
+<p>PHMSA, Pipeline Leak Recognition and What To Do, y PHMSA, National Safe Digging Month. Verificado el 7 de noviembre de 2026.</p>
+<h4>---</h4>
+<p>Fuente citada: PHMSA, Pipeline Leak Recognition and What To Do, y PHMSA, National Safe Digging Month. Verificada el 2026-11-07.</p></div>
+      </article>
+
+      <p style="max-width: 62ch"><span data-l="en">Every guide in the pack cites its official sources inside, and each line was checked against them. The full pack also brings the same guides ready to install in the free NIDO app, where they work with no connection at all.</span><span data-l="es">Cada guía del pack cita sus fuentes oficiales dentro, y cada línea fue cotejada contra ellas. El pack completo trae además las mismas guías listas para instalar en la app gratuita NIDO, donde funcionan sin conexión alguna.</span></p>
+      <div class="card-foot" style="justify-content: flex-start; gap: 16px">
+        <span class="price">$19</span>
+        <a class="btn btn-gold" href="https://salvorapacks.gumroad.com/l/emergencias-casa"><span data-l="en">Get the full pack on Gumroad</span><span data-l="es">Conseguir el pack completo en Gumroad</span></a>
+      </div>
+    </main>
+    <script>
+      (function () {
+        var en = document.getElementById("pageLangEn"), es = document.getElementById("pageLangEs");
+        function setPageLang(lang) {
+          if (lang !== "es") lang = "en";
+          document.documentElement.classList.remove("lang-en", "lang-es");
+          document.documentElement.classList.add("lang-" + lang);
+          document.documentElement.setAttribute("lang", lang);
+          try { window.localStorage.setItem("salvora-lang", lang); } catch (e) {}
+          if (en) en.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+          if (es) es.setAttribute("aria-pressed", lang === "es" ? "true" : "false");
+        }
+        if (en) en.addEventListener("click", function () { setPageLang("en"); });
+        if (es) es.addEventListener("click", function () { setPageLang("es"); });
+        setPageLang(document.documentElement.classList.contains("lang-es") ? "es" : "en");
+      })();
+    </script>
+  </body>
+</html>
