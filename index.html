@@ -1553,7 +1553,7 @@
       .filtros { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 18px; padding-bottom: 4px; }
       .filtro { font: inherit; font-weight: 600; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line, #d8d2c4); background: transparent; color: inherit; cursor: pointer; }
       .filtro.is-on { background: var(--gold, #c9a227); border-color: var(--gold, #c9a227); color: #1d1a12; }
-      [data-tipo].filtro-oculta { display: none !important; }
+      .filtro-oculta { display: none !important; }
     </style>
   </head>
   <body>
@@ -1910,7 +1910,7 @@
           <p class="sec-kicker"><span data-l="en">Start here</span><span data-l="es">Empieza aquí</span></p>
           <h2><span data-l="en">The three we would hand you first</span><span data-l="es">Los tres que te entregaríamos primero</span></h2>
           <div class="grid">
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal">
               <div class="card-media"><img class="cm-cover" src="img/portada-esencial.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Essential Pack, the starter pack of emergency basics" data-alt-en="Cover of the Essential Pack, the starter pack of emergency basics" data-alt-es="Portada del Paquete Esencial, el pack de inicio con lo básico de emergencia" /></div>
               <div class="card-top"><span class="card-kind"><span data-l="en">Starter pack</span><span data-l="es">Pack de inicio</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Essential Pack</h3>
@@ -1922,7 +1922,7 @@
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/esencial"><span data-l="en">Get it on Gumroad</span><span data-l="es">Conseguirlo en Gumroad</span></a>
               </div>
             </article>
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal">
               <div class="card-media"><img class="cm-cover" src="img/portada-emergencias.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-en="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-es="Portada de Emergencias en casa, el pack estrella de fuego, gas, agua y seguridad en el hogar" /><span class="cm-tag"><span data-l="en">Star pack</span><span data-l="es">Pack estrella</span></span></div>
               <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Home Emergencies</h3>
@@ -1935,7 +1935,7 @@
               </div>
               <p class="card-install"><a href="producto/emergencias-en-casa.html"><span data-l="en">Read two full guides as a sample</span><span data-l="es">Lee dos guías enteras de muestra</span></a></p>
             </article>
-            <article class="card reveal" data-tipo="packs">
+            <article class="card reveal">
               <div class="card-media"><img class="cm-cover" src="img/ilustracion-carpeta.webp" width="720" height="405" loading="lazy" decoding="async" alt="Illustration of an open emergency binder with checklists, a first aid pouch, flashlight, water bottle, blanket and radio, under a gold compass star" data-alt-en="Illustration of an open emergency binder with checklists, a first aid pouch, flashlight, water bottle, blanket and radio, under a gold compass star" data-alt-es="Ilustración de una carpeta de emergencia abierta con listas, un botiquín, linterna, botella de agua, manta y radio, bajo una estrella brújula dorada" /></div>
               <div class="card-top"><span class="card-kind"><span data-l="en">Everything</span><span data-l="es">Todo</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">The Complete Collection</h3>
@@ -1952,7 +1952,7 @@
       </section>
 
       <!-- ============ FILTERS (fase 4, preparado) ============ -->
-      <div class="wrap filtros" role="group" aria-label="<span data-l="en">Filter the catalog</span><span data-l="es">Filtrar el catálogo</span>">
+      <div class="wrap filtros" role="group" aria-label="Filter the catalog" data-aria-en="Filter the catalog" data-aria-es="Filtrar el catálogo">
         <button type="button" class="filtro is-on" data-filtro="todos"><span data-l="en">Everything</span><span data-l="es">Todo</span></button>
         <button type="button" class="filtro" data-filtro="packs"><span data-l="en">Guide packs</span><span data-l="es">Packs de guías</span></button>
         <button type="button" class="filtro" data-filtro="plantillas"><span data-l="en">Binders and planners</span><span data-l="es">Carpetas y planificadores</span></button>
@@ -3327,7 +3327,12 @@
         function aplicar(f) {
           botones.forEach(function (b) { b.classList.toggle("is-on", b.getAttribute("data-filtro") === f); });
           document.querySelectorAll("[data-tipo]").forEach(function (c) {
-            c.classList.toggle("filtro-oculta", f !== "todos" && c.getAttribute("data-tipo") !== f);
+            var oculta = f !== "todos" && c.getAttribute("data-tipo") !== f;
+            c.classList.toggle("filtro-oculta", oculta);
+            var g = c.nextElementSibling;
+            if (g && g.classList.contains("card-guarantee")) {
+              g.classList.toggle("filtro-oculta", oculta);
+            }
           });
           ["packs", "binders", "etsy"].forEach(function (id) {
             var sec = document.getElementById(id);
