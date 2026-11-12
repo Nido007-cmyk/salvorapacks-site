@@ -574,5 +574,71 @@ function setLang(l){
 }
 loadProg(); setLang('es');
 </script>
+
+<!--INI-PARCHE-REVISION--><script type="application/json" id="nav-data">[{"id":1,"title":{"es":"Si suena la alarma de humo","en":"When the smoke alarm sounds"}},{"id":2,"title":{"es":"Me pierdo en un lugar con gente","en":"I get lost in a busy place"}},{"id":3,"title":{"es":"Alguien me pide que vaya con él","en":"Someone asks me to go with them"}},{"id":4,"title":{"es":"Monzón: rayos, agua que corre y polvo","en":"Monsoon: lightning, running water and dust"}},{"id":5,"title":{"es":"Calor del desierto y el coche caliente","en":"Desert heat and the hot car"}},{"id":6,"title":{"es":"Terremoto: agacharse, cubrirse, agarrarse","en":"Earthquake: drop, cover, hold on"}},{"id":7,"title":{"es":"Tornado o viento muy fuerte: el cuarto seguro","en":"Tornado or very strong wind: the safe room"}},{"id":8,"title":{"es":"Agua y piscinas: nunca solo","en":"Water and pools: never alone"}},{"id":9,"title":{"es":"Si alguien se lastima","en":"If someone gets hurt"}},{"id":10,"title":{"es":"Pastillas y botes que no se tocan","en":"Pills and bottles I do not touch"}},{"id":11,"title":{"es":"Un perro que no conozco","en":"A dog I do not know"}},{"id":12,"title":{"es":"Cruzar la calle","en":"Crossing the street"}}]</script><style>.chap.here{background:#fff3d6;outline:4px solid var(--gold-dark);outline-offset:-4px;}#closeNav .btn{margin-top:10px;}</style><script>
+(function(){
+  var NAV = JSON.parse(document.getElementById('nav-data').textContent);
+  var OWN = BOOK.chapters[0].id, TOTAL = NAV.length;
+  var STR = { next:{es:'Siguiente capítulo', en:'Next chapter'},
+              index:{es:'Volver al índice', en:'Back to the index'},
+              here:{es:'Estás aquí', en:'You are here'} };
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function fileFor(id){ return 'capitulo-' + pad(id) + '.html'; }
+
+  /* El certificado es del libro entero: las doce banderas del avance
+     compartido, no solo las del capítulo que trae este archivo. Sin
+     avance guardado (o sin localStorage), ninguna bandera: bloqueado. */
+  allPracticed = function(){ for(var id = 1; id <= TOTAL; id++){ if(!PROG.practiced[id]) return false; } return true; };
+
+  /* El mapa de la copia por capítulos: los doce con su título en el
+     idioma activo; el propio abre aquí y queda marcado; los demás
+     navegan a su archivo, que al cargar abre su capítulo. */
+  renderHome = function(){
+    var v = document.getElementById('v-home'); v.innerHTML = '';
+    var hero = el('div', {'class':'hero'}, '<svg viewBox="0 0 100 100" aria-hidden="true"><use href="#luzsym"/></svg>');
+    var hb = el('div'); hb.appendChild(txt('h1', null, ui('bookTitle'))); hb.appendChild(txt('p', {'class':'big'}, ui('homeLead'))); hero.appendChild(hb); v.appendChild(hero);
+    var map = el('div', {'class':'map'});
+    NAV.forEach(function(nc){
+      var id = nc.id, pr = !!PROG.practiced[id], rd = !!PROG.read[id], own = id === OWN;
+      var b = el('button', {'class':'chap' + (pr ? ' practiced' : '') + (own ? ' here' : ''),
+        onclick:(function(id, own){ return function(){ if(own) openChapter(id); else location.href = fileFor(id) + '#cap'; }; })(id, own)});
+      b.appendChild(txt('span', {'class':'n'}, String(id)));
+      var t = el('span'); t.appendChild(txt('div', {'class':'t'}, tr(nc.title)));
+      var mark = pr ? ui('markPracticed') : (rd ? ui('markRead') : ui('markNew'));
+      if(own) mark += ' · ' + tr(STR.here);
+      t.appendChild(txt('div', {'class':'m'}, mark));
+      b.appendChild(t); map.appendChild(b);
+    });
+    v.appendChild(map);
+    if(allPracticed()) v.appendChild(el('button', {'class':'btn', onclick:function(){ openCert(); }}, '⭐ ' + ui('certBtn')));
+    v.appendChild(txt('button', {'class':'btn listen', onclick:function(){ openAdult(); }}, ui('adultBtn')));
+  };
+
+  /* Al llegar al cierre: siguiente capítulo (a su archivo) y volver al
+     índice de la carpeta. */
+  var goMotor = go;
+  go = function(n, silent){
+    goMotor(n, silent);
+    if(n === 7 && typeof CH !== 'undefined' && CH){
+      var s7 = document.getElementById('s7');
+      if(s7 && !document.getElementById('closeNav')){
+        var row = el('div', {id:'closeNav'});
+        if(CH.id < TOTAL){
+          var nb = txt('button', {'class':'btn'}, tr(STR.next));
+          nb.onclick = function(){ stopSpeech(); location.href = fileFor(CH.id + 1) + '#cap'; };
+          row.appendChild(nb);
+        }
+        var ib = txt('button', {'class':'btn listen'}, tr(STR.index));
+        ib.onclick = function(){ stopSpeech(); location.href = 'index.html'; };
+        row.appendChild(ib);
+        s7.appendChild(row);
+      }
+    }
+  };
+
+  renderHome();
+  if(location.hash === '#cap') openChapter(OWN);
+})();
+</script><!--FIN-PARCHE-REVISION-->
 </body>
 </html>
