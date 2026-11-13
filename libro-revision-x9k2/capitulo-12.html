@@ -945,15 +945,16 @@ function renderVar(){
 }
 function varPick(o){
   VR.fb = tr(o.fb);
+  play(K('var-' + VR.v.key + '-fb-' + o.key));
   if(o.ok){ VR.phase = 'steps'; renderVar(); }
   else { var e = document.getElementById('varFb'); if(e) e.textContent = VR.fb; else renderVar(); }
 }
 function varStep(idx){
   if(idx === VR.step){
     VR.step++;
-    if(VR.step >= VR.v.steps.length){ VR.phase = 'say'; renderVar(); }
-    else renderVar();
-  } else { var e = document.getElementById('varHint'); if(e) e.textContent = ui('varStepsHint'); }
+    if(VR.step >= VR.v.steps.length){ play(K('step-done')); VR.phase = 'say'; renderVar(); }
+    else { play(K('step-good')); renderVar(); }
+  } else { var e = document.getElementById('varHint'); if(e) e.textContent = ui('varStepsHint'); play(K('var-steps-hint')); }
 }
 function varAdvance(){
   VR.part++;
