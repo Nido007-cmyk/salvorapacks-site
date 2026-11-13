@@ -953,8 +953,8 @@
   <body>
     <header class="site">
       <div class="wrap header-in">
-        <a class="brand" href="../index.html" aria-label="SALVORA PACKS, home">SALVORA PACKS</a>
-        <div class="lang-switch" role="group" aria-label="Language">
+        <a class="brand" href="../index.html" aria-label="SALVORA PACKS, home" data-aria-en="SALVORA PACKS, home" data-aria-es="SALVORA PACKS, inicio">SALVORA PACKS</a>
+        <div class="lang-switch" role="group" aria-label="Language" data-aria-en="Language" data-aria-es="Idioma">
           <button type="button" id="pageLangEn">EN</button>
           <button type="button" id="pageLangEs">ES</button>
         </div>
@@ -1028,6 +1028,9 @@
           document.querySelectorAll("img[data-alt-en]").forEach(function (img) {
             var v = img.getAttribute(lang === "es" ? "data-alt-es" : "data-alt-en");
             if (v) img.setAttribute("alt", v);
+          });
+          document.querySelectorAll("[data-aria-en]").forEach(function (el) {
+            el.setAttribute("aria-label", lang === "es" ? el.getAttribute("data-aria-es") : el.getAttribute("data-aria-en"));
           });
         }
         if (en) en.addEventListener("click", function () { setPageLang("en"); });

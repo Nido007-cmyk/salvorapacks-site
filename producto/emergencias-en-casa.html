@@ -950,8 +950,8 @@
   <body>
     <header class="site">
       <div class="wrap header-in">
-        <a class="brand" href="../index.html" aria-label="SALVORA PACKS, home">SALVORA PACKS</a>
-        <div class="lang-switch" role="group" aria-label="Language">
+        <a class="brand" href="../index.html" aria-label="SALVORA PACKS, home" data-aria-en="SALVORA PACKS, home" data-aria-es="SALVORA PACKS, inicio">SALVORA PACKS</a>
+        <div class="lang-switch" role="group" aria-label="Language" data-aria-en="Language" data-aria-es="Idioma">
           <button type="button" id="pageLangEn">EN</button>
           <button type="button" id="pageLangEs">ES</button>
         </div>
@@ -959,7 +959,7 @@
     </header>
     <main class="wrap" style="padding-top: 28px; padding-bottom: 40px">
       <p><a href="../index.html#packs"><span data-l="en">Back to the catalog</span><span data-l="es">Volver al catálogo</span></a></p>
-      <div class="card-media" style="max-width: 720px"><img class="cm-cover" src="../img/portada-emergencias.webp" srcset="../img/portada-emergencias.webp 720w, ../img/portada-emergencias-360.webp 360w" sizes="(max-width: 760px) 92vw, 720px" width="720" height="405" alt="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" /></div>
+      <div class="card-media" style="max-width: 720px"><img class="cm-cover" src="../img/portada-emergencias.webp" srcset="../img/portada-emergencias.webp 720w, ../img/portada-emergencias-360.webp 360w" sizes="(max-width: 760px) 92vw, 720px" width="720" height="405" alt="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-en="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-es="Portada de Emergencias en casa, el pack estrella sobre fuego, gas, agua y seguridad en el hogar" /></div>
       <h1 data-l="en" style="margin-top: 20px">Home Emergencies</h1>
       <h1 data-l="es" style="margin-top: 20px">Emergencias en casa</h1>
       <p class="desc" style="max-width: 62ch"><span data-l="en">For the emergencies that happen where you live. We walk you through each one step by step, so panic doesn't get to decide.</span><span data-l="es">Para las emergencias que pasan donde vives. Te llevamos por cada una paso a paso, para que el pánico no decida por ti.</span></p>
@@ -1115,6 +1115,17 @@
     <script>
       (function () {
         var en = document.getElementById("pageLangEn"), es = document.getElementById("pageLangEs");
+        function applyMediaLang(lang) {
+          document.querySelectorAll("[data-alt-en]").forEach(function (el) {
+            el.setAttribute("alt", lang === "es" ? el.getAttribute("data-alt-es") : el.getAttribute("data-alt-en"));
+          });
+          document.querySelectorAll("[data-aria-en]").forEach(function (el) {
+            el.setAttribute("aria-label", lang === "es" ? el.getAttribute("data-aria-es") : el.getAttribute("data-aria-en"));
+          });
+          document.querySelectorAll("[data-label-es]").forEach(function (el) {
+            el.setAttribute("data-label", lang === "es" ? el.getAttribute("data-label-es") : el.getAttribute("data-label-en"));
+          });
+        }
         function setPageLang(lang) {
           if (lang !== "es") lang = "en";
           document.documentElement.classList.remove("lang-en", "lang-es");
@@ -1123,6 +1134,7 @@
           try { window.localStorage.setItem("salvora-lang", lang); } catch (e) {}
           if (en) en.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
           if (es) es.setAttribute("aria-pressed", lang === "es" ? "true" : "false");
+          applyMediaLang(lang);
         }
         if (en) en.addEventListener("click", function () { setPageLang("en"); });
         if (es) es.addEventListener("click", function () { setPageLang("es"); });
