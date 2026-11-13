@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#15222b" />
     <script>
       (function () {
         var lang = "en";
@@ -18,7 +21,7 @@
     </script>
     <script>
       window.SALVORA_DATOS = {
-        libro: { capitulos: 12, acuarelas: 51, voces: 802, edadMin: 5, edadMax: 9 }
+        libro: { capitulos: 12, acuarelas: 51, voces: 1118, edadMin: 5, edadMax: 9 }
       };
     </script>
     <title>Aprendo a cuidarme · SALVORA PACKS</title>
@@ -54,7 +57,7 @@
       :root { --ink:#15222b; --ink-deep:#0f191f; --ink-panel:#1b2c38; --line:#2e4553; --line-gold:#6d5a24; --gold:#c9a24b; --gold-bright:#e6c877; --on-gold:#101a21; --text:#eef2f0; --text-dim:#b3c0c6; --text-faint:#8a9ea8; --serif:"Spectral", Georgia, serif; --display:"Fraunces", "Spectral", Georgia, serif; --sans:"Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif; }
       * { box-sizing: border-box; }
       body { margin:0; background:var(--ink); color:var(--text); font-family:var(--sans); font-size:17px; line-height:1.65; }
-      html.lang-en [data-l="es"] { display:none !important; }
+      html:not(.lang-es) [data-l="es"] { display:none !important; }
       html.lang-es [data-l="en"] { display:none !important; }
       .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px 64px; }
       header.site { border-bottom: 1px solid var(--line); }
@@ -79,6 +82,11 @@
       .how strong { color: var(--text); }
       ol.chapters { margin: 0; padding-left: 24px; columns: 2; column-gap: 44px; }
       ol.chapters li { margin-bottom: 8px; break-inside: avoid; }
+      .gallery { display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 20px 0 6px; }
+      .gallery figure { margin:0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--ink-panel); }
+      .gallery img { width: 100%; height: auto; display: block; }
+      .gallery figcaption { padding: 9px 12px; font-size: 13.5px; color: var(--text-faint); }
+      @media (max-width: 620px) { .gallery { grid-template-columns: 1fr; } }
       .cta-row { display:flex; flex-wrap:wrap; gap: 14px; margin: 20px 0 6px; }
       .btn { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; font-weight: 700; font-size: 16px; padding: 13px 24px; border-radius: 8px; border: 1px solid transparent; }
       .btn-gold { background: var(--gold); color: var(--on-gold); }
@@ -123,7 +131,7 @@
       <div class="stats">
         <div class="stat"><b data-cf="capitulos">12</b><span class="lbl"><span data-l="en">chapters of safety practice</span><span data-l="es">capítulos de práctica de seguridad</span></span></div>
         <div class="stat"><b data-cf="acuarelas">51</b><span class="lbl"><span data-l="en">watercolors painted for the book</span><span data-l="es">acuarelas pintadas para el libro</span></span></div>
-        <div class="stat"><b data-cf="voces">802</b><span class="lbl"><span data-l="en">narrated voices, in Spanish and English</span><span data-l="es">voces narradas, en español y en inglés</span></span></div>
+        <div class="stat"><b data-cf="voces">1118</b><span class="lbl"><span data-l="en">narrated voices, in Spanish and English</span><span data-l="es">voces narradas, en español y en inglés</span></span></div>
         <div class="stat"><b><span data-cf="edadMin">5</span> to <span data-cf="edadMax">9</span></b><span class="lbl"><span data-l="en">the ages the book is made for</span><span data-l="es">las edades para las que está hecho el libro</span></span></div>
       </div>
 
@@ -149,7 +157,7 @@
           <li>When the smoke alarm sounds</li>
           <li>I get lost in a busy place</li>
           <li>Someone asks me to go with them</li>
-          <li>Monsoon: lightning, running water and dust</li>
+          <li>Monsoon: lightning and running water</li>
           <li>Desert heat and the hot car</li>
           <li>Earthquake: drop, cover, hold on</li>
           <li>Tornado or very strong wind: the safe room</li>
@@ -165,7 +173,7 @@
           <li>Si suena la alarma de humo</li>
           <li>Me pierdo en un lugar con gente</li>
           <li>Alguien me pide que vaya con él</li>
-          <li>Monzón: rayos, agua que corre y polvo</li>
+          <li>Monzón: rayos y agua que corre</li>
           <li>Calor del desierto y el coche caliente</li>
           <li>Terremoto: agacharse, cubrirse, agarrarse</li>
           <li>Tornado o viento muy fuerte: el cuarto seguro</li>
@@ -175,6 +183,16 @@
           <li>Un perro que no conozco</li>
           <li>Cruzar la calle</li>
         </ol>
+      </div>
+
+      <h2><span data-l="en">Scenes from the book</span><span data-l="es">Escenas del libro</span></h2>
+      <div class="gallery">
+        <figure><img src="/img/libro-escena-alarma.webp" width="880" height="587" loading="lazy" decoding="async" alt="Watercolor scene from the chapter When the smoke alarm sounds" data-alt-en="Watercolor scene from the chapter When the smoke alarm sounds" data-alt-es="Escena en acuarela del capítulo Si suena la alarma de humo" /><figcaption><span data-l="en">When the smoke alarm sounds</span><span data-l="es">Si suena la alarma de humo</span></figcaption></figure>
+        <figure><img src="/img/libro-escena-extrano.webp" width="880" height="587" loading="lazy" decoding="async" alt="Watercolor scene from the chapter Someone asks me to go with them" data-alt-en="Watercolor scene from the chapter Someone asks me to go with them" data-alt-es="Escena en acuarela del capítulo Alguien me pide que vaya con él" /><figcaption><span data-l="en">Someone asks me to go with them</span><span data-l="es">Alguien me pide que vaya con él</span></figcaption></figure>
+        <figure><img src="/img/libro-escena-calor.webp" width="880" height="587" loading="lazy" decoding="async" alt="Watercolor scene from the chapter Desert heat and the hot car" data-alt-en="Watercolor scene from the chapter Desert heat and the hot car" data-alt-es="Escena en acuarela del capítulo Calor del desierto y el coche caliente" /><figcaption><span data-l="en">Desert heat and the hot car</span><span data-l="es">Calor del desierto y el coche caliente</span></figcaption></figure>
+        <figure><img src="/img/libro-escena-tornado.webp" width="880" height="587" loading="lazy" decoding="async" alt="Watercolor scene from the chapter Tornado or very strong wind: the safe room" data-alt-en="Watercolor scene from the chapter Tornado or very strong wind: the safe room" data-alt-es="Escena en acuarela del capítulo Tornado o viento muy fuerte: el cuarto seguro" /><figcaption><span data-l="en">Tornado or very strong wind: the safe room</span><span data-l="es">Tornado o viento muy fuerte: el cuarto seguro</span></figcaption></figure>
+        <figure><img src="/img/libro-escena-ayuda.webp" width="880" height="587" loading="lazy" decoding="async" alt="Watercolor scene from the chapter If someone gets hurt" data-alt-en="Watercolor scene from the chapter If someone gets hurt" data-alt-es="Escena en acuarela del capítulo Si alguien se lastima" /><figcaption><span data-l="en">If someone gets hurt</span><span data-l="es">Si alguien se lastima</span></figcaption></figure>
+        <figure><img src="/img/libro-escena-calle.webp" width="880" height="587" loading="lazy" decoding="async" alt="Watercolor scene from the chapter Crossing the street" data-alt-en="Watercolor scene from the chapter Crossing the street" data-alt-es="Escena en acuarela del capítulo Cruzar la calle" /><figcaption><span data-l="en">Crossing the street</span><span data-l="es">Cruzar la calle</span></figcaption></figure>
       </div>
 
       <h2><span data-l="en">No account, no connection</span><span data-l="es">Sin cuenta y sin conexión</span></h2>

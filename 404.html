@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#15222b" />
+    <script>
+      (function () {
+        var lang = "en";
+        try {
+          var saved = window.localStorage.getItem("salvora-lang");
+          if (saved === "es" || saved === "en") { lang = saved; }
+          else if ((window.navigator.language || "").toLowerCase().indexOf("es") === 0) { lang = "es"; }
+        } catch (e) {}
+        document.documentElement.classList.add("lang-" + lang);
+        document.documentElement.setAttribute("lang", lang);
+      })();
+    </script>
+    <title>Page not found · SALVORA PACKS</title>
+    <meta name="description" content="This page is not here. The SALVORA PACKS store is on the home page." />
+    <meta name="robots" content="noindex" />
+    <link href="/fonts/fonts.css" rel="stylesheet" />
+    <style>
+      :root { --ink:#15222b; --ink-deep:#0f191f; --ink-panel:#1b2c38; --line:#2e4553; --line-gold:#6d5a24; --gold:#c9a24b; --gold-bright:#e6c877; --on-gold:#101a21; --text:#eef2f0; --text-dim:#b3c0c6; --text-faint:#8a9ea8; --serif:"Spectral", Georgia, serif; --display:"Fraunces", "Spectral", Georgia, serif; --sans:"Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin:0; background:var(--ink); color:var(--text); font-family:var(--sans); font-size:17px; line-height:1.65; }
+      html:not(.lang-es) [data-l="es"] { display:none !important; }
+      html.lang-es [data-l="en"] { display:none !important; }
+      .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px 64px; }
+      header.site { border-bottom: 1px solid var(--line); }
+      .head-in { max-width: 820px; margin: 0 auto; padding: 18px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+      .brand { font-family: var(--serif); font-weight:700; font-size:20px; color:var(--text); text-decoration:none; }
+      .lang-switch { display:inline-flex; border:1px solid var(--line-gold); border-radius:999px; overflow:hidden; }
+      .lang-switch button { background:transparent; color:var(--text-dim); border:0; cursor:pointer; font:inherit; font-weight:600; padding:8px 14px; }
+      .lang-switch button[aria-pressed="true"] { background:var(--gold); color:#101a21; }
+      .star { display:block; margin: 44px 0 6px; }
+      h1 { font-family: var(--display); font-weight:560; font-size: clamp(34px, 6vw, 50px); line-height:1.1; margin: 10px 0 12px; }
+      p { color: var(--text-dim); max-width: 56ch; }
+      .btn { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; font-weight: 700; font-size: 16px; padding: 13px 24px; border-radius: 8px; border: 1px solid transparent; margin-top: 14px; }
+      .btn-gold { background: var(--gold); color: var(--on-gold); }
+      .btn-gold:hover { background: var(--gold-bright); }
+      footer.site { border-top: 1px solid var(--line); margin-top: 44px; }
+      .foot-in { max-width: 820px; margin: 0 auto; padding: 26px 24px 40px; }
+      .foot-in p { font-size: 14px; color: var(--text-faint); }
+    </style>
+  </head>
+  <body>
+    <header class="site"><div class="head-in">
+      <a class="brand" href="/">SALVORA PACKS</a>
+      <span class="lang-switch"><button type="button" id="pageLangEn" aria-pressed="true">EN</button><button type="button" id="pageLangEs" aria-pressed="false">ES</button></span>
+    </div></header>
+    <main class="wrap">
+      <svg class="star" width="54" height="54" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 L60.5 39.5 L96 50 L60.5 60.5 L50 96 L39.5 60.5 L4 50 L39.5 39.5 Z" fill="#c9a24b"/></svg>
+      <h1><span data-l="en">This page is not here</span><span data-l="es">Esta página no está aquí</span></h1>
+      <p><span data-l="en">The address may be mistyped, or the page may have moved. Everything we sell lives on the home page: the packs, the binders and the free Essential Pack.</span><span data-l="es">Puede que la dirección esté mal escrita, o que la página se haya movido. Todo lo que vendemos vive en la portada: los packs, las carpetas y el Paquete Esencial gratis.</span></p>
+      <a class="btn btn-gold" href="/"><span data-l="en">Go to the home page</span><span data-l="es">Ir a la portada</span></a>
+    </main>
+    <footer class="site"><div class="foot-in">
+      <p><span data-l="en">SALVORA PACKS · Tucson, Arizona · Support: soporte@salvorapacks.com</span><span data-l="es">SALVORA PACKS · Tucson, Arizona · Soporte: soporte@salvorapacks.com</span></p>
+    </div></footer>
+    <script>
+      (function () {
+        var en = document.getElementById("pageLangEn"), es = document.getElementById("pageLangEs");
+        function setPageLang(lang) {
+          if (lang !== "es") lang = "en";
+          document.documentElement.classList.remove("lang-en", "lang-es");
+          document.documentElement.classList.add("lang-" + lang);
+          document.documentElement.setAttribute("lang", lang);
+          try { window.localStorage.setItem("salvora-lang", lang); } catch (e) {}
+          if (en) en.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+          if (es) es.setAttribute("aria-pressed", lang === "es" ? "true" : "false");
+        }
+        if (en) en.addEventListener("click", function () { setPageLang("en"); });
+        if (es) es.addEventListener("click", function () { setPageLang("es"); });
+        setPageLang(document.documentElement.classList.contains("lang-es") ? "es" : "en");
+      })();
+    </script>
+  </body>
+</html>

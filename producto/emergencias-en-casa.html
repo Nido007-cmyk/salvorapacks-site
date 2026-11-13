@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#15222b" />
     <script>
       (function () {
         var lang = "en";
@@ -38,7 +41,7 @@
   "@type": "Product",
   "name": "Home Emergencies",
   "image": "https://salvorapacks.com/img/portada-emergencias.webp",
-  "url": "https://salvorapacks.gumroad.com/l/emergencias-casa",
+  "url": "https://salvorapacks.com/producto/emergencias-en-casa.html",
   "description": "69 guides on fire, gas, water and home safety in English, Spanish and Portuguese, checked line by line against official sources.",
   "offers": {
     "@type": "Offer",
@@ -410,6 +413,7 @@
         padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-gold);
         opacity: 0; transition: opacity 0.45s ease; pointer-events: none;
       }
+      body.light .card-media .cm-tag { color: #e6c877; }
       .card:hover .cm-tag, .card:focus-within .cm-tag { opacity: 1; }
       .card-guarantee {
         margin: 14px 0 0; font-size: 13px; line-height: 1.5; color: var(--text-faint);
@@ -852,8 +856,8 @@
       }
     
       /* ---------- One language at a time ---------- */
-      html.lang-en [data-l="es"], html.lang-es [data-l="en"] { display: none !important; }
-      html.lang-en .lg-sep, html.lang-es .lg-sep { display: none !important; }
+      html:not(.lang-es) [data-l="es"], html.lang-es [data-l="en"] { display: none !important; }
+      .lg-sep { display: none !important; }
       .lang-switch { display: inline-flex; border: 1px solid var(--line-gold); border-radius: 999px; overflow: hidden; flex: none; }
       .lang-switch button {
         background: transparent; color: var(--text-dim); border: 0; cursor: pointer;
@@ -955,7 +959,7 @@
     </header>
     <main class="wrap" style="padding-top: 28px; padding-bottom: 40px">
       <p><a href="../index.html#packs"><span data-l="en">Back to the catalog</span><span data-l="es">Volver al catálogo</span></a></p>
-      <div class="card-media" style="max-width: 720px"><img class="cm-cover" src="../img/portada-emergencias.webp" width="720" height="405" alt="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" /></div>
+      <div class="card-media" style="max-width: 720px"><img class="cm-cover" src="../img/portada-emergencias.webp" srcset="../img/portada-emergencias.webp 720w, ../img/portada-emergencias-360.webp 360w" sizes="(max-width: 760px) 92vw, 720px" width="720" height="405" alt="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" /></div>
       <h1 data-l="en" style="margin-top: 20px">Home Emergencies</h1>
       <h1 data-l="es" style="margin-top: 20px">Emergencias en casa</h1>
       <p class="desc" style="max-width: 62ch"><span data-l="en">For the emergencies that happen where you live. We walk you through each one step by step, so panic doesn't get to decide.</span><span data-l="es">Para las emergencias que pasan donde vives. Te llevamos por cada una paso a paso, para que el pánico no decida por ti.</span></p>

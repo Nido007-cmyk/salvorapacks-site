@@ -76,7 +76,9 @@
   ]
 }
     </script>
-    <link rel="icon" href="data:," />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#15222b" />
     <title>Install your pack in NIDO · SALVORA PACKS</title>
     <link href="/fonts/fonts.css" rel="stylesheet" />
     <style>
@@ -440,6 +442,7 @@
         padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-gold);
         opacity: 0; transition: opacity 0.45s ease; pointer-events: none;
       }
+      body.light .card-media .cm-tag { color: #e6c877; }
       .card:hover .cm-tag, .card:focus-within .cm-tag { opacity: 1; }
       .card-guarantee {
         margin: 14px 0 0; font-size: 13px; line-height: 1.5; color: var(--text-faint);
@@ -882,8 +885,8 @@
       }
     
       /* ---------- One language at a time ---------- */
-      html.lang-en [data-l="es"], html.lang-es [data-l="en"] { display: none !important; }
-      html.lang-en .lg-sep, html.lang-es .lg-sep { display: none !important; }
+      html:not(.lang-es) [data-l="es"], html.lang-es [data-l="en"] { display: none !important; }
+      .lg-sep { display: none !important; }
       .lang-switch { display: inline-flex; border: 1px solid var(--line-gold); border-radius: 999px; overflow: hidden; flex: none; }
       .lang-switch button {
         background: transparent; color: var(--text-dim); border: 0; cursor: pointer;
@@ -1119,7 +1122,7 @@
 
         <div class="foot-legal">
           <div>
-            <h4>Refund policy</h4>
+            <h4><span data-l="en">Refund policy</span><span data-l="es">Política de reembolsos</span></h4>
             <p data-l="en">All sales are final. If a file is defective or does not work, we will repair it or replace it with a working copy at no cost. An accidental duplicate purchase is refunded. Nothing in this policy limits any legal right you have as a buyer.</p>
             <p class="es" data-l="es">Las ventas son finales. Si un archivo es defectuoso o no funciona, lo reparamos o lo cambiamos por una copia que funcione sin coste. Una compra duplicada por accidente se reembolsa. Ningún derecho legal del comprador se limita.</p>
           </div>

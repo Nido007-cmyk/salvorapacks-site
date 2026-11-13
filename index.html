@@ -40,7 +40,12 @@
       "@type": "Organization",
       "@id": "https://salvorapacks.com/#org",
       "name": "SALVORA PACKS",
-      "url": "https://salvorapacks.com/"
+      "url": "https://salvorapacks.com/",
+      "logo": "https://salvorapacks.com/img/icono-salvora-512.png",
+      "sameAs": [
+        "https://salvorapacks.gumroad.com",
+        "https://www.etsy.com/shop/salvorapacks"
+      ]
     },
     {
       "@type": "WebSite",
@@ -67,7 +72,8 @@
             "offers": {
               "@type": "Offer",
               "url": "https://salvorapacks.gumroad.com/l/esencial",
-              "price": "10.00",
+              "description": "Free. Pay what you want, $10 suggested.",
+              "price": "0",
               "priceCurrency": "USD",
               "availability": "https://schema.org/InStock"
             }
@@ -862,7 +868,59 @@
   ]
 }
     </script>
-    <link rel="icon" href="data:," />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need the NIDO app to use a pack?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Every pack brings its complete readable edition, so you open the files and read. NIDO is just a comfortable way to read them on your phone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an internet connection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only to download. Once the files are on your device, everything works with no connection. That's why we made Salvora in the first place."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What exactly do I receive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You get files, and Gumroad delivers them at checkout. Guides, plus audio on the audiobooks. You download them once and keep them. There's no DRM, you need no account, and nothing turns into a subscription. They're yours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which languages are included?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every card says its languages. The packs made for the NIDO app carry English, Spanish and Portuguese: the Essential Pack, Home Emergencies, Natural Disasters, Heat & Desert, Pets, the Emergency Audio and the Kitchen Bundle. Five binders carry all three too: the Family Emergency Binder, the Caregiver's Binder, the Home Binder, the Medical Bills Binder and the Tenant Kit. Everything else comes in English and Spanish: the other seven packs (Essential Home Repairs, Elder Care at Home, Food Preservation, Hurricanes, Roadside Emergencies, Dry Climate Gardening and Extreme Cold and Snow), the Family Bundle, both books, the other binders and planners, and the Living Paycheck Budget. The Winter Audiobook is in Spanish only. Across the Complete Collection, all three languages are there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if a file doesn’t work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Write to soporte@salvorapacks.com. If a file is defective, we repair it or replace it with a working copy at no cost. If you bought the same thing twice by accident, we refund the duplicate. The full policy is in the footer."
+      }
+    }
+  ]
+}
+    </script>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#15222b" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/fraunces-latin-normal-300-900.woff2" crossorigin />
+    <link rel="preload" as="image" href="img/ilustracion-carpeta.webp" fetchpriority="high" />
     <title>SALVORA PACKS · Official store · Emergency knowledge that works offline</title>
     <link href="/fonts/fonts.css" rel="stylesheet" />
     <style>
@@ -1226,6 +1284,7 @@
         padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-gold);
         opacity: 0; transition: opacity 0.45s ease; pointer-events: none;
       }
+      body.light .card-media .cm-tag { color: #e6c877; }
       .card:hover .cm-tag, .card:focus-within .cm-tag { opacity: 1; }
       .card-guarantee {
         margin: 14px 0 0; font-size: 13px; line-height: 1.5; color: var(--text-faint);
@@ -1668,8 +1727,8 @@
       }
     
       /* ---------- One language at a time ---------- */
-      html.lang-en [data-l="es"], html.lang-es [data-l="en"] { display: none !important; }
-      html.lang-en .lg-sep, html.lang-es .lg-sep { display: none !important; }
+      html:not(.lang-es) [data-l="es"], html.lang-es [data-l="en"] { display: none !important; }
+      .lg-sep { display: none !important; }
       .lang-switch { display: inline-flex; border: 1px solid var(--line-gold); border-radius: 999px; overflow: hidden; flex: none; }
       .lang-switch button {
         background: transparent; color: var(--text-dim); border: 0; cursor: pointer;
@@ -1739,7 +1798,7 @@
     <style>
       .filtros { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 18px; padding-bottom: 4px; }
       .filtro { font: inherit; font-weight: 600; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line, #d8d2c4); background: transparent; color: inherit; cursor: pointer; }
-      .filtro.is-on { background: var(--gold, #c9a227); border-color: var(--gold, #c9a227); color: #1d1a12; }
+      .filtro.is-on { background: var(--gold, #c9a227); border-color: var(--gold, #c9a227); color: var(--on-gold, #101a21); }
       .filtro-oculta { display: none !important; }
     </style>
     <style id="sv-integracion">
@@ -1933,7 +1992,7 @@
             </div>
           </div>
           <figure class="hero-art" style="margin:0">
-            <img src="img/ilustracion-carpeta.webp" width="880" height="587" alt="Illustration of an open emergency binder with checklists, a first aid pouch, flashlight, water bottle, blanket and radio, under a gold compass star" />
+            <img src="img/ilustracion-carpeta.webp" width="880" height="587" fetchpriority="high" srcset="img/ilustracion-carpeta.webp 880w, img/ilustracion-carpeta-440.webp 440w" sizes="(max-width: 960px) 92vw, 560px" alt="Illustration of an open emergency binder with checklists, a first aid pouch, flashlight, water bottle, blanket and radio, under a gold compass star" />
           </figure>
         </div>
       </div>
@@ -2018,7 +2077,7 @@
       <section class="block pause-band" style="padding-top: 8px">
         <div class="wrap pause-in">
           <figure class="pause-page reveal" style="margin:0">
-            <img src="img/interior-emergencias.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Home Emergencies readable edition, open at a gas leak guide" data-alt-en="A real page from the Home Emergencies readable edition, open at a gas leak guide" data-alt-es="Una página real de la edición legible de Emergencias en casa, abierta en la guía de la fuga de gas" />
+            <img src="img/interior-emergencias.webp" srcset="img/interior-emergencias.webp 720w, img/interior-emergencias-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Home Emergencies readable edition, open at a gas leak guide" data-alt-en="A real page from the Home Emergencies readable edition, open at a gas leak guide" data-alt-es="Una página real de la edición legible de Emergencias en casa, abierta en la guía de la fuga de gas" />
           </figure>
           <div class="reveal">
             <p class="sec-kicker"><span data-l="en">One open guide</span><span class="lg-sep"> · </span><span data-l="es">Una guía abierta</span></p>
@@ -2059,26 +2118,26 @@
           <div class="featured reveal">
             <div>
 <div class="covers-grid" role="img" aria-label="The covers of the packs in the Complete Collection, side by side" data-aria-en="The covers of the packs in the Complete Collection, side by side" data-aria-es="Las portadas de los packs de la Colección completa, una junto a otra">
-                <img src="img/portada-esencial.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Essential Pack, the starter pack of emergency basics" data-alt-en="Cover of the Essential Pack, the starter pack of emergency basics" data-alt-es="Portada del Paquete Esencial, el pack de inicio con lo básico de emergencia" />
-                <img src="img/portada-emergencias.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-en="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-es="Portada de Emergencias en casa, el pack estrella de fuego, gas, agua y seguridad en el hogar" />
-                <img src="img/portada-desastres.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Natural Disasters, a guide pack on preparing your family" data-alt-en="Cover of Natural Disasters, a guide pack on preparing your family" data-alt-es="Portada de Desastres, un pack de guías para preparar a tu familia" />
-                <img src="img/portada-calor.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Heat and Desert, a guide pack on extreme heat and desert survival" data-alt-en="Cover of Heat and Desert, a guide pack on extreme heat and desert survival" data-alt-es="Portada de Calor extremo y desierto, un pack de guías sobre calor extremo y supervivencia en el desierto" />
-                <img src="img/portada-mascotas.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Pets, a guide pack on keeping pets safe in an emergency" data-alt-en="Cover of Pets, a guide pack on keeping pets safe in an emergency" data-alt-es="Portada de Mascotas, un pack de guías para cuidar a tus mascotas en una emergencia" />
-                <img src="img/portada-libro-manual.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Family Emergency Manual, the first SALVORA book" data-alt-en="Cover of the Family Emergency Manual, the first SALVORA book" data-alt-es="Portada del Manual de emergencias familiar, el primer libro de SALVORA" />
-                <img src="img/portada-libro-invierno.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Winter, a book on cold, storms and power cuts" data-alt-en="Cover of Winter, a book on cold, storms and power cuts" data-alt-es="Portada de Invierno, un libro sobre frío, tormentas y cortes de luz" />
-                <img src="img/portada-audiolibro-invierno.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Winter Audiobook, the narrated edition" data-alt-en="Cover of the Winter Audiobook, the narrated edition" data-alt-es="Portada del Audiolibro de Invierno, la edición narrada" />
-                <img src="img/portada-audio-emergencias.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Emergency Audio, the narrated edition of Home Emergencies" data-alt-en="Cover of Emergency Audio, the narrated edition of Home Emergencies" data-alt-es="Portada del Audio de Emergencias, la edición narrada de Emergencias en casa" />
-                <img src="img/portada-familiar.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Family Emergency Binder, a printable binder" data-alt-en="Cover of the Family Emergency Binder, a printable binder" data-alt-es="Portada de la Carpeta familiar, una carpeta imprimible" />
-                <img src="img/portada-cuidador.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Caregiver's Binder, a printable binder" data-alt-en="Cover of the Caregiver's Binder, a printable binder" data-alt-es="Portada de la Carpeta del cuidador, una carpeta imprimible" />
-                <img src="img/portada-hogar.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Home Binder, a printable binder" data-alt-en="Cover of the Home Binder, a printable binder" data-alt-es="Portada de la Carpeta del hogar, una carpeta imprimible" />
-                <img src="img/portada-facturas.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Medical Bills Binder, a printable binder" data-alt-en="Cover of the Medical Bills Binder, a printable binder" data-alt-es="Portada de la Carpeta de facturas médicas, una carpeta imprimible" />
-                <img src="img/portada-reparaciones.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Essential Home Repairs, a guide pack on fixing the house" data-alt-en="Cover of Essential Home Repairs, a guide pack on fixing the house" data-alt-es="Portada de Reparaciones esenciales del hogar, un pack de guías para arreglar la casa" />
-                <img src="img/portada-cuidado-mayores.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Elder Care at Home, a guide pack on caring for older adults" data-alt-en="Cover of Elder Care at Home, a guide pack on caring for older adults" data-alt-es="Portada de Cuidado de mayores, un pack de guías para cuidar a una persona mayor" />
-                <img src="img/portada-conservacion.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Food Preservation, a guide pack on keeping food safely" data-alt-en="Cover of Food Preservation, a guide pack on keeping food safely" data-alt-es="Portada de Conservación de alimentos, un pack de guías para guardar comida con seguridad" />
-                <img src="img/portada-huracanes.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Hurricanes, a guide pack on storms and flooding" data-alt-en="Cover of Hurricanes, a guide pack on storms and flooding" data-alt-es="Portada de Huracanes, un pack de guías sobre tormentas e inundaciones" />
-                <img src="img/portada-carretera.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Roadside Emergencies, a guide pack for trouble on the road" data-alt-en="Cover of Roadside Emergencies, a guide pack for trouble on the road" data-alt-es="Portada de Emergencias en carretera, un pack de guías para problemas en la carretera" />
-                <img src="img/portada-huerta.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Dry Climate Gardening, a guide pack on growing food at home in a dry climate" data-alt-en="Cover of Dry Climate Gardening, a guide pack on growing food at home in a dry climate" data-alt-es="Portada de Huerta en clima seco, un pack de guías para cultivar alimentos en casa en clima seco" />
-                <img src="img/portada-frio.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Extreme Cold and Snow, a guide pack on real winter at home and on the road" data-alt-en="Cover of Extreme Cold and Snow, a guide pack on real winter at home and on the road" data-alt-es="Portada de Frío extremo y nieve, un pack de guías para el invierno de verdad en casa y en carretera" />
+                <img src="img/portada-esencial.webp" srcset="img/portada-esencial.webp 720w, img/portada-esencial-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Essential Pack, the starter pack of emergency basics" data-alt-en="Cover of the Essential Pack, the starter pack of emergency basics" data-alt-es="Portada del Paquete Esencial, el pack de inicio con lo básico de emergencia" />
+                <img src="img/portada-emergencias.webp" srcset="img/portada-emergencias.webp 720w, img/portada-emergencias-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-en="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-es="Portada de Emergencias en casa, el pack estrella de fuego, gas, agua y seguridad en el hogar" />
+                <img src="img/portada-desastres.webp" srcset="img/portada-desastres.webp 720w, img/portada-desastres-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Natural Disasters, a guide pack on preparing your family" data-alt-en="Cover of Natural Disasters, a guide pack on preparing your family" data-alt-es="Portada de Desastres, un pack de guías para preparar a tu familia" />
+                <img src="img/portada-calor.webp" srcset="img/portada-calor.webp 720w, img/portada-calor-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Heat and Desert, a guide pack on extreme heat and desert survival" data-alt-en="Cover of Heat and Desert, a guide pack on extreme heat and desert survival" data-alt-es="Portada de Calor extremo y desierto, un pack de guías sobre calor extremo y supervivencia en el desierto" />
+                <img src="img/portada-mascotas.webp" srcset="img/portada-mascotas.webp 720w, img/portada-mascotas-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Pets, a guide pack on keeping pets safe in an emergency" data-alt-en="Cover of Pets, a guide pack on keeping pets safe in an emergency" data-alt-es="Portada de Mascotas, un pack de guías para cuidar a tus mascotas en una emergencia" />
+                <img src="img/portada-libro-manual.webp" srcset="img/portada-libro-manual.webp 720w, img/portada-libro-manual-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Family Emergency Manual, the first SALVORA book" data-alt-en="Cover of the Family Emergency Manual, the first SALVORA book" data-alt-es="Portada del Manual de emergencias familiar, el primer libro de SALVORA" />
+                <img src="img/portada-libro-invierno.webp" srcset="img/portada-libro-invierno.webp 720w, img/portada-libro-invierno-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Winter, a book on cold, storms and power cuts" data-alt-en="Cover of Winter, a book on cold, storms and power cuts" data-alt-es="Portada de Invierno, un libro sobre frío, tormentas y cortes de luz" />
+                <img src="img/portada-audiolibro-invierno.webp" srcset="img/portada-audiolibro-invierno.webp 720w, img/portada-audiolibro-invierno-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Winter Audiobook, the narrated edition" data-alt-en="Cover of the Winter Audiobook, the narrated edition" data-alt-es="Portada del Audiolibro de Invierno, la edición narrada" />
+                <img src="img/portada-audio-emergencias.webp" srcset="img/portada-audio-emergencias.webp 720w, img/portada-audio-emergencias-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Emergency Audio, the narrated edition of Home Emergencies" data-alt-en="Cover of Emergency Audio, the narrated edition of Home Emergencies" data-alt-es="Portada del Audio de Emergencias, la edición narrada de Emergencias en casa" />
+                <img src="img/portada-familiar.webp" srcset="img/portada-familiar.webp 720w, img/portada-familiar-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Family Emergency Binder, a printable binder" data-alt-en="Cover of the Family Emergency Binder, a printable binder" data-alt-es="Portada de la Carpeta familiar, una carpeta imprimible" />
+                <img src="img/portada-cuidador.webp" srcset="img/portada-cuidador.webp 720w, img/portada-cuidador-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Caregiver's Binder, a printable binder" data-alt-en="Cover of the Caregiver's Binder, a printable binder" data-alt-es="Portada de la Carpeta del cuidador, una carpeta imprimible" />
+                <img src="img/portada-hogar.webp" srcset="img/portada-hogar.webp 720w, img/portada-hogar-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Home Binder, a printable binder" data-alt-en="Cover of the Home Binder, a printable binder" data-alt-es="Portada de la Carpeta del hogar, una carpeta imprimible" />
+                <img src="img/portada-facturas.webp" srcset="img/portada-facturas.webp 720w, img/portada-facturas-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Medical Bills Binder, a printable binder" data-alt-en="Cover of the Medical Bills Binder, a printable binder" data-alt-es="Portada de la Carpeta de facturas médicas, una carpeta imprimible" />
+                <img src="img/portada-reparaciones.webp" srcset="img/portada-reparaciones.webp 720w, img/portada-reparaciones-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Essential Home Repairs, a guide pack on fixing the house" data-alt-en="Cover of Essential Home Repairs, a guide pack on fixing the house" data-alt-es="Portada de Reparaciones esenciales del hogar, un pack de guías para arreglar la casa" />
+                <img src="img/portada-cuidado-mayores.webp" srcset="img/portada-cuidado-mayores.webp 720w, img/portada-cuidado-mayores-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Elder Care at Home, a guide pack on caring for older adults" data-alt-en="Cover of Elder Care at Home, a guide pack on caring for older adults" data-alt-es="Portada de Cuidado de mayores, un pack de guías para cuidar a una persona mayor" />
+                <img src="img/portada-conservacion.webp" srcset="img/portada-conservacion.webp 720w, img/portada-conservacion-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Food Preservation, a guide pack on keeping food safely" data-alt-en="Cover of Food Preservation, a guide pack on keeping food safely" data-alt-es="Portada de Conservación de alimentos, un pack de guías para guardar comida con seguridad" />
+                <img src="img/portada-huracanes.webp" srcset="img/portada-huracanes.webp 720w, img/portada-huracanes-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Hurricanes, a guide pack on storms and flooding" data-alt-en="Cover of Hurricanes, a guide pack on storms and flooding" data-alt-es="Portada de Huracanes, un pack de guías sobre tormentas e inundaciones" />
+                <img src="img/portada-carretera.webp" srcset="img/portada-carretera.webp 720w, img/portada-carretera-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Roadside Emergencies, a guide pack for trouble on the road" data-alt-en="Cover of Roadside Emergencies, a guide pack for trouble on the road" data-alt-es="Portada de Emergencias en carretera, un pack de guías para problemas en la carretera" />
+                <img src="img/portada-huerta.webp" srcset="img/portada-huerta.webp 720w, img/portada-huerta-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Dry Climate Gardening, a guide pack on growing food at home in a dry climate" data-alt-en="Cover of Dry Climate Gardening, a guide pack on growing food at home in a dry climate" data-alt-es="Portada de Huerta en clima seco, un pack de guías para cultivar alimentos en casa en clima seco" />
+                <img src="img/portada-frio.webp" srcset="img/portada-frio.webp 720w, img/portada-frio-360.webp 360w" sizes="(max-width: 620px) 45vw, 260px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Extreme Cold and Snow, a guide pack on real winter at home and on the road" data-alt-en="Cover of Extreme Cold and Snow, a guide pack on real winter at home and on the road" data-alt-es="Portada de Frío extremo y nieve, un pack de guías para el invierno de verdad en casa y en carretera" />
               </div>
               <span class="tag"><span data-l="en">All <span data-cf="packs">20</span> packs in one download</span><span class="lg-sep"> · </span><span data-l="es">Los <span data-cf="packs">20</span> packs en una descarga</span></span>
               <h2><span data-l="en">The Complete Collection</span><span data-l="es">La Colección completa</span></h2>
@@ -2106,6 +2165,7 @@
               <a class="btn btn-gold" href="https://salvorapacks.gumroad.com/l/coleccion"><span data-l="en">Get the Collection on Gumroad</span><span data-l="es">Conseguirla en Gumroad</span></a>
               <p class="buy-fine"><span data-l="en">Checkout is secure and Gumroad delivers the files right away.</span><span data-l="es">El pago es seguro y Gumroad entrega los archivos al momento.</span></p>
               <p class="buy-fine" style="text-align: left;"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
+              <p class="card-install" style="text-align: left;"><a href="producto/la-coleccion.html"><span data-l="en">See everything the Collection brings</span><span data-l="es">Ver todo lo que trae la Colección</span></a></p>
             </div>
           </div>
         </div>
@@ -2202,7 +2262,7 @@
           <h2><span data-l="en">The three we would hand you first</span><span data-l="es">Los tres que te entregaríamos primero</span></h2>
           <div class="grid">
             <article class="card reveal">
-              <div class="card-media"><img class="cm-cover" src="img/portada-esencial.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Essential Pack, the starter pack of emergency basics" data-alt-en="Cover of the Essential Pack, the starter pack of emergency basics" data-alt-es="Portada del Paquete Esencial, el pack de inicio con lo básico de emergencia" /></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-esencial.webp" srcset="img/portada-esencial.webp 720w, img/portada-esencial-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of the Essential Pack, the starter pack of emergency basics" data-alt-en="Cover of the Essential Pack, the starter pack of emergency basics" data-alt-es="Portada del Paquete Esencial, el pack de inicio con lo básico de emergencia" /></div>
               <div class="card-top"><span class="card-kind"><span data-l="en">Starter pack</span><span data-l="es">Pack de inicio</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Essential Pack</h3>
               <p class="es-name" data-l="es">Paquete Esencial</p>
@@ -2212,9 +2272,10 @@
                 <span class="price"><span data-l="en">FREE</span><span data-l="es">GRATIS</span></span>
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/esencial"><span data-l="en">Get it on Gumroad</span><span data-l="es">Conseguirlo en Gumroad</span></a>
               </div>
+                          <p class="card-install"><a href="producto/paquete-esencial.html"><span data-l="en">See the Essential Pack page</span><span data-l="es">Ver la página del Paquete Esencial</span></a></p>
             </article>
             <article class="card reveal">
-              <div class="card-media"><img class="cm-cover" src="img/portada-emergencias.webp" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-en="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-es="Portada de Emergencias en casa, el pack estrella de fuego, gas, agua y seguridad en el hogar" /><span class="cm-tag"><span data-l="en">Star pack</span><span data-l="es">Pack estrella</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-emergencias.webp" srcset="img/portada-emergencias.webp 720w, img/portada-emergencias-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-en="Cover of Home Emergencies, the star pack on fire, gas, water and home safety" data-alt-es="Portada de Emergencias en casa, el pack estrella de fuego, gas, agua y seguridad en el hogar" /><span class="cm-tag"><span data-l="en">Star pack</span><span data-l="es">Pack estrella</span></span></div>
               <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Home Emergencies</h3>
               <p class="es-name" data-l="es">Emergencias en casa</p>
@@ -2237,6 +2298,7 @@
                 <span class="price">$59</span>
                 <a class="btn btn-gold btn-sm" href="https://salvorapacks.gumroad.com/l/coleccion"><span data-l="en">Get it on Gumroad</span><span data-l="es">Conseguirla en Gumroad</span></a>
               </div>
+                          <p class="card-install"><a href="producto/la-coleccion.html"><span data-l="en">See the Collection page</span><span data-l="es">Ver la página de la Colección</span></a></p>
             </article>
           </div>
         </div>
@@ -2296,7 +2358,7 @@
           </div>
           <div class="grid">
             <article class="card free reveal" data-tipo="packs" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-esencial.webp" width="720" height="405" loading="lazy" decoding="async" alt="Essential Pack cover" /><img class="cm-inside" src="img/interior-esencial.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Essential Pack readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-esencial.webp" srcset="img/portada-esencial.webp 720w, img/portada-esencial-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Essential Pack cover" /><img class="cm-inside" src="img/interior-esencial.webp" srcset="img/interior-esencial.webp 720w, img/interior-esencial-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Essential Pack readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Starter pack</span><span data-l="es">Pack de inicio</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Essential Pack</h3>
               <p class="es-name" data-l="es">Paquete Esencial</p>
@@ -2309,10 +2371,11 @@
             <p class="card-install"><a href="/instalar-tu-pack/"><span data-l="en">How to install it in NIDO</span><span data-l="es">Cómo instalarlo en NIDO</span></a></p>
               <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             <p class="legal-health"><a href="/aviso-salud-emergencias.html"><span data-l="en">Health and emergency notice</span><span data-l="es">Aviso de salud y emergencias</span></a></p>
-      </article>
+                    <p class="card-install"><a href="producto/paquete-esencial.html"><span data-l="en">See the Essential Pack page</span><span data-l="es">Ver la página del Paquete Esencial</span></a></p>
+            </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="casa">
-              <div class="card-media"><img class="cm-cover" src="img/portada-reparaciones.webp" width="720" height="405" loading="lazy" decoding="async" alt="Essential Home Repairs cover" /><img class="cm-inside" src="img/interior-reparaciones.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Essential Home Repairs readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-reparaciones.webp" srcset="img/portada-reparaciones.webp 720w, img/portada-reparaciones-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Essential Home Repairs cover" /><img class="cm-inside" src="img/interior-reparaciones.webp" srcset="img/interior-reparaciones.webp 720w, img/interior-reparaciones-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Essential Home Repairs readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Essential Home Repairs</h3>
               <p class="es-name" data-l="es">Reparaciones esenciales del hogar</p>
@@ -2327,7 +2390,7 @@
             </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="cuidado">
-              <div class="card-media"><img class="cm-cover" src="img/portada-cuidado-mayores.webp" width="720" height="405" loading="lazy" decoding="async" alt="Elder Care at Home cover" /><img class="cm-inside" src="img/interior-cuidado-mayores.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Elder Care at Home readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-cuidado-mayores.webp" srcset="img/portada-cuidado-mayores.webp 720w, img/portada-cuidado-mayores-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Elder Care at Home cover" /><img class="cm-inside" src="img/interior-cuidado-mayores.webp" srcset="img/interior-cuidado-mayores.webp 720w, img/interior-cuidado-mayores-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Elder Care at Home readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Elder Care at Home</h3>
               <p class="es-name" data-l="es">Cuidado de mayores en casa</p>
@@ -2343,7 +2406,7 @@
       </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="casa">
-              <div class="card-media"><img class="cm-cover" src="img/portada-conservacion.webp" width="720" height="405" loading="lazy" decoding="async" alt="Food Preservation cover" /><img class="cm-inside" src="img/interior-conservacion.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Food Preservation readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-conservacion.webp" srcset="img/portada-conservacion.webp 720w, img/portada-conservacion-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Food Preservation cover" /><img class="cm-inside" src="img/interior-conservacion.webp" srcset="img/interior-conservacion.webp 720w, img/interior-conservacion-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Food Preservation readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Food Preservation</h3>
               <p class="es-name" data-l="es">Conservación de alimentos</p>
@@ -2358,7 +2421,7 @@
             </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-huracanes.webp" width="720" height="405" loading="lazy" decoding="async" alt="Hurricanes cover" /><img class="cm-inside" src="img/interior-huracanes.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Hurricanes readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-huracanes.webp" srcset="img/portada-huracanes.webp 720w, img/portada-huracanes-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Hurricanes cover" /><img class="cm-inside" src="img/interior-huracanes.webp" srcset="img/interior-huracanes.webp 720w, img/interior-huracanes-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Hurricanes readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Hurricanes</h3>
               <p class="es-name" data-l="es">Edición de huracanes</p>
@@ -2374,7 +2437,7 @@
       </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-carretera.webp" width="720" height="405" loading="lazy" decoding="async" alt="Roadside Emergencies cover" /><img class="cm-inside" src="img/interior-carretera.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Roadside Emergencies readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-carretera.webp" srcset="img/portada-carretera.webp 720w, img/portada-carretera-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Roadside Emergencies cover" /><img class="cm-inside" src="img/interior-carretera.webp" srcset="img/interior-carretera.webp 720w, img/interior-carretera-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Roadside Emergencies readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Roadside Emergencies</h3>
               <p class="es-name" data-l="es">Emergencias en carretera</p>
@@ -2390,7 +2453,7 @@
       </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="casa">
-              <div class="card-media"><img class="cm-cover" src="img/portada-huerta.webp" width="720" height="405" loading="lazy" decoding="async" alt="Dry Climate Gardening cover" /><img class="cm-inside" src="img/interior-huerta.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Dry Climate Gardening readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-huerta.webp" srcset="img/portada-huerta.webp 720w, img/portada-huerta-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Dry Climate Gardening cover" /><img class="cm-inside" src="img/interior-huerta.webp" srcset="img/interior-huerta.webp 720w, img/interior-huerta-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Dry Climate Gardening readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Dry Climate Gardening</h3>
               <p class="es-name" data-l="es">Huerta en clima seco</p>
@@ -2405,7 +2468,7 @@
             </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-frio.webp" width="720" height="405" loading="lazy" decoding="async" alt="Extreme Cold and Snow cover" /><img class="cm-inside" src="img/interior-frio.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Extreme Cold and Snow readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-frio.webp" srcset="img/portada-frio.webp 720w, img/portada-frio-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Extreme Cold and Snow cover" /><img class="cm-inside" src="img/interior-frio.webp" srcset="img/interior-frio.webp 720w, img/interior-frio-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Extreme Cold and Snow readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Extreme Cold and Snow</h3>
               <p class="es-name" data-l="es">Frío extremo y nieve</p>
@@ -2421,7 +2484,7 @@
       </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="cuidado">
-              <div class="card-media"><img class="cm-cover" src="img/portada-paquete-familia.webp" width="720" height="405" loading="lazy" decoding="async" alt="Family Bundle cover" data-alt-en="Family Bundle cover" data-alt-es="Portada del Paquete Familia" /><img class="cm-inside" src="img/interior-paquete-familia.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Family Bundle readable edition" data-alt-en="A real page from the Family Bundle readable edition" data-alt-es="Una página real de la edición legible del Paquete Familia" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-paquete-familia.webp" srcset="img/portada-paquete-familia.webp 720w, img/portada-paquete-familia-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Family Bundle cover" data-alt-en="Family Bundle cover" data-alt-es="Portada del Paquete Familia" /><img class="cm-inside" src="img/interior-paquete-familia.webp" srcset="img/interior-paquete-familia.webp 720w, img/interior-paquete-familia-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Family Bundle readable edition" data-alt-en="A real page from the Family Bundle readable edition" data-alt-es="Una página real de la edición legible del Paquete Familia" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack bundle</span><span data-l="es">Paquete combinado de guías</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Family Bundle</h3>
               <p class="es-name" data-l="es">Paquete Familia</p>
@@ -2437,7 +2500,7 @@
       </article>
 
             <article class="card reveal" data-tipo="packs" data-tema="casa emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-paquete-cocina.webp" width="720" height="405" loading="lazy" decoding="async" alt="Kitchen Bundle cover" data-alt-en="Kitchen Bundle cover" data-alt-es="Portada del Paquete Cocina" /><img class="cm-inside" src="img/interior-paquete-cocina.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Kitchen Bundle readable edition" data-alt-en="A real page from the Kitchen Bundle readable edition" data-alt-es="Una página real de la edición legible del Paquete Cocina" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-paquete-cocina.webp" srcset="img/portada-paquete-cocina.webp 720w, img/portada-paquete-cocina-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Kitchen Bundle cover" data-alt-en="Kitchen Bundle cover" data-alt-es="Portada del Paquete Cocina" /><img class="cm-inside" src="img/interior-paquete-cocina.webp" srcset="img/interior-paquete-cocina.webp 720w, img/interior-paquete-cocina-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Kitchen Bundle readable edition" data-alt-en="A real page from the Kitchen Bundle readable edition" data-alt-es="Una página real de la edición legible del Paquete Cocina" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack bundle</span><span data-l="es">Paquete combinado de guías</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Kitchen Bundle</h3>
               <p class="es-name" data-l="es">Paquete Cocina</p>
@@ -2453,7 +2516,7 @@
       </article>
 
             <article class="card reveal home-card" data-tipo="packs" data-tema="emergencias casa">
-              <div class="card-media"><img class="cm-cover" src="img/portada-emergencias.webp" width="720" height="405" loading="lazy" decoding="async" alt="Home Emergencies cover" /><img class="cm-inside" src="img/interior-emergencias.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Home Emergencies readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-emergencias.webp" srcset="img/portada-emergencias.webp 720w, img/portada-emergencias-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Home Emergencies cover" /><img class="cm-inside" src="img/interior-emergencias.webp" srcset="img/interior-emergencias.webp 720w, img/interior-emergencias-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Home Emergencies readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Home Emergencies</h3>
               <p class="es-name" data-l="es">Emergencias en casa</p>
@@ -2469,7 +2532,7 @@
       </article>
 
             <article class="card reveal" data-fx data-tipo="packs" data-tema="cuidado emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-mascotas.webp" width="720" height="405" loading="lazy" decoding="async" alt="Pets cover" /><img class="cm-inside" src="img/interior-mascotas.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Pets readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-mascotas.webp" srcset="img/portada-mascotas.webp 720w, img/portada-mascotas-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Pets cover" /><img class="cm-inside" src="img/interior-mascotas.webp" srcset="img/interior-mascotas.webp 720w, img/interior-mascotas-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Pets readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Pets</h3>
               <p class="es-name" data-l="es">Mascotas</p>
@@ -2485,7 +2548,7 @@
       </article>
 
             <article class="card reveal" data-fx data-tipo="packs" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-desastres.webp" width="720" height="405" loading="lazy" decoding="async" alt="Natural Disasters cover" /><img class="cm-inside" src="img/interior-desastres.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Natural Disasters readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-desastres.webp" srcset="img/portada-desastres.webp 720w, img/portada-desastres-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Natural Disasters cover" /><img class="cm-inside" src="img/interior-desastres.webp" srcset="img/interior-desastres.webp 720w, img/interior-desastres-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Natural Disasters readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Natural Disasters</h3>
               <p class="es-name" data-l="es">Desastres naturales</p>
@@ -2501,7 +2564,7 @@
       </article>
 
             <article class="card reveal" data-fx data-tipo="packs" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-calor.webp" width="720" height="405" loading="lazy" decoding="async" alt="Heat and Desert cover" /><img class="cm-inside" src="img/interior-calor.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Heat and Desert readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-calor.webp" srcset="img/portada-calor.webp 720w, img/portada-calor-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Heat and Desert cover" /><img class="cm-inside" src="img/interior-calor.webp" srcset="img/interior-calor.webp 720w, img/interior-calor-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Heat and Desert readable edition" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Guide pack</span><span data-l="es">Pack de guías</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Heat &amp; Desert</h3>
               <p class="es-name" data-l="es">Calor y desierto</p>
@@ -2517,7 +2580,7 @@
       </article>
 
             <article class="card reveal" data-fx data-tipo="audios" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-audio-emergencias.webp" width="720" height="405" loading="lazy" decoding="async" alt="Emergency Audio cover" /></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-audio-emergencias.webp" srcset="img/portada-audio-emergencias.webp 720w, img/portada-audio-emergencias-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Emergency Audio cover" /></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Audiobook</span><span data-l="es">Audiolibro</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Emergency Audio</h3>
               <p class="es-name" data-l="es">Audio de Emergencias</p>
@@ -2532,7 +2595,7 @@
       </article>
 
             <article class="card reveal" data-fx data-tipo="audios" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-audio-calor-desierto.webp" width="720" height="405" loading="lazy" decoding="async" alt="Extreme Heat Audio cover" /></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-audio-calor-desierto.webp" srcset="img/portada-audio-calor-desierto.webp 720w, img/portada-audio-calor-desierto-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Extreme Heat Audio cover" /></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Audiobook</span><span data-l="es">Audiolibro</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Heat &amp; Desert Audio</h3>
               <p class="es-name" data-l="es">Audio de Calor y Desierto</p>
@@ -2547,7 +2610,7 @@
       </article>
 
             <article class="card reveal" data-fx data-tipo="audios" data-tema="cuidado emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-audio-mascotas.webp" width="720" height="405" loading="lazy" decoding="async" alt="Pet First Aid Audio cover" /></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-audio-mascotas.webp" srcset="img/portada-audio-mascotas.webp 720w, img/portada-audio-mascotas-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Pet First Aid Audio cover" /></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Audiobook</span><span data-l="es">Audiolibro</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Pet First Aid Audio</h3>
               <p class="es-name" data-l="es">Audio de Mascotas</p>
@@ -2562,7 +2625,7 @@
       </article>
 
             <article class="card reveal" data-tipo="libros" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-libro-manual.webp" width="720" height="405" loading="lazy" decoding="async" alt="Family Emergency Manual cover" /><img class="cm-inside" src="img/interior-libro-manual.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Family Emergency Manual" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-libro-manual.webp" srcset="img/portada-libro-manual.webp 720w, img/portada-libro-manual-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Family Emergency Manual cover" /><img class="cm-inside" src="img/interior-libro-manual.webp" srcset="img/interior-libro-manual.webp 720w, img/interior-libro-manual-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Family Emergency Manual" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Book</span><span data-l="es">Libro</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Family Emergency Manual</h3>
               <p class="es-name" data-l="es">Manual de Emergencias Familiar</p>
@@ -2577,7 +2640,7 @@
       </article>
 
             <article class="card reveal" data-fx data-tipo="libros" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-libro-invierno.webp" width="720" height="405" loading="lazy" decoding="async" alt="Winter cover" /><img class="cm-inside" src="img/interior-libro-invierno.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Winter book" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-libro-invierno.webp" srcset="img/portada-libro-invierno.webp 720w, img/portada-libro-invierno-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Winter cover" /><img class="cm-inside" src="img/interior-libro-invierno.webp" srcset="img/interior-libro-invierno.webp 720w, img/interior-libro-invierno-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Winter book" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Book</span><span data-l="es">Libro</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Winter</h3>
               <p class="es-name" data-l="es">Invierno</p>
@@ -2592,7 +2655,7 @@
       </article>
 
             <article class="card reveal" data-fx data-tipo="audios" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-audiolibro-invierno.webp" width="720" height="405" loading="lazy" decoding="async" alt="Winter Audiobook cover" /></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-audiolibro-invierno.webp" srcset="img/portada-audiolibro-invierno.webp 720w, img/portada-audiolibro-invierno-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Winter Audiobook cover" /></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Audiobook</span><span data-l="es">Audiolibro</span></span><span class="langs"><span>ES</span></span></div>
               <h3 data-l="en">Winter Audiobook</h3>
               <p class="es-name" data-l="es">Audiolibro Invierno</p>
@@ -2641,7 +2704,7 @@
           </div>
           <div class="grid">
             <article class="card reveal" data-tipo="plantillas" data-tema="emergencias">
-              <div class="card-media"><img class="cm-cover" src="img/portada-familiar.webp" width="720" height="405" loading="lazy" decoding="async" alt="Family Emergency Binder cover" /><img class="cm-inside" src="img/interior-familiar.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Family Emergency Binder: the family communication plan" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-familiar.webp" srcset="img/portada-familiar.webp 720w, img/portada-familiar-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Family Emergency Binder cover" /><img class="cm-inside" src="img/interior-familiar.webp" srcset="img/interior-familiar.webp 720w, img/interior-familiar-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Family Emergency Binder: the family communication plan" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Family Emergency Binder</h3>
               <p class="es-name" data-l="es">Carpeta familiar de emergencias</p>
@@ -2656,7 +2719,7 @@
       </article>
 
             <article class="card reveal" data-tipo="plantillas" data-tema="cuidado">
-              <div class="card-media"><img class="cm-cover" src="img/portada-cuidador.webp" width="720" height="405" loading="lazy" decoding="async" alt="The Caregiver’s Binder cover" /><img class="cm-inside" src="img/interior-cuidador.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Caregiver’s Binder: the dose log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-cuidador.webp" srcset="img/portada-cuidador.webp 720w, img/portada-cuidador-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="The Caregiver’s Binder cover" /><img class="cm-inside" src="img/interior-cuidador.webp" srcset="img/interior-cuidador.webp 720w, img/interior-cuidador-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Caregiver’s Binder: the dose log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">The Caregiver’s Binder</h3>
               <p class="es-name" data-l="es">Carpeta del cuidador</p>
@@ -2671,7 +2734,7 @@
       </article>
 
             <article class="card reveal" data-tipo="plantillas" data-tema="casa">
-              <div class="card-media"><img class="cm-cover" src="img/portada-hogar.webp" width="720" height="405" loading="lazy" decoding="async" alt="The Home Binder cover" /><img class="cm-inside" src="img/interior-hogar.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Home Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-hogar.webp" srcset="img/portada-hogar.webp 720w, img/portada-hogar-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="The Home Binder cover" /><img class="cm-inside" src="img/interior-hogar.webp" srcset="img/interior-hogar.webp 720w, img/interior-hogar-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Home Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">The Home Binder</h3>
               <p class="es-name" data-l="es">Carpeta del hogar</p>
@@ -2685,7 +2748,7 @@
             </article>
 
             <article class="card reveal" data-tipo="plantillas" data-tema="dinero cuidado">
-              <div class="card-media"><img class="cm-cover" src="img/portada-facturas.webp" width="720" height="405" loading="lazy" decoding="async" alt="Medical Bills Binder cover" /><img class="cm-inside" src="img/interior-facturas.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Medical Bills Binder: year totals" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-facturas.webp" srcset="img/portada-facturas.webp 720w, img/portada-facturas-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Medical Bills Binder cover" /><img class="cm-inside" src="img/interior-facturas.webp" srcset="img/interior-facturas.webp 720w, img/interior-facturas-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Medical Bills Binder: year totals" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Medical Bills Binder</h3>
               <p class="es-name" data-l="es">Carpeta de facturas médicas</p>
@@ -2700,7 +2763,7 @@
       </article>
 
             <article class="card reveal" data-tipo="plantillas" data-tema="dinero casa">
-              <div class="card-media"><img class="cm-cover" src="img/portada-inquilino.webp" width="720" height="405" loading="lazy" decoding="async" alt="Tenant Kit cover" /><img class="cm-inside" src="img/interior-inquilino.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Tenant Kit: the rent payment log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-inquilino.webp" srcset="img/portada-inquilino.webp 720w, img/portada-inquilino-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Tenant Kit cover" /><img class="cm-inside" src="img/interior-inquilino.webp" srcset="img/interior-inquilino.webp 720w, img/interior-inquilino-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Tenant Kit: the rent payment log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable kit</span><span data-l="es">Kit imprimible</span></span><span class="langs"><span>EN</span><span>ES</span><span>PT</span></span></div>
               <h3 data-l="en">Tenant Kit: Deposit &amp; Moving</h3>
               <p class="es-name" data-l="es">Kit del inquilino</p>
@@ -2714,7 +2777,7 @@
             </article>
 
             <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
-              <div class="card-media"><img class="cm-cover" src="img/portada-papeles.webp" width="720" height="405" loading="lazy" decoding="async" alt="Annual Papers and Taxes Binder cover" /><img class="cm-inside" src="img/interior-papeles.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Annual Papers and Taxes Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-papeles.webp" srcset="img/portada-papeles.webp 720w, img/portada-papeles-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Annual Papers and Taxes Binder cover" /><img class="cm-inside" src="img/interior-papeles.webp" srcset="img/interior-papeles.webp 720w, img/interior-papeles-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Annual Papers and Taxes Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Annual Papers &amp; Taxes Binder</h3>
               <p class="es-name" data-l="es">Carpeta anual de papeles e impuestos</p>
@@ -2747,7 +2810,7 @@
           </div>
           <div class="grid">
             <article class="card reveal" data-tipo="plantillas" data-tema="casa">
-              <div class="card-media"><img class="cm-cover" src="img/portada-planificador.webp" width="720" height="405" loading="lazy" decoding="async" alt="Undated Home Planner cover" /><img class="cm-inside" src="img/interior-planificador.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Undated Home Planner" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-planificador.webp" srcset="img/portada-planificador.webp 720w, img/portada-planificador-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Undated Home Planner cover" /><img class="cm-inside" src="img/interior-planificador.webp" srcset="img/interior-planificador.webp 720w, img/interior-planificador-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Undated Home Planner" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable planner</span><span data-l="es">Planificador imprimible</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Undated Home Planner</h3>
               <p class="es-name" data-l="es">Planificador del hogar sin fecha</p>
@@ -2761,7 +2824,7 @@
               <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
             <article class="card reveal" data-tipo="plantillas" data-tema="cuidado">
-              <div class="card-media"><img class="cm-cover" src="img/portada-por-si-acaso.webp" width="720" height="405" loading="lazy" decoding="async" alt="Just in Case Binder cover" /><img class="cm-inside" src="img/interior-por-si-acaso.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Just in Case Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-por-si-acaso.webp" srcset="img/portada-por-si-acaso.webp 720w, img/portada-por-si-acaso-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Just in Case Binder cover" /><img class="cm-inside" src="img/interior-por-si-acaso.webp" srcset="img/interior-por-si-acaso.webp 720w, img/interior-por-si-acaso-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Just in Case Binder" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Just in Case Binder</h3>
               <p class="es-name" data-l="es">Carpeta Por si acaso</p>
@@ -2776,7 +2839,7 @@
             <p class="legal-health"><a href="/aviso-salud-emergencias.html"><span data-l="en">Health and emergency notice</span><span data-l="es">Aviso de salud y emergencias</span></a></p>
       </article>
             <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
-              <div class="card-media"><img class="cm-cover" src="img/portada-presupuesto.webp" width="720" height="405" loading="lazy" decoding="async" alt="Paycheck Budget Planner cover" /><img class="cm-inside" src="img/interior-presupuesto.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Paycheck Budget Planner" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-presupuesto.webp" srcset="img/portada-presupuesto.webp 720w, img/portada-presupuesto-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Paycheck Budget Planner cover" /><img class="cm-inside" src="img/interior-presupuesto.webp" srcset="img/interior-presupuesto.webp 720w, img/interior-presupuesto-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Paycheck Budget Planner" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable planner</span><span data-l="es">Planificador imprimible</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Paycheck Budget Planner</h3>
               <p class="es-name" data-l="es">Presupuesto por sueldo</p>
@@ -2790,7 +2853,7 @@
               <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
             <article class="card reveal" data-tipo="plantillas" data-tema="cuidado">
-              <div class="card-media"><img class="cm-cover" src="img/portada-demencia.webp" width="720" height="405" loading="lazy" decoding="async" alt="Dementia Care Binder cover" data-alt-en="Dementia Care Binder cover" data-alt-es="Portada de la Carpeta de demencia" /><img class="cm-inside" src="img/interior-demencia.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Dementia Care Binder: the person sheet" data-alt-en="A real sheet from the Dementia Care Binder: the person sheet" data-alt-es="Una hoja real de la Carpeta de demencia: la hoja de la persona" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-demencia.webp" srcset="img/portada-demencia.webp 720w, img/portada-demencia-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Dementia Care Binder cover" data-alt-en="Dementia Care Binder cover" data-alt-es="Portada de la Carpeta de demencia" /><img class="cm-inside" src="img/interior-demencia.webp" srcset="img/interior-demencia.webp 720w, img/interior-demencia-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Dementia Care Binder: the person sheet" data-alt-en="A real sheet from the Dementia Care Binder: the person sheet" data-alt-es="Una hoja real de la Carpeta de demencia: la hoja de la persona" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Dementia Care Binder</h3>
               <p class="es-name" data-l="es">Carpeta de demencia</p>
@@ -2805,7 +2868,7 @@
             <p class="legal-health"><a href="/aviso-salud-emergencias.html"><span data-l="en">Health and emergency notice</span><span data-l="es">Aviso de salud y emergencias</span></a></p>
       </article>
             <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
-              <div class="card-media"><img class="cm-cover" src="img/portada-presupuesto-vivo.webp" width="720" height="405" loading="lazy" decoding="async" alt="Living Paycheck Budget cover" /><img class="cm-inside" src="img/interior-presupuesto-vivo.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real tab from the Living Paycheck Budget: the pay periods sheet, with example figures marked as example" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-presupuesto-vivo.webp" srcset="img/portada-presupuesto-vivo.webp 720w, img/portada-presupuesto-vivo-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Living Paycheck Budget cover" /><img class="cm-inside" src="img/interior-presupuesto-vivo.webp" srcset="img/interior-presupuesto-vivo.webp 720w, img/interior-presupuesto-vivo-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real tab from the Living Paycheck Budget: the pay periods sheet, with example figures marked as example" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Budget spreadsheet</span><span data-l="es">Hoja de cálculo de presupuesto</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Living Paycheck Budget</h3>
               <p class="es-name" data-l="es">Presupuesto vivo</p>
@@ -2819,7 +2882,7 @@
               <p class="card-guarantee"><span data-l="en"><b>Our word:</b> sales are final, and if a file is defective we repair it or replace it with a working copy. An accidental duplicate is refunded, and no legal right of yours is limited. </span><span style="font-style: italic;" data-l="es"><b>Nuestra palabra:</b> las ventas son finales, y si un archivo es defectuoso lo reparamos o lo sustituimos por una copia que funcione. La compra duplicada por accidente se reembolsa, y ningún derecho legal tuyo queda limitado.</span></p>
             </article>
             <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
-              <div class="card-media"><img class="cm-cover" src="img/portada-pequena-empresa.webp" width="720" height="405" loading="lazy" decoding="async" alt="Small Business Binder cover" /><img class="cm-inside" src="img/interior-pequena-empresa.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Small Business Binder: the monthly income register" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-pequena-empresa.webp" srcset="img/portada-pequena-empresa.webp 720w, img/portada-pequena-empresa-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="405" loading="lazy" decoding="async" alt="Small Business Binder cover" /><img class="cm-inside" src="img/interior-pequena-empresa.webp" srcset="img/interior-pequena-empresa.webp 720w, img/interior-pequena-empresa-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Small Business Binder: the monthly income register" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Small Business Binder</h3>
               <p class="es-name" data-l="es">Carpeta de la pequeña empresa</p>
@@ -2834,7 +2897,7 @@
             </article>
 
             <article class="card reveal" data-tipo="plantillas" data-tema="cuidado dinero">
-              <div class="card-media"><img class="cm-cover" src="img/portada-universidad.webp" width="720" height="405" loading="lazy" decoding="async" alt="Off to College Binder cover" /><img class="cm-inside" src="img/interior-universidad.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Off to College Binder: the FERPA record sheet" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-universidad.webp" width="720" height="405" loading="lazy" decoding="async" alt="Off to College Binder cover" /><img class="cm-inside" src="img/interior-universidad.webp" srcset="img/interior-universidad.webp 720w, img/interior-universidad-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Off to College Binder: the FERPA record sheet" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Off to College Binder</h3>
               <p class="es-name" data-l="es">Carpeta para la universidad</p>
@@ -2850,7 +2913,7 @@
       </article>
 
             <article class="card reveal" data-tipo="plantillas" data-tema="cuidado dinero">
-              <div class="card-media"><img class="cm-cover" src="img/portada-divorcio.webp" width="720" height="405" loading="lazy" decoding="async" alt="Divorce and Custody Paperwork Binder cover" /><img class="cm-inside" src="img/interior-divorcio.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Divorce and Custody Paperwork Binder: the visits and exchanges log sheet" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-divorcio.webp" width="720" height="405" loading="lazy" decoding="async" alt="Divorce and Custody Paperwork Binder cover" /><img class="cm-inside" src="img/interior-divorcio.webp" srcset="img/interior-divorcio.webp 720w, img/interior-divorcio-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real page from the Divorce and Custody Paperwork Binder: the visits and exchanges log sheet" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Printable binder</span><span data-l="es">Carpeta imprimible</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Divorce and Custody Paperwork Binder</h3>
               <p class="es-name" data-l="es">Carpeta de divorcio y custodia</p>
@@ -2866,7 +2929,7 @@
       </article>
 
             <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
-              <div class="card-media"><img class="cm-cover" src="img/portada-conductor.webp" width="720" height="405" loading="lazy" decoding="async" alt="Self-Employed Driver Daily Log Kit cover" /><img class="cm-inside" src="img/interior-conductor.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Self-Employed Driver Daily Log Kit: the week mileage log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-conductor.webp" width="720" height="405" loading="lazy" decoding="async" alt="Self-Employed Driver Daily Log Kit cover" /><img class="cm-inside" src="img/interior-conductor.webp" srcset="img/interior-conductor.webp 720w, img/interior-conductor-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Self-Employed Driver Daily Log Kit: the week mileage log" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Driver log kit</span><span data-l="es">Kit de registro del conductor</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Self-Employed Driver Daily Log Kit</h3>
               <p class="es-name" data-l="es">Kit del conductor por cuenta propia</p>
@@ -2881,7 +2944,7 @@
             </article>
 
             <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
-              <div class="card-media"><img class="cm-cover" src="img/portada-puesto.webp" width="720" height="405" loading="lazy" decoding="async" alt="Market Stall and Mobile Vendor Daily Log Kit cover" /><img class="cm-inside" src="img/interior-puesto.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Market Stall and Mobile Vendor Daily Log Kit: the sales sheet" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-puesto.webp" width="720" height="405" loading="lazy" decoding="async" alt="Market Stall and Mobile Vendor Daily Log Kit cover" /><img class="cm-inside" src="img/interior-puesto.webp" srcset="img/interior-puesto.webp 720w, img/interior-puesto-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Market Stall and Mobile Vendor Daily Log Kit: the sales sheet" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Market stall log kit</span><span data-l="es">Kit de registro del puesto</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Market Stall and Mobile Vendor Daily Log Kit</h3>
               <p class="es-name" data-l="es">Kit del puesto y la venta ambulante</p>
@@ -2896,7 +2959,7 @@
             </article>
 
             <article class="card reveal" data-tipo="plantillas" data-tema="dinero">
-              <div class="card-media"><img class="cm-cover" src="img/portada-obra.webp" width="720" height="405" loading="lazy" decoding="async" alt="Small Contractor Job Site Logbook Kit cover" /><img class="cm-inside" src="img/interior-obra.webp" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Small Contractor Job Site Logbook Kit: the change sheet with client sign off" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
+              <div class="card-media"><img class="cm-cover" src="img/portada-obra.webp" width="720" height="405" loading="lazy" decoding="async" alt="Small Contractor Job Site Logbook Kit cover" /><img class="cm-inside" src="img/interior-obra.webp" srcset="img/interior-obra.webp 720w, img/interior-obra-360.webp 360w" sizes="(max-width: 620px) 92vw, (max-width: 1080px) 47vw, 372px" width="720" height="450" loading="lazy" decoding="async" alt="A real sheet from the Small Contractor Job Site Logbook Kit: the change sheet with client sign off" aria-hidden="true" /><span class="cm-tag"><span data-l="en">Inside</span><span class="lg-sep"> · </span><span data-l="es">Por dentro</span></span></div>
                             <div class="card-top"><span class="card-kind"><span data-l="en">Job site logbook kit</span><span data-l="es">Kit de registro de obra</span></span><span class="langs"><span>EN</span><span>ES</span></span></div>
               <h3 data-l="en">Small Contractor Job Site Logbook Kit</h3>
               <p class="es-name" data-l="es">Cuaderno de obra del contratista chico</p>
