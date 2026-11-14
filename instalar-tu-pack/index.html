@@ -1007,9 +1007,9 @@
 
             <div class="step reveal">
               <h3><span data-l="en">2. Check the fingerprint of the APK</span><span data-l="es">2. Comprueba la huella del APK</span></h3>
-              <p data-l="en">A fingerprint (a SHA-256 hash) is a code of 64 letters and numbers that comes out of the file itself: if the file changes in any way, the whole code changes. Each NIDO version publishes its fingerprint in a small file next to the APK, called <code>app-release.apk.sha256</code>. The fingerprint of the current version, <span data-nido="version">0.1.97</span>, is:</p>
-              <p data-l="es">Una huella (un hash SHA-256) es un código de 64 letras y números que sale del propio archivo: si el archivo cambia en lo que sea, el código cambia entero. Cada versión de NIDO publica su huella en un archivo pequeño junto al APK, llamado <code>app-release.apk.sha256</code>. La huella de la versión actual, la <span data-nido="version">0.1.97</span>, es:</p>
-              <p class="fp" data-nido="huella">dbbe237e01913de051bf236cd3c6504645c1dc4b9fc8e053ac2e070308eecbc9</p>
+              <p data-l="en">A fingerprint (a SHA-256 hash) is a code of 64 letters and numbers that comes out of the file itself: if the file changes in any way, the whole code changes. Each NIDO version publishes its fingerprint in a small file next to the APK, called <code>app-release.apk.sha256</code>. The fingerprint of the current version, <span data-nido="version">0.1.98</span>, is:</p>
+              <p data-l="es">Una huella (un hash SHA-256) es un código de 64 letras y números que sale del propio archivo: si el archivo cambia en lo que sea, el código cambia entero. Cada versión de NIDO publica su huella en un archivo pequeño junto al APK, llamado <code>app-release.apk.sha256</code>. La huella de la versión actual, la <span data-nido="version">0.1.98</span>, es:</p>
+              <p class="fp" data-nido="huella">3dd4325824256202d8e1047091ada1d07a827729be59c5411bde1e493e7fa95d</p>
               <p data-l="en">To compare, any checksum app on your phone shows the fingerprint of the APK you downloaded. The two codes have to match exactly. If they do not, delete the file and download it again from the versions page.</p>
               <p data-l="es">Para compararla, cualquier app de huellas (checksum) de tu teléfono te enseña la huella del APK que descargaste. Los dos códigos tienen que coincidir letra por letra. Si no coinciden, borra el archivo y descárgalo otra vez de la página de versiones.</p>
             </div>
@@ -1034,8 +1034,8 @@
 
           <div class="step reveal" style="margin-top:16px">
             <h3><span data-l="en">What you need</span><span data-l="es">Lo que necesitas</span></h3>
-            <p data-l="en">An Android phone or tablet with Android 7.0 or later. NIDO version 0.1.80 or later, because that is where adding a pack from a file arrived; the current version is <span data-nido="version">0.1.97</span>. And remember: every pack also brings its complete readable edition, so you can read it with no app at all.</p>
-            <p data-l="es">Un teléfono o tableta Android con Android 7.0 o posterior. NIDO en su versión 0.1.80 o posterior, porque ahí llegó la opción de añadir un pack desde un archivo; la versión actual es la <span data-nido="version">0.1.97</span>. Y recuerda: cada pack trae además su edición legible completa, para leerlo sin ninguna app.</p>
+            <p data-l="en">An Android phone or tablet with Android 7.0 or later. NIDO version 0.1.80 or later, because that is where adding a pack from a file arrived; the current version is <span data-nido="version">0.1.98</span>. And remember: every pack also brings its complete readable edition, so you can read it with no app at all.</p>
+            <p data-l="es">Un teléfono o tableta Android con Android 7.0 o posterior. NIDO en su versión 0.1.80 o posterior, porque ahí llegó la opción de añadir un pack desde un archivo; la versión actual es la <span data-nido="version">0.1.98</span>. Y recuerda: cada pack trae además su edición legible completa, para leerlo sin ninguna app.</p>
           </div>
 
           <div class="step reveal" style="margin-top:16px">
@@ -1230,7 +1230,7 @@
          (window.SALVORA_DATOS): al publicar una versión nueva se cambian
          estas dos líneas y la página entera se actualiza sola. */
       window.SALVORA_DATOS = window.SALVORA_DATOS || {};
-      window.SALVORA_DATOS.nido = { version: "0.1.97", huella: "dbbe237e01913de051bf236cd3c6504645c1dc4b9fc8e053ac2e070308eecbc9" };
+      window.SALVORA_DATOS.nido = { version: "0.1.98", huella: "3dd4325824256202d8e1047091ada1d07a827729be59c5411bde1e493e7fa95d" };
       document.querySelectorAll("[data-nido]").forEach(function (el) {
         var v = window.SALVORA_DATOS.nido[el.getAttribute("data-nido")];
         if (v) el.textContent = v;
